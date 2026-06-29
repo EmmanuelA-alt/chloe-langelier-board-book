@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chloe Langelier Inc. — Refined Digital Board Book</title>
+</head>
+<body>
+<div id="boot" style="font-family:system-ui,-apple-system,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;background:#FAF7F2;color:#2C2522;">
+  <div style="text-align:center;max-width:520px;padding:40px;">
+    <div style="letter-spacing:2px;color:#C5A26F;font-size:12px;margin-bottom:16px;">CHLOE LANGELIER</div>
+    <h1 style="font-family:Georgia,serif;font-weight:400;margin:0 0 14px;">Loading Refined Board Book</h1>
+    <p style="color:#6d625b;">Preparing the improved review experience.</p>
+  </div>
+</div>
+<script>
+(async function(){
+  const res = await fetch('index.html', {cache:'no-store'});
+  const html = await res.text();
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+
+  document.head.innerHTML = doc.head.innerHTML + `
+<style>
+/* Refined review shell. Non-destructive: source content remains docs/index.html. */
+:root { --sidebar-width: 292px; --page-max-width: 1080px; }
+html { scroll-behavior: smooth; }
+body { min-height: 100vh; overflow-x: hidden; }
+.chapter { display:none; min-height:100vh; margin-left:var(--sidebar-width); width:calc(100vw - var(--sidebar-width)); padding-bottom:92px; transition:margin-left .25s ease,width .25s ease; }
+.chapter.active { display:block; animation:chapterFade 340ms ease; }
+.chapter#cover { margin-left:var(--sidebar-width); width:calc(100vw - var(--sidebar-width)); }
+.section { max-width:var(--page-max-width); margin:0 auto; padding:clamp(44px,5vw,76px) clamp(34px,5vw,82px); min-height:100vh; }
+.nav-sidebar { width:var(--sidebar-width)!important; box-shadow:16px 0 44px rgba(44,37,34,.18); padding:28px 20px 110px!important; transition:transform .25s ease; }
+.nav-sidebar::-webkit-scrollbar { width:6px; }
+.nav-sidebar::-webkit-scrollbar-thumb { background:rgba(197,162,111,.45); border-radius:999px; }
+body.nav-collapsed .nav-sidebar { transform:translateX(calc(-1 * var(--sidebar-width))); }
+body.nav-collapsed .chapter, body.nav-collapsed .chapter#cover { margin-left:0; width:100vw; }
+.nav-toggle { position:fixed; top:18px; left:calc(var(--sidebar-width) + 18px); z-index:500; width:42px; height:42px; border:1px solid rgba(197,162,111,.55); border-radius:999px; background:rgba(44,37,34,.94); color:var(--gold); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(0,0,0,.14); transition:left .25s ease, background .2s ease, color .2s ease, transform .2s ease; }
+.nav-toggle:hover { background:var(--gold); color:var(--espresso); transform:translateY(-1px); }
+body.nav-collapsed .nav-toggle { left:18px; }
+.top-bar { right:clamp(18px,3vw,40px)!important; top:12px!important; background:rgba(250,247,242,.88); backdrop-filter:blur(10px); padding:8px 12px; border-radius:999px; box-shadow:0 8px 28px rgba(44,37,34,.08); }
+.nav-actions { right:clamp(18px,3vw,42px)!important; bottom:24px!important; }
+.nav-btn { box-shadow:0 10px 26px rgba(44,37,34,.10); }
+table { display:block; max-width:100%; overflow-x:auto; white-space:normal; }
+table tbody { display:table; width:100%; }
+.flow-diagram { white-space:pre-wrap; overflow-x:auto; font-family:Inter,system-ui,sans-serif!important; }
+.metric-card,.unit-card,.banker-note,.highlight-box,.founder-narrative,.financial-cycle,.growth-phase { overflow-wrap:anywhere; }
+.review-ribbon { position:fixed; left:calc(var(--sidebar-width) + 76px); top:18px; z-index:260; font-size:11px; letter-spacing:1.2px; color:#8b7b68; text-transform:uppercase; transition:left .25s ease; }
+body.nav-collapsed .review-ribbon { left:76px; }
+.review-panel { position:fixed; right:22px; bottom:84px; z-index:420; display:none; width:min(440px,calc(100vw - 44px)); background:white; border:1px solid var(--beige); box-shadow:0 24px 70px rgba(44,37,34,.22); padding:24px; }
+.review-panel.open { display:block; }
+.review-panel h3 { margin-top:0; }
+.review-panel button { margin-top:14px; background:var(--espresso); color:white; border:0; padding:10px 16px; cursor:pointer; }
+.mode-chip { position:fixed; right:24px; bottom:24px; z-index:421; background:var(--gold); color:var(--espresso); border:0; border-radius:999px; padding:12px 18px; font-weight:600; cursor:pointer; box-shadow:0 14px 36px rgba(44,37,34,.18); }
+body.executive-mode .chapter:not(#cover):not(#ch1):not(#ch2):not(#ch8):not(#ch9):not(#ch10):not(#ch14):not(#ch19) { display:none!important; }
+body.presentation-mode .section { max-width:1180px; font-size:17px; }
+body.presentation-mode .chapter-title { font-size:42px; }
+@media (max-width:1180px){ :root{--sidebar-width:260px;} .section{max-width:980px;} }
+@media (max-width:1024px){
+  .nav-sidebar { width:min(86vw,340px)!important; transform:translateX(-105%); }
+  body.nav-open .nav-sidebar { transform:translateX(0); }
+  .chapter,.chapter#cover,body.nav-collapsed .chapter,body.nav-collapsed .chapter#cover { margin-left:0; width:100vw; }
+  .nav-toggle,body.nav-collapsed .nav-toggle { left:16px; top:16px; }
+  .top-bar { left:70px!important; right:14px!important; justify-content:flex-end; }
+  .review-ribbon { display:none; }
+  .section { padding:82px 22px 54px; }
+  #cover h1 { font-size:clamp(40px,11vw,58px)!important; }
+  .metric-grid,.pillars-grid,.ip-grid,[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns:1fr 1fr 1fr"],[style*="grid-template-columns:repeat(3"],[style*="grid-template-columns:repeat(4"] { grid-template-columns:1fr!important; }
+  .nav-actions { left:16px!important; right:16px!important; bottom:16px!important; justify-content:space-between; }
+  .nav-btn { flex:1; }
+}
+@media print{
+  @page { size:letter; margin:.55in; }
+  body { background:white!important; font-size:11pt; overflow:visible!important; }
+  .nav-sidebar,.top-bar,.nav-actions,.slideover,.progress-bar,.nav-toggle,.review-ribbon,.mode-chip,.review-panel { display:none!important; }
+  .chapter,.chapter#cover { display:block!important; margin-left:0!important; width:auto!important; min-height:auto!important; page-break-after:always; animation:none!important; }
+  .section { max-width:none!important; min-height:auto!important; padding:0!important; }
+  table { break-inside:avoid; }
+  .banker-note,.highlight-box,.metric-card,.unit-card,.founder-narrative,.financial-cycle,.growth-phase { break-inside:avoid; }
+}
+</style>`;
+
+  const bodyNodes = Array.from(doc.body.childNodes).filter(n => n.nodeName.toLowerCase() !== 'script');
+  document.body.innerHTML = '';
+  for (const n of bodyNodes) document.body.appendChild(document.importNode(n, true));
+  document.body.insertAdjacentHTML('afterbegin', '<button class="nav-toggle" type="button" onclick="toggleSidebar()" aria-label="Toggle navigation" title="Toggle navigation">☰</button><div class="review-ribbon">Refined Review Shell • Layout Foundation Pass</div>');
+  document.body.insertAdjacentHTML('beforeend', '<button class="mode-chip" onclick="toggleReviewPanel()">Review Tools</button><div class="review-panel" id="reviewPanel"><h3>Review Tools</h3><p>This shell fixes the layout foundation without altering the source board-book content.</p><button onclick="toggleExecutiveMode()">Toggle Executive Mode</button> <button onclick="togglePresentationMode()">Toggle Presentation Mode</button> <button onclick="window.print()">Print / PDF</button></div>');
+
+  window.currentChapter = 'cover';
+  window.chapters = ['cover','ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','ch11','ch12','ch13','ch14','ch15','ch16','ch17','ch18','ch19'];
+  window.navigateToChapter = function(chapterId){
+    document.querySelectorAll('.chapter').forEach(c=>c.classList.remove('active'));
+    const target = document.getElementById(chapterId);
+    if(target){ target.classList.add('active'); currentChapter = chapterId; updateProgress(); updateActiveNav(); closeMobileNav(); window.scrollTo({top:0,behavior:'smooth'}); }
+  };
+  window.nextChapter = function(){ const i=chapters.indexOf(currentChapter); if(i<chapters.length-1) navigateToChapter(chapters[i+1]); };
+  window.prevChapter = function(){ const i=chapters.indexOf(currentChapter); if(i>0) navigateToChapter(chapters[i-1]); };
+  window.updateProgress = function(){ const i=chapters.indexOf(currentChapter); const el=document.getElementById('progress'); if(el) el.style.width = (((i+1)/chapters.length)*100)+'%'; };
+  window.updateActiveNav = function(){ document.querySelectorAll('.nav-link').forEach(link=>{ link.classList.remove('active'); if(link.dataset.chapter===currentChapter) link.classList.add('active'); }); };
+  window.toggleSidebar = function(){ if(window.innerWidth<=1024) document.body.classList.toggle('nav-open'); else document.body.classList.toggle('nav-collapsed'); };
+  window.closeMobileNav = function(){ if(window.innerWidth<=1024) document.body.classList.remove('nav-open'); };
+  window.toggleReviewPanel = function(){ document.getElementById('reviewPanel').classList.toggle('open'); };
+  window.toggleExecutiveMode = function(){ document.body.classList.toggle('executive-mode'); navigateToChapter('ch1'); };
+  window.togglePresentationMode = function(){ document.body.classList.toggle('presentation-mode'); };
+  window.toggleLanguage = function(){
+    const body=document.body,en=document.getElementById('lang-en'),fr=document.getElementById('lang-fr');
+    if(body.classList.contains('lang-fr')){ body.classList.remove('lang-fr'); en&&en.classList.add('active'); fr&&fr.classList.remove('active'); }
+    else { body.classList.add('lang-fr'); en&&en.classList.remove('active'); fr&&fr.classList.add('active'); }
+  };
+  window.showCreditSnapshot = function(){
+    const panel = document.createElement('div');
+    panel.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:800;display:flex;align-items:center;justify-content:center;padding:22px;';
+    panel.innerHTML='<div style="background:white;max-width:760px;width:100%;padding:46px 54px;color:#2C2522;box-shadow:0 30px 90px rgba(0,0,0,.35);"><h2 style="font-family:Playfair Display,Georgia,serif;margin-bottom:24px;">Credit Snapshot — June 2026</h2><table style="width:100%;margin-bottom:26px;"><tr><td><strong>Request</strong></td><td style="text-align:right;">CAD $25,000 Revolving Line of Credit</td></tr><tr><td><strong>Founder Capital Deployed</strong></td><td style="text-align:right;">~$45,000 personal</td></tr><tr><td><strong>Professional Income</strong></td><td style="text-align:right;">C$120,000+ stable</td></tr><tr><td><strong>Year 1 Revenue Target</strong></td><td style="text-align:right;">$425,000</td></tr><tr><td><strong>Gross Margin Target</strong></td><td style="text-align:right;">60%</td></tr><tr><td><strong>Personal Guarantee</strong></td><td style="text-align:right;">Offered</td></tr></table><div style="background:#F4F0E8;padding:18px 20px;border-left:4px solid #C5A26F;"><strong>Recommendation:</strong> Low exposure, substantial founder commitment, repeatable Curated Edition financial cycle, and long-term banking relationship potential.</div><button onclick="this.closest(\'div[style*=fixed]\').remove()" style="margin-top:28px;background:#2C2522;color:white;border:none;padding:12px 28px;cursor:pointer;">Close</button></div>';
+    document.body.appendChild(panel);
+  };
+
+  document.querySelectorAll('.nav-link[data-chapter]').forEach(link=>link.addEventListener('click',function(e){ e.preventDefault(); navigateToChapter(this.dataset.chapter); }));
+  document.addEventListener('keydown',function(e){ if(e.key==='ArrowRight')nextChapter(); if(e.key==='ArrowLeft')prevChapter(); if(e.key==='Escape')navigateToChapter('cover'); });
+  window.addEventListener('resize',()=>{ if(window.innerWidth>1024) document.body.classList.remove('nav-open'); });
+  document.getElementById('cover')?.classList.add('active');
+  updateProgress();
+})();
+</script>
+</body>
+</html>
