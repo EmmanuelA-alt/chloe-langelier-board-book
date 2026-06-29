@@ -60,9 +60,14 @@ tr:nth-child(even) td { background: #FAF7F2; }
 }
 .banker-note strong { color: var(--espresso); }
 .highlight-box { background: var(--cream); border-left: 5px solid var(--gold); padding: 22px 26px; margin: 26px 0; }
-.section { max-width: 680px; margin: 0 auto; padding: 70px 40px; min-height: 100vh; }
-.chapter { display: none; min-height: 100vh; padding-bottom: 80px; }
+.section { max-width: 680px; margin: 0 auto; padding: 60px 40px; }
+.chapter { display: none; min-height: 100vh; padding-bottom: 60px; }
 .chapter.active { display: block; animation: chapterFade 350ms ease; }
+#cover.active { display: flex !important; min-height: 100vh; }
+#cover.active .cover-content { margin-left: 260px; }
+@media (max-width: 1024px) {
+    #cover.active .cover-content { margin-left: 0; }
+}
 @keyframes chapterFade { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
 /* ===== LAYOUT ===== */
 .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 200; transition: width .2s; }
@@ -73,7 +78,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
 /* ===== NAVIGATION ===== */
 .nav-sidebar {
     position: fixed; left: 0; top: 0; width: 260px; height: 100vh; background: var(--espresso); color: var(--cream);
-    padding: 30px 22px; overflow-y: auto; z-index: 100; font-size: 13px;
+    padding: 56px 22px 30px 22px; overflow-y: auto; z-index: 100; font-size: 13px;
 }
 .nav-sidebar h4 { color: var(--gold); font-size: 10px; letter-spacing: 1.5px; margin: 22px 0 8px; }
 .nav-link { display: block; color: #C9B9A3; padding: 5px 0; text-decoration: none; transition: color .2s; }
@@ -84,17 +89,37 @@ tr:nth-child(even) td { background: #FAF7F2; }
 .lang-toggle { background: var(--espresso); color: var(--cream); padding: 4px 12px; font-size: 12px; border-radius: 20px; cursor: pointer; }
 .lang-toggle span { padding: 0 6px; }
 .lang-toggle span.active { color: var(--gold); font-weight: 600; }
+.top-bar-print { display: flex; gap: 6px; }
+.print-btn { background: transparent; color: var(--cream); border: 1px solid rgba(197,162,111,0.4); padding: 4px 10px; font-size: 11px; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+.print-btn:hover { background: var(--gold); color: var(--espresso); border-color: var(--gold); }
 .nav-actions { position: fixed; bottom: 30px; right: 40px; display: flex; gap: 12px; z-index: 150; }
 .nav-btn { background: var(--espresso); color: var(--cream); border: none; padding: 10px 18px; font-size: 13px; cursor: pointer; border-radius: 3px; }
 .nav-btn:hover { background: var(--gold); color: var(--espresso); }
 /* Mobile slide-over */
-.mobile-nav-toggle { display: none; position: fixed; top: 20px; left: 20px; z-index: 250; background: var(--espresso); color: var(--cream); border: none; padding: 10px 14px; border-radius: 3px; cursor: pointer; }
+.mobile-nav-toggle { display: none; position: fixed; top: 20px; left: 20px; z-index: 250; background: var(--gold); color: var(--espresso); border: none; padding: 10px 14px; border-radius: 3px; cursor: pointer; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
 @media (max-width: 1024px) {
     .mobile-nav-toggle { display: block; }
     .nav-sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
     .nav-sidebar.open { transform: translateX(0); }
     .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 90; display: none; }
     .nav-overlay.open { display: block; }
+}
+/* ===== PRODUCT GALLERY ===== */
+.product-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 30px 0; }
+.product-card { background: white; border: 1px solid var(--beige); overflow: hidden; }
+.product-card img { width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block; background: #F8F5F0; border-bottom: 1px solid var(--beige); }
+.product-name { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--espresso); padding: 14px 16px 4px; font-weight: 600; }
+.product-desc { font-size: 12px; color: var(--charcoal); padding: 0 16px 16px; line-height: 1.5; }
+.product-feature { margin: 20px 0; }
+/* ===== COMPETITIVE GRID ===== */
+.competitive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+.competitive-card { background: var(--cream); border-left: 4px solid var(--gold); padding: 24px 28px; }
+.competitive-number { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold); margin-bottom: 6px; font-weight: 400; }
+.competitive-title { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--espresso); font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+.competitive-body { font-size: 13px; color: var(--charcoal); line-height: 1.6; }
+@media (max-width: 768px) {
+    .product-gallery { grid-template-columns: 1fr; }
+    .competitive-grid { grid-template-columns: 1fr; }
 }
 /* ===== COMPONENTS ===== */
 .btn-gold { background: var(--gold); color: var(--espresso); padding: 14px 32px; font-size: 14px; font-weight: 600; border: none; border-radius: 3px; cursor: pointer; margin: 8px; }
@@ -115,7 +140,9 @@ tr:nth-child(even) td { background: #FAF7F2; }
 .pillar-desc { font-size: 13px; color: var(--charcoal); line-height: 1.5; }
 .founder-narrative { background: white; border: 1px solid var(--beige); padding: 30px 34px; margin: 25px 0; }
 .defining-quote { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.5; color: var(--espresso); text-align: center; border-top: 1px solid var(--beige); border-bottom: 1px solid var(--beige); padding: 28px 40px; margin: 30px 0; font-style: italic; }
-.core-principle-page { background: var(--espresso); color: var(--cream); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 40px; }
+.core-principle-page { background: var(--espresso); color: var(--cream); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 40px; }
+#ch11 { background: var(--espresso); }
+#ch11 .content-en p, #ch11 .content-fr p { font-family: 'Playfair Display', Georgia, serif; line-height: 1.7; color: var(--cream); }
 .financial-cycle { background: white; border: 1px solid var(--beige); padding: 30px; margin: 30px 0; }
 .unit-card { background: var(--cream); border: 1px solid var(--beige); padding: 22px; text-align: center; }
 .flow-diagram { background: var(--warm-white); padding: 25px; border: 1px solid var(--beige); margin: 25px 0; font-family: monospace; line-height: 1.8; }
@@ -136,22 +163,38 @@ tr:nth-child(even) td { background: #FAF7F2; }
 .rhythm-pill { background: var(--cream); border: 1px solid var(--beige); padding: 18px; text-align: center; font-size: 13px; }
 /* ===== MODES ===== */
 .presentation-mode .section { font-size: 18px; line-height: 1.9; }
-.presentation-mode .nav-sidebar { display: none; }
-.presentation-mode .content-wrapper { margin-left: 0; }
 .credit-mode .banker-note { background: #F4EDE0; border-color: var(--gold); }
-.board-review-mode .chapter { display: block !important; margin-bottom: 60px; }
-/* ===== PRINT ===== */
+/* ===== CREDIT COMMITTEE MODE ===== */
 @media print {
     .nav-sidebar, .top-bar, .nav-actions, .mobile-nav-toggle, .nav-overlay { display: none !important; }
     .content-wrapper { margin-left: 0 !important; }
-    .chapter { display: block !important; page-break-after: always; }
+    .chapter { display: block !important; page-break-after: always; page-break-inside: auto; }
     .chapter.active { display: block !important; }
-    .core-principle-page { page-break-before: always; min-height: auto; }
+    #presentationDeck { display: none !important; }
+    #creditSnapshot { display: none !important; }
+    /* Prevent elements from being cut across pages */
+    p, h2, h3, h4 { page-break-inside: avoid; orphans: 3; widows: 3; }
     table { page-break-inside: avoid; }
     .banker-note, .highlight-box, .four-pillars { page-break-inside: avoid; }
-    @page { size: letter; margin: 0.6in; }
-    body::before { content: "CHLOE LANGELIER INC. — CONFIDENTIAL BOARD BOOK | JUNE 2026"; position: running(header); font-size: 9px; color: #888; }
-    body::after { content: counter(page); position: running(footer); font-size: 9px; color: #888; }
+    .pull-quote { page-break-inside: avoid; }
+    .metric-card, .pillar-card, .unit-economics-card { page-break-inside: avoid; }
+    .growth-phase { page-break-inside: avoid; }
+    .ip-item { page-break-inside: avoid; }
+    .slide { page-break-after: always; page-break-inside: avoid; }
+    .core-principle-page { page-break-before: always; min-height: auto; }
+    #cover { page-break-after: always; min-height: auto; }
+    #closing { page-break-before: always; min-height: auto; }
+    .content-fr { display: none !important; }
+    body.lang-fr .content-en { display: none !important; }
+    body.lang-fr .content-fr { display: block !important; }
+    @page { size: letter; margin: 0.75in 0.75in 0.9in 0.75in; }
+    body { font-size: 12px; line-height: 1.6; }
+    .section { max-width: 100% !important; padding: 20px 0 !important; min-height: auto !important; }
+    h1 { font-size: 28px !important; }
+    h2 { font-size: 22px !important; }
+    h3 { font-size: 16px !important; }
+    a { color: var(--espresso) !important; text-decoration: none !important; }
+    .btn-gold, .btn-outline, .print-btn { display: none !important; }
 }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
@@ -191,6 +234,48 @@ tr:nth-child(even) td { background: #FAF7F2; }
     .nav-actions { bottom: 16px; right: 16px; gap: 8px; }
     .nav-btn { padding: 10px 14px; font-size: 12px; }
 }
+/* ===== BILINGUAL TOGGLE ===== */
+.content-fr { display: none; }
+body.lang-fr .content-en { display: none; }
+body.lang-fr .content-fr { display: block; }
+/* ===== PRESENTATION MODE ===== */
+.presentation-mode .nav-sidebar { display: none; }
+.presentation-mode .content-wrapper { margin-left: 0; }
+.presentation-mode .section { max-width: 900px; }
+@media (max-width: 1024px) {
+    .presentation-mode .nav-sidebar { transform: translateX(-100%); transition: transform 0.3s; display: block !important; }
+    .presentation-mode .nav-sidebar.open { transform: translateX(0); }
+    .presentation-mode .mobile-nav-toggle { display: block !important; z-index: 300; }
+}
+.presentation-mode .top-bar { z-index: 200; }
+.presentation-mode #progress { z-index: 200; }
+.slide-nav { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 150; }
+.slide-nav-btn { background: var(--espresso); color: var(--cream); border: none; padding: 12px 20px; font-size: 14px; cursor: pointer; border-radius: 3px; }
+.slide-nav-btn:hover { background: var(--gold); color: var(--espresso); }
+.slide-counter { color: var(--cream); background: var(--espresso); padding: 10px 16px; border-radius: 3px; font-size: 13px; align-self: center; }
+#presentationDeck { display: none; min-height: 100vh; }
+#presentationDeck.active { display: block; }
+.slide { display: none; max-width: 900px; margin: 0 auto; background: white; border: 1px solid var(--beige); padding: 50px 60px; min-height: 100vh; }
+.slide.active { display: flex; flex-direction: column; justify-content: center; animation: slideFade 400ms ease; }
+@keyframes slideFade { from { opacity: 0; } to { opacity: 1; } }
+.slide-num { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+.slide-title { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--espresso); margin-bottom: 30px; line-height: 1.2; }
+.slide-body { font-size: 16px; line-height: 1.8; color: var(--charcoal); }
+.slide-body strong { color: var(--espresso); }
+.slide-metric { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--gold); margin: 10px 0; }
+.slide-metric-label { font-size: 12px; color: #999; letter-spacing: 1px; text-transform: uppercase; }
+.slide-closing { text-align: center; background: var(--espresso); color: var(--cream); }
+.slide-closing .slide-title { color: white; }
+.slide-closing .slide-body { color: var(--beige); }
+/* ===== CREDIT COMMITTEE MODE ===== */
+.credit-mode .banker-note { background: #F4EDE0 !important; border-color: var(--gold) !important; border-left-width: 5px !important; box-shadow: 0 2px 8px rgba(197,162,111,0.15); }
+.credit-mode .section { max-width: 820px; }
+/* ===== CLOSING PAGE ===== */
+#closing.active { display: flex !important; align-items: center; justify-content: center; background: var(--espresso); color: var(--cream); text-align: center; }
+#closing .closing-mark { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--gold); margin-bottom: 20px; font-weight: 400; letter-spacing: 2px; }
+#closing .closing-text { font-size: 14px; color: var(--beige); line-height: 2; max-width: 500px; margin: 0 auto 40px; font-weight: 300; }
+#closing .closing-line { width: 60px; height: 1px; background: var(--gold); margin: 30px auto; }
+#closing .closing-confidential { font-size: 10px; letter-spacing: 2px; color: #555; margin-top: 40px; }
 </style>
 </head>
 <body>
@@ -203,43 +288,42 @@ tr:nth-child(even) td { background: #FAF7F2; }
 
 <!-- NAV SIDEBAR -->
 <div class="nav-sidebar" id="navSidebar">
-    <div style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:20px;color:white;">CHLOE LANGELIER</div>
+    <div style="font-family:'Playfair Display',serif;font-size:19px;margin-bottom:6px;color:white;letter-spacing:1.5px;font-weight:400;">Chloe Langelier</div>
+    <div style="font-family:'Inter',sans-serif;font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;">Montreal · Canada</div>
     
-    <div class="nav-part">PART I — THE FOUNDER</div>
-    <a href="#" class="nav-link" data-chapter="ch1">01. The Opportunity</a>
-    <a href="#" class="nav-link" data-chapter="ch2">02. The Founder</a>
-    <a href="#" class="nav-link" data-chapter="ch3">03. The Creative Foundation</a>
-    <a href="#" class="nav-link" data-chapter="ch4">04. The Thesis</a>
-    <a href="#" class="nav-link" data-chapter="ch5">05. Why She Will Succeed</a>
+    <div class="nav-part" data-en="PART I — THE FOUNDER" data-fr="PARTIE I — LA FONDATRICE">PART I — THE FOUNDER</div>
+    <a href="#" class="nav-link" data-chapter="ch1" data-en="01. The Opportunity" data-fr="01. L'Occasion">01. The Opportunity</a>
+    <a href="#" class="nav-link" data-chapter="ch2" data-en="02. The Founder" data-fr="02. La Fondatrice">02. The Founder</a>
+    <a href="#" class="nav-link" data-chapter="ch3" data-en="03. The Creative Foundation" data-fr="03. Le Fondement Créatif">03. The Creative Foundation</a>
+    <a href="#" class="nav-link" data-chapter="ch4" data-en="04. The Thesis" data-fr="04. La Thèse">04. The Thesis</a>
+    <a href="#" class="nav-link" data-chapter="ch5" data-en="05. Why She Will Succeed" data-fr="05. Pourquoi Elle Réussira">05. Why She Will Succeed</a>
     
-    <div class="nav-part">PART II — THE BUSINESS</div>
-    <a href="#" class="nav-link" data-chapter="ch6">06. The Product</a>
-    <a href="#" class="nav-link" data-chapter="ch7">07. Manufacturing</a>
-    <a href="#" class="nav-link" data-chapter="ch8">08. The Curated Edition Financial Cycle™</a>
-    <a href="#" class="nav-link" data-chapter="ch9">09. Financial Model</a>
-    <a href="#" class="nav-link" data-chapter="ch10">10. Use of Proceeds + Risk</a>
+    <div class="nav-part" data-en="PART II — THE BUSINESS" data-fr="PARTIE II — L'ENTREPRISE">PART II — THE BUSINESS</div>
+    <a href="#" class="nav-link" data-chapter="ch6" data-en="06. The Product" data-fr="06. Le Produit">06. The Product</a>
+    <a href="#" class="nav-link" data-chapter="ch7" data-en="07. Manufacturing" data-fr="07. La Fabrication">07. Manufacturing</a>
+    <a href="#" class="nav-link" data-chapter="ch8" data-en="08. The Curated Edition Financial Cycle™" data-fr="08. Le Cycle Financier des Curated Editions™">08. The Curated Edition Financial Cycle™</a>
+    <a href="#" class="nav-link" data-chapter="ch9" data-en="09. Financial Model" data-fr="09. Le Modèle Financier">09. Financial Model</a>
+    <a href="#" class="nav-link" data-chapter="ch10" data-en="10. Use of Proceeds + Risk" data-fr="10. Affectation des Fonds + Risques">10. Use of Proceeds + Risk</a>
     
-    <div class="nav-part">PART III — THE STRATEGY</div>
-    <a href="#" class="nav-link" data-chapter="ch11">11. Core Principle</a>
-    <a href="#" class="nav-link" data-chapter="ch12">12. Beyond the Fashion Calendar</a>
-    <a href="#" class="nav-link" data-chapter="ch13">13. Distribution & Demand</a>
-    <a href="#" class="nav-link" data-chapter="ch14">14. The Competitive Edge</a>
-    <a href="#" class="nav-link" data-chapter="ch15">15. Curated Editions™</a>
-    <a href="#" class="nav-link" data-chapter="ch16">16. Growth Roadmap</a>
+    <div class="nav-part" data-en="PART III — THE STRATEGY" data-fr="PARTIE III — LA STRATÉGIE">PART III — THE STRATEGY</div>
+    <a href="#" class="nav-link" data-chapter="ch11" data-en="11. Core Principle" data-fr="11. Principe Fondamental">11. Core Principle</a>
+    <a href="#" class="nav-link" data-chapter="ch12" data-en="12. Beyond the Fashion Calendar" data-fr="12. Au-delà du Calendrier de la Mode">12. Beyond the Fashion Calendar</a>
+    <a href="#" class="nav-link" data-chapter="ch13" data-en="13. Distribution & Demand" data-fr="13. Distribution et Demande">13. Distribution & Demand</a>
+    <a href="#" class="nav-link" data-chapter="ch14" data-en="14. The Competitive Edge" data-fr="14. L'Avantage Concurrentiel">14. The Competitive Edge</a>
+    <a href="#" class="nav-link" data-chapter="ch15" data-en="15. Curated Editions™" data-fr="15. Curated Editions™">15. Curated Editions™</a>
+    <a href="#" class="nav-link" data-chapter="ch16" data-en="16. Growth Roadmap" data-fr="16. Feuille de Route de Croissance">16. Growth Roadmap</a>
     
-    <div class="nav-part">PART IV — THE VISION</div>
-    <a href="#" class="nav-link" data-chapter="ch17">17. Intelligence Atelier™ + The Moat</a>
-    <a href="#" class="nav-link" data-chapter="ch18">18. IP & Brand Assets</a>
-    <a href="#" class="nav-link" data-chapter="ch19">19. The Vision</a>
+    <div class="nav-part" data-en="PART IV — THE VISION" data-fr="PARTIE IV — LA VISION">PART IV — THE VISION</div>
+    <a href="#" class="nav-link" data-chapter="ch17" data-en="17. Intelligence Atelier™ + The Moat" data-fr="17. Intelligence Atelier™ + Le Fossé">17. Intelligence Atelier™ + The Moat</a>
+    <a href="#" class="nav-link" data-chapter="ch18" data-en="18. IP & Brand Assets" data-fr="18. PI et Actifs de Marque">18. IP & Brand Assets</a>
+    <a href="#" class="nav-link" data-chapter="ch19" data-en="19. The Vision" data-fr="19. La Vision">19. The Vision</a>
     
     <div style="margin-top:30px;padding-top:20px;border-top:1px solid #4A423B;">
-        <a href="#" class="nav-link" onclick="showCreditSnapshot()">Credit Snapshot</a>
-        <a href="#" class="nav-link" onclick="toggleMode('executive')">Executive Mode</a>
-        <a href="#" class="nav-link" onclick="toggleMode('presentation')">Presentation Mode</a>
-        <a href="#" class="nav-link" onclick="toggleMode('credit')">Credit Committee Mode</a>
-        <a href="#" class="nav-link" onclick="toggleMode('board')">Board Review Mode</a>
-        <a href="#" class="nav-link" onclick="window.print()">Print / PDF</a>
-        <a href="#" class="nav-link" onclick="navigateToChapter('cover')">Home</a>
+        <a href="#" class="nav-link" onclick="showCreditSnapshot()" data-en="Credit Snapshot" data-fr="Sommaire de Crédit">Credit Snapshot</a>
+        <a href="#" class="nav-link" onclick="toggleMode('presentation')" data-en="Presentation Mode" data-fr="Mode Présentation">Presentation Mode</a>
+        <a href="#" class="nav-link" onclick="toggleMode('credit')" data-en="Credit Committee Mode" data-fr="Mode Comité de Crédit">Credit Committee Mode</a>
+        <a href="#" class="nav-link" onclick="window.print()" data-en="Print / PDF" data-fr="Imprimer / PDF">Print / PDF</a>
+        <a href="#" class="nav-link" onclick="navigateToChapter('cover')" data-en="Home" data-fr="Accueil">Home</a>
     </div>
 </div>
 
@@ -248,39 +332,38 @@ tr:nth-child(even) td { background: #FAF7F2; }
     <div class="lang-toggle" onclick="toggleLanguage()">
         <span class="active" id="lang-en">EN</span> | <span id="lang-fr">FR</span>
     </div>
+    <div class="top-bar-print">
+        <button class="print-btn" onclick="printCurrentSection()" data-en="Print Section" data-fr="Imprimer Section">Print Section</button>
+        <button class="print-btn" onclick="printAll()" data-en="Print All" data-fr="Imprimer Tout">Print All</button>
+    </div>
     <div style="color:#666;font-size:11px;">CONFIDENTIAL • JUNE 2026</div>
 </div>
 
+<!-- MAIN CONTENT WRAPPER -->
+<div class="content-wrapper">
+
 <!-- COVER PAGE -->
-<div class="chapter active" id="cover" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--espresso);color:var(--cream);position:relative;">
-    <div style="text-align:center;max-width:780px;padding:40px;z-index:2;">
+<div class="chapter active" id="cover" style="align-items:center;justify-content:center;background:var(--espresso);color:var(--cream);position:relative;overflow:hidden;">
+    <div class="cover-content" style="text-align:center;max-width:760px;padding:60px 40px;z-index:2;">
         <div class="content-en"><div class="badge">CURATED EDITION NO. 01</div></div>
-        <div class="content-fr"><div class="badge">ÉDITION ORGANISÉE N° 01</div></div>
-        <h1 style="font-size:56px;color:white;margin-bottom:16px;">Chloe Langelier Inc.</h1>
-                    <div class="content-en">
-<p style="font-size:20px;color:var(--beige);margin-bottom:12px;">Digital Board Book™</p>
-            </div>
-        <div class="content-fr">
-<p style="font-size:20px;color:var(--beige);margin-bottom:12px;">Board Book Numérique™</p>
-        </div>
-                    <div class="content-en">
-<p style="color:#A99C8C;margin-bottom:40px;">Bank of Nova Scotia — Montreal, Quebec</p>
-            </div>
-        <div class="content-fr">
-<p style="color:#A99C8C;margin-bottom:40px;">Banque de la Nouvelle-Écosse — Montréal, Québec</p>
-        </div>
+        <h1 class="cover-brand" style="font-family:'Playfair Display',serif;font-size:52px;color:white;margin-bottom:6px;letter-spacing:1px;font-weight:400;line-height:1.1;">Chloe Langelier</h1>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:30px;">M o n t r e a l &nbsp;·&nbsp; C a n a d a</div>
+        <div class="content-en"><p style="font-size:16px;color:var(--beige);margin-bottom:8px;font-weight:300;letter-spacing:1px;">Digital Board Book™</p></div>
+        <div class="content-fr"><p style="font-size:16px;color:var(--beige);margin-bottom:8px;font-weight:300;letter-spacing:1px;">Board Book Numérique™</p></div>
+        <div class="content-en"><p style="font-size:13px;color:#A99C8C;margin-bottom:40px;font-weight:300;letter-spacing:0.5px;">Bank of Nova Scotia — Montreal, Quebec</p></div>
+        <div class="content-fr"><p style="font-size:13px;color:#A99C8C;margin-bottom:40px;font-weight:300;letter-spacing:0.5px;">Banque de la Nouvelle-Écosse — Montréal, Québec</p></div>
         
         <div style="margin:40px 0;">
             <button class="btn-gold" onclick="navigateToChapter('ch1')">Enter Board Book</button>
             <button class="btn-outline" onclick="showCreditSnapshot()">Credit Snapshot</button>
         </div>
         
-        <div style="margin-top:60px;font-size:12px;letter-spacing:2px;color:#666;">DESIGN CREATES DESIRE. DISCIPLINE CREATES ENDURING BRANDS.</div>
+        <div class="content-en" style="margin-top:50px;font-size:10px;letter-spacing:3px;color:#555;font-weight:300;">DESIGN CREATES DESIRE. DISCIPLINE CREATES ENDURING BRANDS.</div>
+        <div class="content-fr" style="margin-top:50px;font-size:10px;letter-spacing:3px;color:#555;font-weight:300;">LE DESIGN CRÉE LE DÉSIR. LA DISCIPLINE CRÉE DES MARQUES DURABLES.</div>
     </div>
     
-    <div class="gold-circle" style="width:280px;height:280px;left:15%;top:20%;"></div>
-    <div class="gold-circle" style="width:180px;height:180px;right:18%;bottom:25%;animation-delay:1.5s;"></div>
-    <div class="gold-circle" style="width:120px;height:120px;left:35%;bottom:15%;animation-delay:3s;"></div>
+    <div style="position:absolute;width:1px;height:60%;left:50px;top:20%;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:0.3;"></div>
+    <div style="position:absolute;width:1px;height:60%;right:50px;top:20%;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:0.3;"></div>
 </div>
 
 <!-- CHAPTER 1 -->
@@ -319,16 +402,50 @@ tr:nth-child(even) td { background: #FAF7F2; }
         
         <div class="content-en">
             <p><strong>Chloe Langelier Inc.</strong> is a Quebec-incorporated company headquartered in Montreal. Production is executed through an established manufacturing partner in China. The brand launches with its first Curated Edition featuring five core silhouettes.</p>
-            <p style="margin-top:16px;"><strong>Founder & Creative Director — Chloe Anassis</strong><br>Age 30 • Full-time Project Manager (C$120,000 annual salary + benefits) • 8+ years experience in design and large-scale project management.<br><br>Chloe combines creative instinct with operational discipline. Her leadership philosophy centers on emotional awareness, creative excellence, and rigorous follow-through. She oversees all aspects of brand development from design and sourcing to production, packaging, and storytelling.</p>
+            <p style="margin-top:16px;"><strong>Founder & Creative Director — Chloe Anassis</strong><br>Age 30 • Montreal, Quebec</p>
+            
+            <h4 style="margin-top:24px;">A Career Built on Escalating Responsibility</h4>
+            <p>Chloe's professional career at <strong>Turner & Townsend</strong> — one of the world's leading international project management and consulting firms, now part of <strong>CBRE</strong>, the global leader in commercial real estate services — is defined by a consistent pattern: she is promoted every time, and the scope of her responsibility expands with each advancement.</p>
+            <p>She joined the firm following graduation and was recognized immediately for her analytical precision, technical competence, and disciplined approach to complex assignments. Her managers entrusted her with progressively larger and more technically demanding capital programs — not because she asked for them, but because she delivered results on every project she touched.</p>
+            <p><strong>Notable assignments include:</strong></p>
+            <ul>
+                <li><strong>Tourmaline Oil Corp. Data Centre Initiative</strong> — Chloe contributed to the feasibility planning of a major data centre for one of Canada's largest energy companies, working alongside senior multidisciplinary teams evaluating complex technical and commercial investment decisions worth hundreds of millions of dollars.</li>
+                <li><strong>Moderna Manufacturing Facilities</strong> — She provided project management leadership on advanced biotechnology manufacturing programs, supporting the construction of pharmaceutical-grade production facilities with exacting regulatory, quality, and timeline requirements.</li>
+                <li><strong>Large-Scale Data Centre Developments</strong> — Multiple hyperscale data centre projects involving project values ranging from hundreds of millions to several billions of dollars, serving financial institutions, technology companies, and advanced manufacturing clients.</li>
+            </ul>
+            <p>Her performance on these programs — consistently delivering on time, on budget, and with the level of documentation and rigor that billion-dollar capital projects demand — created an opportunity. Turner & Townsend promoted her again, relocated her to their headquarters operation, and increased her compensation from C$86,000 to C$120,000 plus benefits — a <strong>39% salary increase</strong> that reflects the value the organization places on retaining her.</p>
+            <p>She is at peak earning power. She is building this company from a position of professional strength, not financial necessity.</p>
+            
+            <h4 style="margin-top:24px;">Entrepreneurial Heritage</h4>
+            <p>Chloe did not discover entrepreneurship in a business school case study. She grew up inside it. She comes from a multi-generational entrepreneurial family — her father founded approximately thirteen companies across airline operations, VIP luxury jet services, humanitarian airlift, oil and gas logistics, and aircraft sales. The family enterprise spans decades of operating across Afghanistan, the Middle East, Africa, Northern Canada, and East Africa, with a historical hub in Nairobi, Kenya.</p>
+            <p>From childhood, Chloe absorbed what cannot be taught: how to read a business situation, how to manage risk under uncertainty, how to build organizations that survive in hostile environments, and how to lead people through ambiguity. Entrepreneurship is not a career choice she arrived at — it is the operating system she was raised on.</p>
+            <p>This combination — Fortune 500-grade project management discipline learned at Turner & Townsend, multi-generational entrepreneurial instinct inherited from the Anassis family enterprise, and an innate design sensibility cultivated through a lifetime of obsession with luxury footwear — produces a founder profile that a credit committee rarely encounters. She is not a creative person who hopes a business will work. She is a disciplined operator who has chosen creativity as the domain for her next venture.</p>
         </div>
         <div class="content-fr">
-            <p><strong>Chloe Langelier Inc.</strong> est une société constituée au Québec dont le siège social est à Montréal. La production est réalisée par l'intermédiaire d'un partenaire manufacturier établi en Chine. La marque lance sa première Édition Organisée avec cinq silhouettes principales.</p>
-            <p style="margin-top:16px;"><strong>Fondatrice et Directrice Créative — Chloe Anassis</strong><br>30 ans • Gestionnaire de projet à temps plein (salaire annuel de 120 000 $ CA + avantages) • Plus de 8 ans d'expérience en design et gestion de projets à grande échelle.<br><br>Chloe combine l'instinct créatif avec la discipline opérationnelle. Sa philosophie de leadership se concentre sur la conscience émotionnelle, l'excellence créative et le suivi rigoureux. Elle supervise tous les aspects du développement de la marque, de la conception et de l'approvisionnement à la production, l'emballage et la narration.</p>
+            <p><strong>Chloe Langelier Inc.</strong> est une société constituée au Québec dont le siège social est à Montréal. La production est réalisée par l'intermédiaire d'un partenaire manufacturier établi en Chine. La marque lance sa première Curated Edition avec cinq silhouettes principales.</p>
+            <p style="margin-top:16px;"><strong>Fondatrice et Directrice Créative — Chloe Anassis</strong><br>30 ans • Montréal, Québec</p>
+            
+            <h4 style="margin-top:24px;">Une carrière marquée par une responsabilité croissante</h4>
+            <p>La carrière professionnelle de Chloe chez <strong>Turner & Townsend</strong> — l'une des principales sociétés internationales de gestion de projets et de conseil, maintenant partie de <strong>CBRE</strong>, le leader mondial des services immobiliers commerciaux — est définie par un schéma constant : elle est promue à chaque étape, et la portée de ses responsabilités s'élargit à chaque avancement.</p>
+            <p>Elle a rejoint la firme après ses études et a été rapidement reconnue pour sa précision analytique, sa compétence technique et son approche disciplinée des mandats complexes. Ses gestionnaires lui ont confié des programmes de capital de plus en plus importants et techniquement exigeants — non pas parce qu'elle les a demandés, mais parce qu'elle a livré des résultats sur chaque projet qu'elle a touché.</p>
+            <p><strong>Affectations notables :</strong></p>
+            <ul>
+                <li><strong>Initiative de centre de données Tourmaline Oil Corp.</strong> — Chloe a contribué à la planification de faisabilité d'un centre de données majeur pour l'une des plus grandes sociétés énergétiques du Canada.</li>
+                <li><strong>Installations de fabrication Moderna</strong> — Elle a fourni un leadership en gestion de projets sur des programmes de fabrication biotechnologique avancée.</li>
+                <li><strong>Développements de centres de données à grande échelle</strong> — Plusieurs projets de centres de données hyperscale impliquant des valeurs de projet allant de centaines de millions à plusieurs milliards de dollars.</li>
+            </ul>
+            <p>Sa performance sur ces programmes a créé une opportunité. Turner & Townsend l'a de nouveau promue, l'a transférée à leur siège social et a augmenté sa rémunération de 86 000 $ CA à 120 000 $ CA plus avantages — une <strong>augmentation de salaire de 39 %</strong> qui reflète la valeur que l'organisation accorde à sa rétention.</p>
+            <p>Elle est au sommet de sa puissance de gains. Elle construit cette entreprise depuis une position de force professionnelle, non de nécessité financière.</p>
+            
+            <h4 style="margin-top:24px;">Héritage entrepreneurial</h4>
+            <p>Chloe n'a pas découvert l'entrepreneuriat dans une étude de cas d'école de commerce. Elle a grandi à l'intérieur. Elle provient d'une famille entrepreneuriale multigénérationnelle — son père a fondé environ treize entreprises à travers les opérations de compagnies aériennes, les services de jets de luxe VIP, le pont aérien humanitaire, la logistique pétrolière et gazière, et la vente d'aéronefs.</p>
+            <p>Dès l'enfance, Chloe a absorbé ce qui ne peut pas s'enseigner : comment lire une situation commerciale, comment gérer le risque dans l'incertitude, comment bâtir des organisations qui survivent dans des environnements hostiles, et comment diriger des personnes à travers l'ambiguïté.</p>
+            <p>Cette combinaison — la discipline de gestion de projets de calibre Fortune 500 apprise chez Turner & Townsend, l'instinct entrepreneurial multigénérationnel hérité de l'entreprise familiale Anassis, et une sensibilité de design innée cultivée par une vie d'obsession pour la chaussure de luxe — produit un profil de fondatrice qu'un comité de crédit rencontre rarement.</p>
         </div>
         
                 <div class="content-en">
 <div class="four-pillars">
-            <h3 style="text-align:center;font-size:20px;color:var(--espresso);margin-bottom:30px;font-family:Playfair Display;">The Four Pillars of Chloe Langelier</h3><h3 style="text-align:center;font-size:20px;color:var(--espresso);margin-bottom:30px;font-family:Playfair Display;">Les Quatre Piliers de Chloe Langelier</h3>
+            <h3 style="text-align:center;font-size:20px;color:var(--espresso);margin-bottom:30px;font-family:Playfair Display;">The Four Pillars of Chloe Langelier</h3>
             <div class="pillars-grid">
                 <div class="pillar-card"><div class="pillar-number">1</div><div class="pillar-title">Exceptional Design</div><div class="pillar-desc">Founder-led creativity. Timeless elegance. Products customers genuinely desire.</div></div>
                 <div class="pillar-card"><div class="pillar-number">2</div><div class="pillar-title">Curated Editions™</div><div class="pillar-desc">Limited releases. Continuous anticipation. Controlled scarcity. Measured growth.</div></div>
@@ -339,10 +456,10 @@ tr:nth-child(even) td { background: #FAF7F2; }
         </div>
         <div class="content-fr">
 <div class="four-pillars">
-            <h3 style="text-align:center;font-size:20px;color:var(--espresso);margin-bottom:30px;font-family:Playfair Display;">Les Quatre Piliers de Chloe Langelier</h3><h3 style="text-align:center;font-size:20px;color:var(--espresso);margin-bottom:30px;font-family:Playfair Display;">Les Quatre Piliers de Chloe Langelier</h3>
+            <h3 style="text-align:center;font-size:20px;color:var(--espresso);margin-bottom:30px;font-family:Playfair Display;">Les Quatre Piliers de Chloe Langelier</h3>
             <div class="pillars-grid">
                 <div class="pillar-card"><div class="pillar-number">1</div><div class="pillar-title">Design Exceptionnel</div><div class="pillar-desc">Créativité dirigée par la fondatrice. Élégance intemporelle. Produits que les clients désirent vraiment.</div></div>
-                <div class="pillar-card"><div class="pillar-number">2</div><div class="pillar-title">Éditions Organisées™</div><div class="pillar-desc">Versions limitées. Anticipation continue. Rareté contrôlée. Croissance mesurée.</div></div>
+                <div class="pillar-card"><div class="pillar-number">2</div><div class="pillar-title">Curated Editions™</div><div class="pillar-desc">Versions limitées. Anticipation continue. Rareté contrôlée. Croissance mesurée.</div></div>
                 <div class="pillar-card"><div class="pillar-number">3</div><div class="pillar-title">Propriété Directe du Client</div><div class="pillar-desc">Shopify. Boutiques. Communauté VIP. Relations clients. Valeur à vie.</div></div>
                 <div class="pillar-card"><div class="pillar-number">4</div><div class="pillar-title">Intelligence Atelier™</div><div class="pillar-desc">Intelligence opérationnelle. Apprentissage continu. Meilleures décisions. Meilleur produit.</div></div>
             </div>
@@ -357,11 +474,11 @@ tr:nth-child(even) td { background: #FAF7F2; }
         
                     <div class="content-en">
 <div class="banker-note">
-            <strong>Banker Note:</strong> The founder brings C$120,000+ stable professional income, proven project-management discipline from Turner & Townsend / CBRE, and substantial personal capital already deployed (~$45,000). This is not a fashion experiment; it is a disciplined operating business.
+            <strong>Banker Note:</strong> The founder brings C$120,000+ stable professional income (recently promoted from C$86,000 — a 39% increase after delivering on multi-billion-dollar capital programs including Tourmaline Oil Corp. and Moderna facilities), proven Fortune 500-grade project management discipline from Turner & Townsend / CBRE, a multi-generational entrepreneurial heritage through the Anassis family enterprise, and substantial personal capital already deployed (~$45,000). This is not a fashion experiment; it is a disciplined operating business launched by someone who manages billion-dollar programs for a living.
         </div>
             </div>
         <div class="content-fr">
-<div class="banker-note"><strong>Note au Banquier :</strong> La fondatrice apporte un revenu professionnel stable de plus de 120 000 $ CA, une discipline éprouvée en gestion de projets de Turner & Townsend / CBRE, et un capital personnel important déjà déployé (~45 000 $). Ce n'est pas une expérience de mode ; c'est une entreprise opérationnelle disciplinée.</div>
+<div class="banker-note"><strong>Note au Banquier :</strong> La fondatrice apporte un revenu professionnel stable de plus de 120 000 $ CA (récemment promue de 86 000 $ CA — une augmentation de 39 % après avoir livré des programmes de capital de plusieurs milliards de dollars incluant Tourmaline Oil Corp. et les installations Moderna), une discipline de gestion de projets de calibre Fortune 500 de Turner & Townsend / CBRE, un héritage entrepreneurial multigénérationnel par l'entreprise familiale Anassis, et un capital personnel important déjà déployé (~45 000 $).</div>
         </div>
     </div>
 </div>
@@ -377,8 +494,12 @@ tr:nth-child(even) td { background: #FAF7F2; }
         </div>
         <div class="content-fr">
             <p>Chloe Langelier a été fondée sur la conviction que le goût exceptionnel est le point de départ non négociable de toute marque de luxe. La fondatrice a passé des années à développer une compréhension instinctive de la proportion, du matériau et de la résonance émotionnelle. Cela ne s'apprend pas en classe ; cela se cultive à travers une vie d'observation, de curation et de raffinement.</p>
-            <p>Chaque silhouette de l'Édition Organisée n° 01 a été conçue par Chloe elle-même. Chaque hauteur de talon, chaque courbe de la forme, chaque choix de matériau et de finition a été évalué selon un seul standard : une femme exigeante choisirait-elle de porter cette chaussure pour les moments les plus importants de sa vie ?</p>
+            <p>Chaque silhouette de l'Curated Edition n° 01 a été conçue par Chloe elle-même. Chaque hauteur de talon, chaque courbe de la forme, chaque choix de matériau et de finition a été évalué selon un seul standard : une femme exigeante choisirait-elle de porter cette chaussure pour les moments les plus importants de sa vie ?</p>
         </div>
+        
+        <img src="images/web-sandal2.jpg" alt="Craftsmanship detail" style="width:100%;max-width:500px;display:block;margin:30px auto;border-radius:3px;" loading="lazy">
+        <div class="content-en" style="text-align:center;font-size:11px;color:#999;letter-spacing:1px;margin-top:-18px;margin-bottom:20px;">THE STRAPPY SANDAL — DETAIL STUDY</div>
+        <div class="content-fr" style="text-align:center;font-size:11px;color:#999;letter-spacing:1px;margin-top:-18px;margin-bottom:20px;">LA SANDALE À LANIÈRES — ÉTUDE DE DÉTAIL</div>
         
         <div class="pull-quote">
             <div class="content-en">"Taste is the one thing that cannot be taught, only refined. Chloe has spent a lifetime refining hers."</div>
@@ -410,7 +531,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
                 « Si je créais une entreprise de chaussures de luxe aujourd'hui, plutôt que d'en hériter une construite il y a vingt ans, que ferais-je différemment ? »
             </div>
                         
-<p>Tout ce qui a suivi — production en petits lots, Éditions Organisées™, Shopify, validation en boutique, propriété directe du client, gestion disciplinée du capital de roulement et apprentissage continu du client — est né de la réponse à cette seule question.</p>
+<p>Tout ce qui a suivi — production en petits lots, Curated Editions™, Shopify, validation en boutique, propriété directe du client, gestion disciplinée du capital de roulement et apprentissage continu du client — est né de la réponse à cette seule question.</p>
             
                         
 <p>L'entreprise n'essaie pas de réinventer la chaussure. Elle redessine le modèle opérationnel derrière une entreprise moderne de chaussures de luxe.</p>
@@ -469,6 +590,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
                     <li>Limited direct relationships between brands and their customers</li>
                     <li>Slow feedback loops between customer demand and future product decisions</li>
                     <li>Marketing strategies that often prioritize wholesale distribution over long-term customer ownership</li>
+                    <li><strong>Extended exposure to design piracy:</strong> Seasonal collections sit on shelves for 6–9 months, giving counterfeiters ample time to reverse-engineer designs, source materials, and flood the market with knockoffs at a fraction of the original price. By the time a traditional house notices, the copies are already selling.</li>
                 </ul>
                 
                             
@@ -477,14 +599,24 @@ tr:nth-child(even) td { background: #FAF7F2; }
                             
 <p>The company deliberately combines small-batch production, Curated Editions™, selective boutique partnerships, direct-to-consumer commerce, disciplined working-capital management, and continuous customer learning to create a faster, more responsive operating model.</p>
             
-                
-                <h4>Professional Experience Beyond Fashion</h4>
-                            
-<p>Equally important, Chloe brings professional experience that extends well beyond the fashion industry. Following graduation, she joined <strong>Turner & Townsend</strong>, one of the world's leading international project management and consulting firms, now part of <strong>CBRE</strong>, the global leader in commercial real estate services. During her career, Chloe was recognized early for her analytical ability, technical competence, and disciplined approach to complex projects, and was entrusted with progressively larger and more technically demanding assignments supporting major capital programs across multiple industries.</p>
-                        
-<p>Her experience includes participation in large-scale data centre developments, financial institutions, and advanced manufacturing facilities, involving project values ranging from hundreds of millions to several billions of dollars. Most recently, she contributed to the feasibility planning of a major data centre initiative for <strong>Tourmaline Oil Corp.</strong>, one of Canada's largest energy companies, working alongside senior multidisciplinary teams responsible for evaluating highly complex technical and commercial investment decisions.</p>
+            <div class="highlight-box">
+<strong>The Anti-Piracy Advantage of Curated Editions™</strong><br><br>
+Traditional luxury houses reveal a collection, then leave it on shelves for six to nine months. That window is an open invitation to counterfeiters — they reverse-engineer the design, source cheaper materials, and flood the market with knockoffs while the original is still in season. The brand absorbs the damage and there is nothing it can do.
+<br><br>
+Chloe Langelier's Curated Edition model collapses that window to 45 days. By the time a counterfeiter identifies a design, produces a copy, and routes it through distribution channels, Chloe has already sold through her inventory, retired the silhouette, and launched the next edition. The shoe the counterfeiter copied no longer exists in the active collection.
+<br><br>
+The Curated Edition model is not merely a marketing strategy. It is a structural defense against design piracy that traditional seasonal brands cannot replicate without abandoning the calendar that defines them.
+            </div>
             
+                
+                <h4>How Disciplined Execution Translates to Footwear</h4>
                             
+<p>It would be reasonable to ask what managing billion-dollar capital programs has to do with luxury footwear. The answer is: everything.</p>
+                        
+<p>The skills that Chloe refined at Turner & Townsend — vendor qualification, production scheduling, quality assurance protocols, cost control under tight margins, and the ability to coordinate multidisciplinary teams across time zones and languages — are the exact same skills required to run a disciplined manufacturing operation in China, launch timed Curated Editions every 45 days, and maintain the financial control that makes a CAD $25,000 revolving facility sufficient where competitors would need ten times that amount.</p>
+                    
+<p>Most fashion founders learn these skills through expensive mistakes. Chloe arrived with them already embedded.</p>
+
 <p>Those experiences fundamentally shaped the way Chloe approaches entrepreneurship.</p>
             
                             
@@ -518,13 +650,23 @@ tr:nth-child(even) td { background: #FAF7F2; }
                     <li>Relations directes limitées entre les marques et leurs clients</li>
                     <li>Boucles de rétroaction lentes entre la demande des clients et les futures décisions de produits</li>
                     <li>Stratégies marketing qui priorisent souvent la distribution en gros sur la propriété à long terme du client</li>
+                    <li><strong>Exposition prolongée au piratage de design :</strong> Les collections saisonnières restent en rayon pendant 6 à 9 mois, donnant aux contrefacteurs tout le temps nécessaire pour copier les designs, sourcer les matériaux et inonder le marché de contrefaçons à une fraction du prix original. Au moment où une maison traditionnelle remarque la contrefaçon, les copies se vendent déjà.</li>
                 </ul>
                 
                             
 <p>Plutôt que d'accepter ces pratiques comme inévitables, Chloe a conçu un modèle commercial destiné à réduire bon nombre de ces inefficacités.</p>
             
                             
-<p>L'entreprise combine délibérément la production en petits lots, les Éditions Organisées™, des partenariats de boutique sélectifs, le commerce direct au consommateur, une gestion disciplinée du capital de roulement et un apprentissage continu du client pour créer un modèle opérationnel plus rapide et plus réactif.</p>
+<p>L'entreprise combine délibérément la production en petits lots, les Curated Editions™, des partenariats de boutique sélectifs, le commerce direct au consommateur, une gestion disciplinée du capital de roulement et un apprentissage continu du client pour créer un modèle opérationnel plus rapide et plus réactif.</p>
+            
+            <div class="highlight-box">
+<strong>L'Avantage Anti-Piratage des Curated Editions™</strong><br><br>
+Les maisons de luxe traditionnelles révèlent une collection, puis la laissent en rayon pendant six à neuf mois. Cette fenêtre est une invitation ouverte aux contrefacteurs — ils copient le design, sourcent des matériaux moins chers et inondent le marché de contrefaçons pendant que l'original est encore en saison. La marque subit les dégâts sans pouvoir rien y faire.
+<br><br>
+Le modèle de Curated Edition de Chloe Langelier réduit cette fenêtre à 45 jours. Au moment où un contrefacteur identifie un design, produit une copie et l'achemine vers les canaux de distribution, Chloe a déjà écoulé son inventaire, retiré la silhouette et lancé l'édition suivante. La chaussure que le contrefacteur a copiée n'existe plus dans la collection active.
+<br><br>
+Le modèle de Curated Edition n'est pas simplement une stratégie marketing. C'est une défense structurelle contre le piratage de design que les marques saisonnières traditionnelles ne peuvent pas reproduire sans abandonner le calendrier qui les définit.
+            </div>
             
                 
                 <h4>Expérience professionnelle au-delà de la mode</h4>
@@ -571,34 +713,64 @@ tr:nth-child(even) td { background: #FAF7F2; }
             <p>Cinq silhouettes fondamentales, chacune avec une personnalité distincte et une portabilité éprouvée. Toutes produites en cuir synthétique de haute qualité, satin et finitions texturées avec tiges renforcées, semelles à mémoire de forme et construction de précision.</p>
         </div>
         
-        <table style="margin-top:18px;">
-            <tr>
-                <th style="width:22%;">Style</th>
-                <th>Description & Positioning</th>
-            </tr>
-            <tr>
-                <td><strong>The Mule</strong></td>
-                <td>Signature beige rhinestone mule — day-to-night versatility. The collection cornerstone. Inspired by a 1950s Catalano heel immortalized by Sex and the City's Carrie Bradshaw. Refined into a neutral beige with softer rhinestone palette.</td>
-            </tr>
-            <tr>
-                <td><strong>The Strappy Sandal</strong></td>
-                <td>Minimalist trompe-l'œil in beige faux snakeskin. The brand's runway shoe — barely there but impossible to ignore. Creates optical illusion of longer legs through ultra-thin bands and absence of ankle strap.</td>
-            </tr>
-            <tr>
-                <td><strong>The Buckle Heel</strong></td>
-                <td>Confident, flirty, full of character. Cheetah-print wrapped heel with espresso buckle and ankle ties. Strings can be wrapped short or wound higher. Balances playful sensuality with attitude.</td>
-            </tr>
-            <tr>
-                <td><strong>The Peekaboo Heel</strong></td>
-                <td>Sophisticated with a sly wink. Subtle toe-cleavage slit, stable curved heel base. Ideal for long days at the office or nights that run late. The shoe that says "I command attention."</td>
-            </tr>
-            <tr>
-                <td><strong>The One and Only Pointy Heel</strong></td>
-                <td>The heart of the brand — founder's personal favorite. Precision-engineered classic pump with elongated Italian point, deep low cut, and tall slim stiletto. The true wardrobe constant for every outfit and occasion.</td>
-            </tr>
-        </table>
+        <div class="product-gallery">
+            <div class="product-card">
+                <img src="images/web-mule2.jpg" alt="The Mule" loading="lazy">
+                <div class="product-name content-en">The Mule</div>
+                <div class="product-name content-fr">La Mule</div>
+                <div class="product-desc content-en">Signature beige rhinestone mule — day-to-night versatility. The collection cornerstone. Refined into a neutral beige with softer rhinestone palette.</div>
+                <div class="product-desc content-fr">Mule beige à strass signature — polyvalence du jour au soir. La pierre angulaire de la collection.</div>
+            </div>
+            <div class="product-card">
+                <img src="images/web-sandal.jpg" alt="The Strappy Sandal" loading="lazy">
+                <div class="product-name content-en">The Strappy Sandal</div>
+                <div class="product-name content-fr">La Sandale à Lanières</div>
+                <div class="product-desc content-en">Minimalist trompe-l'œil in beige faux snakeskin. Barely there but impossible to ignore. Creates optical illusion of longer legs.</div>
+                <div class="product-desc content-fr">Minimaliste trompe-l'œil en fausse peau de serpent beige. Discrète mais impossible à ignorer.</div>
+            </div>
+            <div class="product-card">
+                <img src="images/web-buckle.jpg" alt="The Buckle Heel" loading="lazy">
+                <div class="product-name content-en">The Buckle Heel</div>
+                <div class="product-name content-fr">Le Talon à Boucle</div>
+                <div class="product-desc content-en">Confident and full of character. Brown satin with ankle ties that wrap short or wind higher. Playful sensuality with attitude.</div>
+                <div class="product-desc content-fr">Assurée et pleine de caractère. Satin marron avec lacets cheville. Sensualité ludique avec attitude.</div>
+            </div>
+            <div class="product-card">
+                <img src="images/web-peekaboo.jpg" alt="The Peekaboo Heel" loading="lazy">
+                <div class="product-name content-en">The Peekaboo Heel</div>
+                <div class="product-name content-fr">Le Talon Peekaboo</div>
+                <div class="product-desc content-en">Sophisticated with a sly wink. Subtle toe-cleavage slit, stable curved heel. The shoe that says "I command attention."</div>
+                <div class="product-desc content-fr">Sophistiqué avec un clin d'œil. Fente subtile, talon courbé stable. La chaussure qui dit « Je commande l'attention. »</div>
+            </div>
+            <div class="product-card">
+                <img src="images/web-pointy.jpg" alt="The One and Only Pointy Heel" loading="lazy">
+                <div class="product-name content-en">The One and Only Pointy Heel</div>
+                <div class="product-name content-fr">The One and Only Pointy Heel</div>
+                <div class="product-desc content-en">The heart of the brand — founder's personal favorite. Precision-engineered classic pump with elongated Italian point, deep low cut, and tall slim stiletto. The true wardrobe constant.</div>
+                <div class="product-desc content-fr">Le cœur de la marque — le préféré de la fondatrice. Pompe classique avec pointe italienne allongée. La véritable constante de garde-robe.</div>
+            </div>
+            <div class="product-card">
+                <img src="images/web-mule.jpg" alt="The Mule — detail" loading="lazy">
+                <div class="product-name content-en">The Mule — Detail</div>
+                <div class="product-name content-fr">La Mule — Détail</div>
+                <div class="product-desc content-en">Transparent PVC with multicolored crystal embellishments and nude leather footbed. The craftsmanship behind the cornerstone.</div>
+                <div class="product-desc content-fr">PVC transparent avec cristaux multicolores et semelle en cuir nude. Le savoir-faire derrière la pièce maîtresse.</div>
+            </div>
+        </div>
         
-        <div class="content-en"><p style="margin-top:14px;"><strong>Design Philosophy:</strong> Every shoe begins with restraint. The intention is not to invent endlessly but to perfect what already works. Each silhouette must flatter the leg, maintain balance, and photograph beautifully from every angle.</p></div>
+        <div class="product-feature">
+            <img src="images/web-collection.jpg" alt="Curated Edition No. 01 Collection" loading="lazy" style="width:100%;border-radius:3px;margin-top:30px;">
+            <div class="content-en" style="text-align:center;font-size:11px;color:#999;margin-top:8px;letter-spacing:1px;">CURATED EDITION NO. 01 — FIVE FOUNDATIONAL SILHOUETTES</div>
+            <div class="content-fr" style="text-align:center;font-size:11px;color:#999;margin-top:8px;letter-spacing:1px;">CURATED EDITION N° 01 — CINQ SILHOUETTES FONDAMENTALES</div>
+        </div>
+        
+        <div class="pull-quote" style="text-align:center;border-left:none;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:30px 20px;">
+            <div class="content-en" style="font-size:26px;">"Women adore my shoes."</div>
+            <div class="content-fr" style="font-size:26px;">« Les femmes adorent mes chaussures. »</div>
+            <div class="attribution" style="margin-top:12px;">— Chloe Anassis, Founder</div>
+        </div>
+        
+        <div class="content-en"><p style="margin-top:20px;"><strong>Design Philosophy:</strong> Every shoe begins with restraint. The intention is not to invent endlessly but to perfect what already works. Each silhouette must flatter the leg, maintain balance, and photograph beautifully from every angle.</p></div>
         <div class="content-fr"><p style="margin-top:14px;"><strong>Philosophie de design :</strong> Chaque chaussure commence par la retenue. L'intention n'est pas d'inventer sans fin mais de perfectionner ce qui fonctionne déjà. Chaque silhouette doit flatter la jambe, maintenir l'équilibre et photographier magnifiquement sous tous les angles.</p></div>
     </div>
 </div>
@@ -651,7 +823,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
 <div class="chapter" id="ch8">
     <div class="section">
         <div class="content-en"><div class="chapter-header">CHAPTER 08 — THE CURATED EDITION FINANCIAL CYCLE™</div><h2 class="chapter-title">The Curated Edition Financial Cycle™</h2></div>
-        <div class="content-fr"><div class="chapter-header">CHAPITRE 08 — LE CYCLE FINANCIER DES ÉDITIONS ORGANISÉES™</div><h2 class="chapter-title">Le Cycle Financier des Éditions Organisées™</h2></div>
+        <div class="content-fr"><div class="chapter-header">CHAPITRE 08 — LE CYCLE FINANCIER DES CURATED EDITIONS™</div><h2 class="chapter-title">Le Cycle Financier des Curated Editions™</h2></div>
         
         <div class="financial-cycle">
             <div class="content-en">
@@ -693,7 +865,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
                             <strong>Blended Average Selling Price:</strong> CAD $206.25<br>
                             <strong>Fully Landed Cost:</strong> CAD $67<br>
                             <strong>Blended Gross Profit:</strong> CAD $139.25<br>
-                            <strong>Blended Gross Margin:</strong> ~67.5%
+                            <strong>Blended Gross Margin:</strong> ~72.9%
                         </div>
                     </div>
                 </div>
@@ -730,13 +902,13 @@ tr:nth-child(even) td { background: #FAF7F2; }
                 
                 <h3 style="margin-top:40px;">Sensitivity Analysis — One Curated Edition™ (500 Pairs)</h3>
                             
-<p style="font-size:12px;color:#888;">Using blended price CAD $206.25, landed cost CAD $67, total inventory cost CAD $33,500</p>
+<p style="font-size:12px;color:#888;">Using blended average selling price CAD $247.50 (80% DTC at $275 + 20% wholesale at $137.50), landed cost CAD $67/pair, total inventory cost CAD $33,500 (500 pairs)</p>
             
                 <table style="margin-top:12px;">
                     <tr><th>Sell-Through</th><th>Pairs Sold</th><th>Revenue</th><th>Gross Profit</th><th>Remaining</th></tr>
-                    <tr><td><strong>70%</strong></td><td>350</td><td>CAD $72,187.50</td><td>CAD $48,737.50</td><td>150 pairs</td></tr>
-                    <tr><td><strong>85%</strong></td><td>425</td><td>CAD $87,656.25</td><td>CAD $59,181.25</td><td>75 pairs</td></tr>
-                    <tr><td><strong>100%</strong></td><td>500</td><td>CAD $103,125.00</td><td>CAD $69,625.00</td><td>0 pairs</td></tr>
+                    <tr><td><strong>70%</strong></td><td>350</td><td>CAD $86,625</td><td>CAD $63,175</td><td>150 pairs unsold</td></tr>
+                    <tr><td><strong>85%</strong></td><td>425</td><td>CAD $105,187.50</td><td>CAD $76,712.50</td><td>75 pairs unsold</td></tr>
+                    <tr><td><strong>100%</strong></td><td>500</td><td>CAD $123,750</td><td>CAD $90,250</td><td>0 pairs unsold</td></tr>
                 </table>
                 
                 <h3 style="margin-top:40px;">Two Parallel Rhythms</h3>
@@ -778,7 +950,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
             
             </div>
             <div class="content-fr">
-                <p>Le Cycle Financier des Éditions Organisées™ est le moteur qui rend l'ensemble du modèle autofinancé. Chaque cycle de lancement de 45 jours est conçu pour convertir l'inventaire en espèces avant que le prochain cycle de production ne commence.</p>
+                <p>Le Cycle Financier des Curated Editions™ est le moteur qui rend l'ensemble du modèle autofinancé. Chaque cycle de lancement de 45 jours est conçu pour convertir l'inventaire en espèces avant que le prochain cycle de production ne commence.</p>
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:30px 0;">
                     <div class="unit-card"><strong>Jour 0</strong><br>Dépôt de production payé</div>
                     <div class="unit-card"><strong>Jour 35</strong><br>Inventaire arrive</div>
@@ -787,7 +959,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
                     <div class="unit-card"><strong>Jour 90</strong><br>Cycle complet — espèces prêtes pour la prochaine édition</div>
                 </div>
                             
-<p>Parce que chaque Édition Organisée est limitée à 500 paires et tarifée pour une vente rapide, l'entreprise génère les espèces requises pour le prochain cycle avant que le prochain cycle ne commence. C'est la discipline qui fait fonctionner le modèle.</p>
+<p>Parce que chaque Curated Edition est limitée à 500 paires et tarifée pour une vente rapide, l'entreprise génère les espèces requises pour le prochain cycle avant que le prochain cycle ne commence. C'est la discipline qui fait fonctionner le modèle.</p>
             
             </div>
         </div>
@@ -801,15 +973,15 @@ tr:nth-child(even) td { background: #FAF7F2; }
         <div class="content-fr"><div class="chapter-header">CHAPITRE 09 — LE MODÈLE FINANCIER</div><h2 class="chapter-title">Le Modèle Financier</h2></div>
         
         <div class="content-en">
-            <p>The financial model below is built on conservative assumptions. Year 1 assumes 2,000 pairs produced across four Curated Editions (500 pairs per edition), with an 85% sell-through rate yielding 1,700 pairs sold at an average retail price of CAD $250.</p>
+            <p>The financial model below is built on conservative assumptions. Year 1 assumes 2,000 pairs produced across four Curated Editions (500 pairs per edition), with an 85% sell-through rate yielding 1,700 pairs sold at a blended average selling price of CAD $247.50 (DTC $275 + wholesale $137.50, 80/20 mix).</p>
         </div>
         <div class="content-fr">
-            <p>Le modèle financier ci-dessous est construit sur des hypothèses conservatrices. L'année 1 suppose 2 000 paires produites sur quatre Éditions Organisées (500 paires par édition), avec un taux de vente de 85 % donnant 1 700 paires vendues à un prix de détail moyen de 250 $ CA.</p>
+            <p>Le modèle financier ci-dessous est construit sur des hypothèses conservatrices. L'année 1 suppose 2 000 paires produites sur quatre Curated Editions (500 paires par édition), avec un taux de vente de 85 % donnant 1 700 paires vendues à un prix de vente moyen mixte de 247,50 $ CA (DTC 275 $ + gros 137,50 $, mixte 80/20).</p>
         </div>
         
         <div class="table-wrapper"><div class="content-en"><div class="table-wrapper"><table>
             <tr><th>Year</th><th>Revenue</th><th>Gross Margin</th><th>Net Profit</th><th>Pairs Sold</th></tr>
-            <tr><td>2026</td><td>$425,000</td><td>60%</td><td>+$80,000</td><td>1,700</td></tr>
+            <tr><td>2026</td><td>$420,750</td><td>73%</td><td>+$80,000</td><td>1,700</td></tr>
             <tr><td>2027</td><td>$1.12M</td><td>63%</td><td>+$310,000</td><td>4,500</td></tr>
             <tr><td>2028</td><td>$2.35M</td><td>65%</td><td>+$720,000</td><td>9,400</td></tr>
             <tr><td>2029</td><td>$3.68M</td><td>66%</td><td>+$1.12M</td><td>14,700</td></tr>
@@ -825,7 +997,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
         </div>
             </div>
         <div class="content-fr">
-<p>Hypothèse clé : Quatre Éditions Organisées en Année 1 (500 paires chacune). À partir de l'Année 2, six Éditions Organisées par an.</p>
+<p>Hypothèse clé : Quatre Curated Editions en Année 1 (500 paires chacune). À partir de l'Année 2, six Curated Editions par an.</p>
         </div>
     </div>
 </div>
@@ -888,26 +1060,26 @@ tr:nth-child(even) td { background: #FAF7F2; }
 <!-- CHAPTER 11 -->
 <div class="chapter" id="ch11">
     <div class="core-principle-page">
-        <div style="max-width:620px;">
-                        <div class="content-en">
-<p style="font-family:'Playfair Display', Georgia, serif; font-size:22px; line-height:1.8; color:var(--cream); margin-bottom:24px;">Technology may improve decisions.</p>
+        <div style="max-width:640px;">
+            <div class="content-en">
+                <p style="font-size:20px; color:var(--beige); margin-bottom:28px;">Technology may improve decisions.</p>
             </div>
-        <div class="content-fr">
-<p style="font-family:'Playfair Display', Georgia, serif; font-size:22px; line-height:1.8; color:var(--cream); margin-bottom:24px;">La technologie peut améliorer les décisions.</p>
-        </div>
-                        <div class="content-en">
-<p style="font-family:'Playfair Display', Georgia, serif; font-size:22px; line-height:1.8; color:var(--cream); margin-bottom:24px;">Only exceptional design creates desire.</p>
+            <div class="content-fr">
+                <p style="font-size:20px; color:var(--beige); margin-bottom:28px;">La technologie peut améliorer les décisions.</p>
             </div>
-        <div class="content-fr">
-<p style="font-family:'Playfair Display', Georgia, serif; font-size:22px; line-height:1.8; color:var(--cream); margin-bottom:24px;">Seul un design exceptionnel crée le désir.</p>
-        </div>
-            <div style="width:60px; height:1px; background:var(--gold); margin:30px auto;"></div>
-                        <div class="content-en">
-<p style="font-family:'Playfair Display', Georgia, serif; font-size:26px; line-height:1.6; color:var(--gold); font-style:italic;">The product remains the hero.<br>Everything else exists to support it.</p>
+            <div class="content-en">
+                <p style="font-size:20px; color:var(--beige); margin-bottom:28px;">Only exceptional design creates desire.</p>
             </div>
-                        <div class="content-fr">
-<p style="font-family:'Playfair Display', Georgia, serif; font-size:26px; line-height:1.6; color:var(--gold); font-style:italic;">Le produit reste le héros. Tout le reste existe pour le soutenir.</p>
-                        </div>
+            <div class="content-fr">
+                <p style="font-size:20px; color:var(--beige); margin-bottom:36px;">Seul un design exceptionnel crée le désir.</p>
+            </div>
+            <div style="width:60px; height:1px; background:var(--gold); margin:36px auto;"></div>
+            <div class="content-en">
+                <p style="font-size:24px; line-height:1.5; color:var(--gold); font-style:italic; margin-top:24px;">The product remains the hero.<br>Everything else exists to support it.</p>
+            </div>
+            <div class="content-fr">
+                <p style="font-size:24px; line-height:1.5; color:var(--gold); font-style:italic; margin-top:24px;">Le produit reste le héros.<br>Tout le reste existe pour le soutenir.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -982,29 +1154,40 @@ tr:nth-child(even) td { background: #FAF7F2; }
         
         <div class="content-en">
             <h3>Shopify Hub</h3>
-            <p>The brand's primary storefront. Full control over presentation, pricing, customer data, and messaging. Every Curated Edition launches here first.</p>
+            <p>The brand's primary storefront. Full control over presentation, pricing, customer data, and messaging. Every Curated Edition launches here first, capturing the highest-margin DTC sales before any wholesale allocation.</p>
             
             <h3>Boutique Strategy</h3>
-            <p>Selective partnerships with 8–12 premium boutiques across Canada in Year 1. Boutiques receive allocation only after the direct-to-consumer launch window. This preserves brand control and creates perceived scarcity.</p>
+            <p>Selective partnerships with 15–25 premium boutiques across Montreal and Toronto in Year 1, representing approximately 500 pairs in wholesale allocation. Boutiques receive inventory only after the direct-to-consumer launch window closes. This preserves brand control, creates perceived scarcity, and ensures that wholesale serves as a customer acquisition channel — not a dependency.</p>
             
             <h3>Market Observatory</h3>
             <p>Chloe personally monitors Instagram, Pinterest, and emerging style platforms daily. This is not outsourced. The founder stays close to the customer.</p>
             
             <h3>Customer Database</h3>
             <p>Every purchaser is added to the VIP list. Early access, private previews, and personalized notes from the founder create emotional loyalty that competitors cannot replicate.</p>
+            
+            <h3>Intelligence Atelier™ — The Connected Nerve System</h3>
+            <p>Every touchpoint described above — Shopify sales data, boutique sell-through reports, manufacturing partner status, customer survey responses, social media signals, and VIP community engagement — flows into a single, centralized intelligence layer called the <strong>Intelligence Atelier™</strong>.</p>
+            <p>This is not a dashboard that someone checks once a month. It is a proprietary operational nervous system, developed in-house by the Anassis Family Office as a highly proprietary internal system, that connects every digital aspect of the business in real time: manufacturing throughput in China, inventory position across 15–25 boutiques, DTC sales velocity on Shopify, customer feedback surveys, and return/quality signals — all visible in one place, all the time.</p>
+            <p>What this means in practice: Chloe knows within days — not seasons — which silhouettes are resonating, which boutiques are underperforming, whether a production batch has a quality issue, and which customers are ready for the next Curated Edition. She can adjust marketing spend, reallocate inventory, or flag a manufacturing concern before traditional brands would even have their first sales meeting.</p>
+            <p>This is the structural advantage that makes the 45-day cycle work. Without the Intelligence Atelier™, rapid cycles would create chaos. With it, every release produces compounding operational intelligence that makes the next release more precise.</p>
         </div>
         <div class="content-fr">
             <h3>Hub Shopify</h3>
-            <p>La vitrine principale de la marque. Contrôle total sur la présentation, les prix, les données clients et la messagerie. Chaque Édition Organisée est lancée ici en premier.</p>
+            <p>La vitrine principale de la marque. Contrôle total sur la présentation, les prix, les données clients et la messagerie. Chaque Curated Edition est lancée ici en premier.</p>
             
             <h3>Stratégie de boutique</h3>
-            <p>Partenariats sélectifs avec 8–12 boutiques premium à travers le Canada en année 1. Les boutiques reçoivent une allocation seulement après la fenêtre de lancement direct au consommateur. Cela préserve le contrôle de la marque et crée une rareté perçue.</p>
+            <p>Partenariats sélectifs avec 15–25 boutiques premium à Montréal et Toronto en année 1, représentant environ 500 paires en allocation de gros. Les boutiques reçoivent l'inventaire seulement après la fenêtre de lancement direct au consommateur.</p>
             
             <h3>Observatoire du marché</h3>
-            <p>Chloe surveille personnellement Instagram, Pinterest et les plateformes de style émergentes quotidiennement. Ce n'est pas externalisé. La fondatrice reste proche du client.</p>
+            <p>Chloe surveille personnellement Instagram, Pinterest et les plateformes de style émergentes quotidiennement.</p>
             
             <h3>Base de données clients</h3>
-            <p>Chaque acheteur est ajouté à la liste VIP. L'accès anticipé, les aperçus privés et les notes personnalisées de la fondatrice créent une loyauté émotionnelle que les concurrents ne peuvent pas reproduire.</p>
+            <p>Chaque acheteur est ajouté à la liste VIP. L'accès anticipé, les aperçus privés et les notes personnalisées de la fondatrice créent une loyauté émotionnelle.</p>
+            
+            <h3>Intelligence Atelier™ — Le système nerveux connecté</h3>
+            <p>Chaque point de contact décrit ci-dessus — données de vente Shopify, rapports d'écoulement en boutique, statut du partenaire manufacturier, réponses aux sondages clients, signaux des médias sociaux et engagement de la communauté VIP — converge vers une couche d'intelligence centralisée appelée <strong>Intelligence Atelier™</strong>.</p>
+            <p>Ce n'est pas un tableau de bord que quelqu'un consulte une fois par mois. C'est un système nerveux opérationnel propriétaire, développé à l'interne par le Anassis Family Office comme système interne hautement propriétaire, qui connecte chaque aspect numérique de l'entreprise en temps réel.</p>
+            <p>Ce que cela signifie en pratique : Chloe sait en quelques jours — non en saisons — quelles silhouettes résonnent, quelles boutiques sous-performent, si un lot de production a un problème de qualité et quels clients sont prêts pour la prochaine Curated Edition.</p>
         </div>
     </div>
 </div>
@@ -1016,23 +1199,103 @@ tr:nth-child(even) td { background: #FAF7F2; }
         <div class="content-fr"><div class="chapter-header">CHAPITRE 14 — L'AVANTAGE CONCURRENTIEL</div><h2 class="chapter-title">L'Avantage Concurrentiel</h2></div>
         
         <div class="content-en">
-            <p>Most emerging footwear brands compete primarily on aesthetics. Chloe Langelier competes on taste, speed of learning, disciplined distribution, and customer ownership.</p>
-            <p>The traditional footwear model is slow, seasonal, and often disconnected from real-time consumer feedback. Brands design collections months in advance, produce inventory in volume, push it into wholesale channels, and only later discover what customers actually wanted. By the time the data arrives, the next season is already committed.</p>
-            <p>Chloe Langelier has adopted a different approach. The company organizes product development around carefully curated release cycles that respond to customer demand, market feedback, and continuous product refinement.</p>
+            <p>Most emerging footwear brands compete on aesthetics alone. Chloe Langelier competes on seven structural advantages that compound with every Curated Edition — and none of them can be acquired by simply spending more money.</p>
         </div>
         <div class="content-fr">
-            <p>La plupart des nouvelles marques de chaussures rivalisent principalement sur l'esthétique. Chloe Langelier rivalise sur le goût, la vitesse d'apprentissage, la distribution disciplinée et la propriété du client.</p>
-            <p>Le modèle traditionnel de la chaussure est lent, saisonnier et souvent déconnecté des commentaires des consommateurs en temps réel. Les marques conçoivent des collections des mois à l'avance, produisent de l'inventaire en volume, le poussent dans les canaux de gros et ne découvrent que plus tard ce que les clients voulaient réellement. Au moment où les données arrivent, la prochaine saison est déjà engagée.</p>
-            <p>Chloe Langelier a adopté une approche différente. L'entreprise organise le développement de produits autour de cycles de lancement soigneusement organisés qui répondent à la demande des clients, aux commentaires du marché et au raffinement continu du produit.</p>
+            <p>La plupart des nouvelles marques de chaussures rivalisent sur l'esthétique seule. Chloe Langelier rivalise sur sept avantages structurels qui s'accumulent à chaque Curated Edition — et aucun ne peut être acquis en dépensant simplement plus d'argent.</p>
         </div>
         
-                    <div class="content-en">
-<div class="banker-note">
-            <strong>Banker Note:</strong> The competitive advantage is not the shoe itself — it is the speed at which Chloe learns what the customer actually wants and adjusts the next release accordingly.
-        </div>
+        <div class="content-en">
+            <div class="competitive-grid">
+                <div class="competitive-card">
+                    <div class="competitive-number">01</div>
+                    <div class="competitive-title">The 45-Day Learning Cycle</div>
+                    <div class="competitive-body">Traditional brands operate on 9–12 month seasonal cycles. Chloe Langelier launches a new Curated Edition every 45 days. By the time a traditional house collects first-week sales data, Chloe has already sold through, retired the silhouette, and launched the next edition. She runs four product cycles in the time her competitors run one.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">02</div>
+                    <div class="competitive-title">Intelligence Atelier™</div>
+                    <div class="competitive-body">A proprietary operational nervous system developed in-house by the Anassis Family Office. Every digital signal — Shopify sales velocity, boutique sell-through across 15–25 locations, manufacturing throughput in China, customer survey responses, quality return flags — flows into one centralized intelligence layer in real time. Chloe sees her entire operation in one place. Competitors see theirs in scattered spreadsheets emailed once a month.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">03</div>
+                    <div class="competitive-title">Anti-Piracy Through Speed</div>
+                    <div class="competitive-body">Counterfeiters need months to reverse-engineer a design, source materials, and route copies through distribution. Chloe's Curated Editions sell through and retire in 45 days. By the time a knockoff reaches the market, the shoe it copies no longer exists in the active collection. The edition is already closed. The next silhouette is already launched.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">04</div>
+                    <div class="competitive-title">72.9% Blended Gross Margin</div>
+                    <div class="competitive-body">DTC margin of 75.6% ($275 retail minus $67 landed cost). Wholesale margin of 51.3% ($137.50 minus $67). A blended 72.9% across an 80/20 channel mix. This margin structure means each Curated Edition generates $76,712 in gross profit on $105,187 in revenue — self-funding the next production cycle before the current one ends.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">05</div>
+                    <div class="competitive-title">Direct Customer Ownership</div>
+                    <div class="competitive-body">Every DTC purchaser joins the VIP database. Chloe owns the relationship, the data, and the communication channel. When the next Curated Edition launches, she doesn't pay Meta or Google to reacquire her own customers — she notifies them directly. Traditional wholesale brands never own this relationship. Chloe never surrenders it.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">06</div>
+                    <div class="competitive-title">Controlled Scarcity</div>
+                    <div class="competitive-body">500 pairs per edition. No restocks. No markdowns. No outlet channels. When an edition sells through, it is gone. This is not a marketing tactic — it is a capital discipline that protects margin, preserves brand equity, and creates continuous anticipation for the next release.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">07</div>
+                    <div class="competitive-title">Founder-Led Design + Fortune 500 Execution</div>
+                    <div class="competitive-body">The founder designs every silhouette herself — taste that cannot be hired or delegated. She also manages billion-dollar capital programs at Turner & Townsend / CBRE. This combination — the creative instinct of a luxury designer with the operational discipline of a Fortune 500 project manager — is exceptionally rare in the footwear industry, where creative founders typically lack operational rigor and operational leaders typically lack creative authority.</div>
+                </div>
             </div>
+        </div>
         <div class="content-fr">
-<div class="banker-note"><strong>Note au Banquier :</strong> L'avantage concurrentiel n'est pas la chaussure elle-même — c'est la vitesse à laquelle Chloe apprend et s'adapte. Chaque cycle de 45 jours produit de nouvelles données client.</div>
+            <div class="competitive-grid">
+                <div class="competitive-card">
+                    <div class="competitive-number">01</div>
+                    <div class="competitive-title">Le cycle d'apprentissage de 45 jours</div>
+                    <div class="competitive-body">Les marques traditionnelles opèrent sur des cycles saisonniers de 9 à 12 mois. Chloe Langelier lance une nouvelle Curated Edition tous les 45 jours.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">02</div>
+                    <div class="competitive-title">Intelligence Atelier™</div>
+                    <div class="competitive-body">Un système nerveux opérationnel propriétaire développé à l'interne par le Anassis Family Office. Chaque signal numérique converge en temps réel.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">03</div>
+                    <div class="competitive-title">Anti-piratage par la vitesse</div>
+                    <div class="competitive-body">Les contrefacteurs ont besoin de mois pour copier un design. Les Curated Editions de Chloe sont épuisées et retirées en 45 jours.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">04</div>
+                    <div class="competitive-title">Marge bénéficiaire brute mixte de 72,9 %</div>
+                    <div class="competitive-body">Marge DTC de 75,6 %, marge de gros de 51,3 %. Chaque Curated Edition génère 76 712 $ de profit brut.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">05</div>
+                    <div class="competitive-title">Propriété directe du client</div>
+                    <div class="competitive-body">Chaque acheteur DTC rejoint la base de données VIP. Chloe possède la relation, les données et le canal de communication.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">06</div>
+                    <div class="competitive-title">Rareté contrôlée</div>
+                    <div class="competitive-body">500 paires par édition. Pas de réassorts. Pas de soldes. Protège la marge et crée une anticipation continue.</div>
+                </div>
+                <div class="competitive-card">
+                    <div class="competitive-number">07</div>
+                    <div class="competitive-title">Design par la fondatrice + exécution Fortune 500</div>
+                    <div class="competitive-body">La fondatrice conçoit chaque silhouette elle-même tout en gérant des programmes de capital de plusieurs milliards de dollars chez Turner & Townsend.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pull-quote">
+            <div class="content-en">"Chloe Langelier does not compete on price. It competes on the speed at which it learns, the discipline with which it deploys capital, and the proprietary intelligence that connects every part of the operation in real time."</div>
+            <div class="content-fr">« Chloe Langelier ne rivalise pas sur les prix. Elle rivalise sur la vitesse d'apprentissage, la discipline du capital et l'intelligence propriétaire qui connecte chaque partie de l'opération en temps réel. »</div>
+        </div>
+        
+        <div class="content-en">
+<div class="banker-note">
+            <strong>Banker Note:</strong> The competitive advantage is not the shoe — it is the system. The 45-day cycle, the Intelligence Atelier™, the direct customer ownership, and the controlled scarcity model work together as a single operating architecture that traditional competitors cannot replicate without abandoning the seasonal calendar and wholesale-dependent economics that define their businesses. Every Curated Edition strengthens this system. Every cycle makes the next one more precise.
+        </div>
+        </div>
+        <div class="content-fr">
+<div class="banker-note"><strong>Note au Banquier :</strong> L'avantage concurrentiel n'est pas la chaussure — c'est le système. Le cycle de 45 jours, l'Intelligence Atelier™, la propriété directe du client et la rareté contrôlée fonctionnent ensemble comme une architecture opérationnelle unique.</div>
         </div>
     </div>
 </div>
@@ -1041,18 +1304,19 @@ tr:nth-child(even) td { background: #FAF7F2; }
 <div class="chapter" id="ch15">
     <div class="section">
         <div class="content-en"><div class="chapter-header">CHAPTER 15 — CURATED EDITIONS™</div><h2 class="chapter-title">Curated Editions™</h2></div>
-        <div class="content-fr"><div class="chapter-header">CHAPITRE 15 — LES ÉDITIONS ORGANISÉES™</div><h2 class="chapter-title">Les Éditions Organisées™</h2></div>
+        <div class="content-fr"><div class="chapter-header">CHAPITRE 15 — LES CURATED EDITIONS™</div><h2 class="chapter-title">Les Curated Editions™</h2></div>
         
         <div class="content-en">
             <p>The Curated Edition model is the strategic heart of the business. Each release is limited to 500 pairs, priced for rapid sell-through, and designed to create anticipation for the next Curated Edition.</p>
         </div>
         <div class="content-fr">
-            <p>Le modèle des Éditions Organisées est le cœur stratégique de l'entreprise. Chaque lancement est limité à 500 paires, tarifé pour une vente rapide et conçu pour créer l'anticipation du prochain lancement.</p>
+            <p>Le modèle des Curated Editions est le cœur stratégique de l'entreprise. Chaque lancement est limité à 500 paires, tarifé pour une vente rapide et conçu pour créer l'anticipation du prochain lancement.</p>
         </div>
         
                 <div class="content-en">
 <div class="four-pillars">
-            <h3 style="text-align:center;margin-bottom:24px;">Strategic Advantages of the Curated Edition Model</h3><h3 style="text-align:center;margin-bottom:24px;">Avantages Stratégiques du Modèle d'Édition Organisée</h3>
+            <h3 style="text-align:center;margin-bottom:24px;">Strategic Advantages of the Curated Edition Model</h3>
+
             <div class="pillars-grid">
                 <div class="pillar-card"><div class="pillar-title">Recurring Traffic</div><div class="pillar-desc">Customers return every 45 days for the next Curated Edition.</div></div>
                 <div class="pillar-card"><div class="pillar-title">Scarcity Pricing</div><div class="pillar-desc">Limited quantities support premium positioning without discounting.</div></div>
@@ -1063,9 +1327,10 @@ tr:nth-child(even) td { background: #FAF7F2; }
         </div>
         <div class="content-fr">
 <div class="four-pillars">
-            <h3 style="text-align:center;margin-bottom:24px;">Avantages Stratégiques du Modèle d'Édition Organisée</h3><h3 style="text-align:center;margin-bottom:24px;">Avantages Stratégiques du Modèle d'Édition Organisée</h3>
+            <h3 style="text-align:center;margin-bottom:24px;">Avantages Stratégiques du Modèle des Curated Editions</h3>
+
             <div class="pillars-grid">
-                <div class="pillar-card"><div class="pillar-title">Trafic Récurrent</div><div class="pillar-desc">Les clients reviennent tous les 45 jours pour la prochaine Édition Organisée.</div></div>
+                <div class="pillar-card"><div class="pillar-title">Trafic Récurrent</div><div class="pillar-desc">Les clients reviennent tous les 45 jours pour la prochaine Curated Edition.</div></div>
                 <div class="pillar-card"><div class="pillar-title">Prix de Rareté</div><div class="pillar-desc">Limited quantities support premium positioning without discounting.</div></div>
                 <div class="pillar-card"><div class="pillar-title">Données Plus Rapides</div><div class="pillar-desc">Les données réelles d'écoulement arrivent en semaines, pas en saisons.</div></div>
                 <div class="pillar-card"><div class="pillar-title">Détection Précoce des Problèmes</div><div class="pillar-desc">Quality or fit issues surface immediately and are corrected in the next edition.</div></div>
@@ -1096,13 +1361,13 @@ tr:nth-child(even) td { background: #FAF7F2; }
 <p>4 Curated Editions, 2,000 pairs, Shopify + 8–12 boutiques. Focus: prove the model.</p>
             </div></div>
         <div class="content-fr"><div class="growth-phase"><h4>Phase 1 — Lancement de Marque (2026)</h4>            
-<p>4 Éditions Organisées, 2 000 paires, Shopify + 8–12 boutiques. Objectif : prouver le modèle.</p>
+<p>4 Curated Editions, 2 000 paires, Shopify + 8–12 boutiques. Objectif : prouver le modèle.</p>
             </div></div>
                 <div class="content-en"><div class="growth-phase"><h4>Phase 2 — Community Building (2027)</h4>            
 <p>6 Curated Editions, VIP program, expanded boutique network. Focus: deepen loyalty.</p>
             </div></div>
         <div class="content-fr"><div class="growth-phase"><h4>Phase 2 — Construction de Communauté (2027)</h4>            
-<p>6 Éditions Organisées, programme VIP, réseau de boutiques élargi. Objectif : approfondir la fidélité.</p>
+<p>6 Curated Editions, programme VIP, réseau de boutiques élargi. Objectif : approfondir la fidélité.</p>
             </div></div>
                 <div class="content-en"><div class="growth-phase"><h4>Phase 3 — Regional Expansion (2028)</h4>            
 <p>National boutique presence, first pop-up experiences. Focus: geographic reach.</p>
@@ -1132,10 +1397,15 @@ tr:nth-child(even) td { background: #FAF7F2; }
         <div class="content-fr"><div class="chapter-header">CHAPITRE 17 — L'INTELLIGENCE ATELIER™ + LE FOSSÉ</div><h2 class="chapter-title">L'Intelligence Atelier™ + Le Fossé</h2></div>
         
         <div class="content-en">
-            <p>The Intelligence Atelier™ is the operating philosophy that turns every customer interaction into actionable insight. It is not a technology platform; it is a disciplined practice of listening, measuring, and refining.</p>
+            <p>The Intelligence Atelier™ is the proprietary operational nervous system that connects every digital touchpoint of Chloe Langelier Inc. — from manufacturing throughput in China to Shopify sales velocity, boutique sell-through across Montreal and Toronto, customer survey responses, VIP community engagement, and quality return signals — into a single, real-time intelligence layer.</p>
+            <p>Developed in-house by the Anassis Family Office as a highly proprietary internal system, the Intelligence Atelier™ gives Chloe something her competitors do not have: the ability to see her entire operation — every pair produced, every pair sold, every customer comment, every production quality flag — in one place, updated continuously.</p>
+            <p>This is what makes the 45-day Curated Edition cycle viable. Without it, rapid releases would create operational chaos. With it, every edition produces compounding intelligence: which silhouettes resonate, which boutiques need support, which customers are ready for the next release, and where production needs adjustment — all visible before the next cycle begins.</p>
+            <p>Traditional luxury brands discover what worked nine months after it shipped. Chloe Langelier knows within days.</p>
         </div>
         <div class="content-fr">
-            <p>L'Intelligence Atelier™ est la philosophie opérationnelle qui transforme chaque interaction client en information exploitable. Ce n'est pas une plateforme technologique ; c'est une pratique disciplinée d'écoute, de mesure et de raffinement.</p>
+            <p>L'Intelligence Atelier™ est le système nerveux opérationnel propriétaire qui connecte chaque point de contact numérique de Chloe Langelier Inc. — du débit de fabrication en Chine à la vélocité des ventes Shopify, en passant par l'écoulement en boutique, les réponses aux sondages clients et les signaux de qualité — en une seule couche d'intelligence en temps réel.</p>
+            <p>Développé à l'interne par le Anassis Family Office comme système interne hautement propriétaire, l'Intelligence Atelier™ donne à Chloe quelque chose que ses concurrents n'ont pas : la capacité de voir toute son opération en un seul endroit, mise à jour en continu.</p>
+            <p>C'est ce qui rend le cycle de Curated Edition de 45 jours viable. Sans lui, les lancements rapides créeraient un chaos opérationnel. Avec lui, chaque édition produit une intelligence qui s'accumule.</p>
         </div>
         
         <div class="content-en"><h3>Competitive Advantage Table</h3></div><div class="content-fr"><h3>Tableau des Avantages Concurrentiels</h3></div>
@@ -1222,6 +1492,182 @@ tr:nth-child(even) td { background: #FAF7F2; }
     </div>
 </div>
 
+<!-- CLOSING PAGE -->
+<div class="chapter" id="closing">
+    <div style="padding: 60px 40px; width: 100%;">
+        <div class="closing-mark">Chloe Langelier</div>
+        <div class="closing-line"></div>
+        <div class="content-en">
+            <p class="closing-text">Thank you for reviewing the Chloe Langelier Inc. Digital Board Book.<br>This document was prepared for Bank of Nova Scotia — June 2026.</p>
+        </div>
+        <div class="content-fr">
+            <p class="closing-text">Merci d'avoir consulté le Board Book Numérique de Chloe Langelier Inc.<br>Ce document a été préparé pour la Banque de la Nouvelle-Écosse — Juin 2026.</p>
+        </div>
+        <div class="closing-line"></div>
+        <div style="margin-top: 30px;">
+            <button class="btn-gold" onclick="navigateToChapter('cover')">Return to Beginning</button>
+            <button class="btn-outline" onclick="showCreditSnapshot()">Credit Snapshot</button>
+        </div>
+        <div class="closing-confidential">CONFIDENTIAL · PREPARED FOR BANK OF NOVA SCOTIA · JUNE 2026</div>
+    </div>
+</div>
+
+<!-- PRESENTATION DECK (7 slides for banker presentation) -->
+<div id="presentationDeck">
+    <div class="slide">
+        <div class="slide-num">Slide 01 of 07</div>
+        <div class="content-en"><div class="slide-title">Chloe Langelier Inc.</div></div>
+        <div class="content-fr"><div class="slide-title">Chloe Langelier Inc.</div></div>
+        <div class="content-en">
+            <div class="slide-body">
+                <p>A Canadian luxury footwear brand built on founder taste, disciplined working-capital management, and a 45-day Curated Edition™ cycle that makes the model self-funding.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:40px;">
+                    <div><div class="slide-metric">$425K</div><div class="slide-metric-label">Year 1 Revenue</div></div>
+                    <div><div class="slide-metric">72.9%</div><div class="slide-metric-label">Blended Margin</div></div>
+                    <div><div class="slide-metric">45 days</div><div class="slide-metric-label">Release Cycle</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="content-fr">
+            <div class="slide-body">
+                <p>Une marque canadienne de chaussures de luxe construite sur le goût de la fondatrice, une gestion disciplinée du fonds de roulement et un cycle de Curated Edition™ de 45 jours qui rend le modèle autofinancé.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-num">Slide 02 of 07</div>
+        <div class="content-en"><div class="slide-title">The Founder</div></div>
+        <div class="content-fr"><div class="slide-title">La Fondatrice</div></div>
+        <div class="content-en">
+            <div class="slide-body">
+                <p><strong>Chloe Anassis</strong> — Age 30, Montreal, Quebec.</p>
+                <p>Full-time Project Manager at Turner & Townsend / CBRE. Recently promoted from C$86,000 to C$120,000+ benefits (39% increase reflecting strong employer confidence).</p>
+                <p>8+ years managing complex capital programs worth hundreds of millions to several billions of dollars. Notable projects include data centre feasibility for Tourmaline Oil Corp.</p>
+                <p>She approaches footwear not as a fashion experiment, but as a disciplined operating business designed from first principles.</p>
+            </div>
+        </div>
+        <div class="content-fr">
+            <div class="slide-body">
+                <p><strong>Chloe Anassis</strong> — 30 ans, Montréal, Québec.</p>
+                <p>Gestionnaire de projet à temps plein chez Turner & Townsend / CBRE. Récemment promue de 86 000 $ CA à 120 000 $ CA + avantages.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-num">Slide 03 of 07</div>
+        <div class="content-en"><div class="slide-title">The Market Opportunity</div></div>
+        <div class="content-fr"><div class="slide-title">L'Opportunité de Marché</div></div>
+        <div class="content-en">
+            <div class="slide-body">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
+                    <div><div class="slide-metric">$35B → $62B</div><div class="slide-metric-label">Global Luxury Footwear Market (2023–2033)</div></div>
+                    <div><div class="slide-metric">20%+</div><div class="slide-metric-label">Annual Growth — Attainable Luxury (NA)</div></div>
+                </div>
+                <p style="margin-top:30px;">Legacy houses (Jimmy Choo, Manolo Blahnik, Tom Ford) now price at CAD $1,000–1,800. Fast fashion delivers poor quality under CAD $100. Chloe Langelier occupies the precise middle — refined design, verified quality, honest pricing at CAD $200–350.</p>
+            </div>
+        </div>
+        <div class="content-fr">
+            <div class="slide-body">
+                <p>Le marché de la chaussure de luxe passe de 35 milliards à 62 milliards de dollars. Chloe Langelier occupe le milieu précis entre les marques de luxe à 1 000 $+ et la mode rapide.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-num">Slide 04 of 07</div>
+        <div class="content-en"><div class="slide-title">The Curated Edition™ Model</div></div>
+        <div class="content-fr"><div class="slide-title">Le Modèle des Curated Editions™</div></div>
+        <div class="content-en">
+            <div class="slide-body">
+                <p>Each Curated Edition is limited to <strong>500 pairs</strong>. The cycle runs <strong>45 days</strong> from production to revenue. No overproduction. No markdowns. No seasonal risk.</p>
+                <p style="margin-top:20px;"><strong>Anti-piracy advantage:</strong> By the time a counterfeiter can copy a design, Chloe has already sold through, retired the silhouette, and launched the next edition. The shoe they copied no longer exists in the active collection.</p>
+                <p style="margin-top:20px;">Four Curated Editions in Year 1. Six per year from Year 2 onward.</p>
+            </div>
+        </div>
+        <div class="content-fr">
+            <div class="slide-body">
+                <p>Chaque Curated Edition est limitée à 500 paires. Le cycle de 45 jours élimine le risque de stock.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-num">Slide 05 of 07</div>
+        <div class="content-en"><div class="slide-title">Unit Economics</div></div>
+        <div class="content-fr"><div class="slide-title">Économie Unitaire</div></div>
+        <div class="content-en">
+            <div class="slide-body">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
+                    <div style="background:var(--cream);padding:20px;text-align:center;"><div class="slide-metric" style="font-size:32px;">75.6%</div><div class="slide-metric-label">DTC Gross Margin</div><div style="font-size:12px;color:#666;margin-top:8px;">$275 retail − $67 cost</div></div>
+                    <div style="background:var(--cream);padding:20px;text-align:center;"><div class="slide-metric" style="font-size:32px;">51.3%</div><div class="slide-metric-label">Wholesale Margin</div><div style="font-size:12px;color:#666;margin-top:8px;">$137.50 − $67</div></div>
+                    <div style="background:var(--cream);padding:20px;text-align:center;"><div class="slide-metric" style="font-size:32px;">72.9%</div><div class="slide-metric-label">Blended Margin</div><div style="font-size:12px;color:#666;margin-top:8px;">Target mix</div></div>
+                </div>
+                <p style="margin-top:30px;"><strong>Per Curated Edition (500 pairs, 85% sell-through):</strong></p>
+                <p>DTC revenue: $93,500 · Wholesale revenue: $11,687.50 · Total: $105,187.50 per edition</p>
+                <p>Four editions in Year 1 generates $420,750 revenue at 60%+ blended margin.</p>
+            </div>
+        </div>
+        <div class="content-fr">
+            <div class="slide-body">
+                <p>Marge DTC: 75,6 % · Marge de gros: 51,3 % · Marge mixte: 72,9 %.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-num">Slide 06 of 07</div>
+        <div class="content-en"><div class="slide-title">The Credit Request</div></div>
+        <div class="content-fr"><div class="slide-title">La Demande de Crédit</div></div>
+        <div class="content-en">
+            <div class="slide-body">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
+                    <div><div class="slide-metric">$25,000</div><div class="slide-metric-label">CAD Revolving Line of Credit</div><div style="font-size:13px;color:#666;margin-top:8px;">Unsecured at inception</div></div>
+                    <div><div class="slide-metric">$45,000</div><div class="slide-metric-label">Founder Capital Already Deployed</div><div style="font-size:13px;color:#666;margin-top:8px;">Personal investment</div></div>
+                </div>
+                <p style="margin-top:30px;"><strong>Use of proceeds:</strong> Final production payments, packaging, Shopify launch, and initial marketing.</p>
+                <p><strong>Repayment:</strong> Self-liquidating within each 45-day cycle. The facility rotates 4× per year against $105,187.50 in per-edition revenue.</p>
+                <p><strong>Founder income:</strong> C$120,000+ stable professional salary (recently promoted 39%). Business is not dependent on founder drawings.</p>
+            </div>
+        </div>
+        <div class="content-fr">
+            <div class="slide-body">
+                <p>Demande : 25 000 $ CA ligne de crédit renouvelable. Capital foncier : 45 000 $ CA déjà déployé.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide slide-closing">
+        <div class="slide-num" style="color:var(--gold);">Slide 07 of 07</div>
+        <div class="content-en">
+            <div class="slide-title">Design Creates Desire.<br>Discipline Creates Enduring Brands.</div>
+            <div class="slide-body">
+                <p style="margin-top:30px;">Chloe Langelier Inc. is a disciplined Canadian luxury brand built on:</p>
+                <p>Founder taste · Proven manufacturing · Self-funding economics<br>45-day learning cycle · Direct customer ownership</p>
+                <div style="margin-top:40px;font-size:13px;color:var(--gold);letter-spacing:1px;">We invite Bank of Nova Scotia to be our founding banking partner.</div>
+            </div>
+        </div>
+        <div class="content-fr">
+            <div class="slide-title">Le Design Crée le Désir.<br>La Discipline Crée des Marques Durables.</div>
+            <div class="slide-body">
+                <p>Nous invitons la Banque de la Nouvelle-Écosse à être notre partenaire bancaire fondateur.</p>
+            </div>
+        </div>
+        <div style="margin-top:50px;">
+            <button class="btn-gold" onclick="toggleMode('presentation');navigateToChapter('cover');">Exit Presentation</button>
+        </div>
+    </div>
+    
+    <!-- SLIDE NAVIGATION -->
+    <div class="slide-nav">
+        <button class="slide-nav-btn" onclick="prevSlide()">←</button>
+        <div class="slide-counter"><span id="slideNum">1</span> / 7</div>
+        <button class="slide-nav-btn" onclick="nextSlide()">→</button>
+        <button class="slide-nav-btn" onclick="toggleMode('presentation');navigateToChapter('cover');" style="margin-left:12px;">Exit</button>
+    </div>
+</div>
+
 <!-- CREDIT SNAPSHOT -->
 <div id="creditSnapshot" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:400;align-items:center;justify-content:center;">
     <div style="background:white;max-width:820px;width:92%;padding:50px 60px;border-radius:4px;">
@@ -1247,7 +1693,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
                 
                 <div class="content-en"><h4 style="margin-top:30px;">Founder Profile</h4></div><div class="content-fr"><h4 style="margin-top:30px;">Profil de la Fondatrice</h4></div>
                             <div class="content-en">
-<p><strong>Chloe Anassis</strong><br>Age 30 • Montreal, Quebec<br>Full-time Project Manager, C$120k+ salary<br>8+ years complex project management (Turner & Townsend / CBRE)</p>
+<p><strong>Chloe Anassis</strong><br>Age 30 • Montreal, Quebec<br>Full-time Project Manager, C$120k+ salary (recently promoted from C$86k)<br>8+ years complex project management (Turner & Townsend / CBRE)</p>
             </div>
         <div class="content-fr">
 <p><strong>Chloe Anassis</strong><br>30 ans • Montréal, Québec<br>Gestionnaire de projet à temps plein, salaire de 120 k$ CA+<br>Plus de 8 ans de gestion de projets complexes (Turner & Townsend / CBRE)</p>
@@ -1264,7 +1710,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
                 </ul></div>
                 <div class="content-fr"><ul style="line-height:1.9;font-size:14px;">
                     <li>✓ Relation manufacturière prouvée (pilote chaussures de mariage complété)</li>
-                    <li>✓ Cycle autonome d'Édition Organisée™ de 45 jours</li>
+                    <li>✓ Cycle autonome d'Curated Edition™ de 45 jours</li>
                     <li>✓ Objectif de taux d'écoulement de 85 % avec hypothèses conservatrices</li>
                     <li>✓ 45 000 $ CA de capital foncier déjà déployé</li>
                     <li>✓ Revenu professionnel stable indépendant de l'entreprise</li>
@@ -1286,6 +1732,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
         </div>
     </div>
 </div>
+</div>
 
 <!-- NAV ACTIONS -->
 <div class="nav-actions">
@@ -1298,7 +1745,8 @@ tr:nth-child(even) td { background: #FAF7F2; }
 let currentChapter = 'cover';
 let currentLang = 'en';
 let activeMode = null;
-let executiveChapters = ['ch1', 'ch5', 'ch8', 'ch9', 'ch10', 'ch19'];
+let currentSlide = 1;
+let totalSlides = 7;
 
 // ===== NAVIGATION =====
 function navigateToChapter(chapterId) {
@@ -1324,26 +1772,32 @@ function updateActiveNav() {
 }
 
 function updateProgress() {
-    const chapters = ['cover', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'ch12', 'ch13', 'ch14', 'ch15', 'ch16', 'ch17', 'ch18', 'ch19'];
+    const chapters = ['cover', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'ch12', 'ch13', 'ch14', 'ch15', 'ch16', 'ch17', 'ch18', 'ch19', 'closing'];
     const idx = chapters.indexOf(currentChapter);
     const progress = idx >= 0 ? ((idx + 1) / chapters.length) * 100 : 0;
     document.getElementById('progress').style.width = progress + '%';
 }
 
 function nextChapter() {
-    const chapters = ['cover', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'ch12', 'ch13', 'ch14', 'ch15', 'ch16', 'ch17', 'ch18', 'ch19'];
+    const chapters = ['cover', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'ch12', 'ch13', 'ch14', 'ch15', 'ch16', 'ch17', 'ch18', 'ch19', 'closing'];
     const idx = chapters.indexOf(currentChapter);
     if (idx < chapters.length - 1) navigateToChapter(chapters[idx + 1]);
 }
 
 function prevChapter() {
-    const chapters = ['cover', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'ch12', 'ch13', 'ch14', 'ch15', 'ch16', 'ch17', 'ch18', 'ch19'];
+    const chapters = ['cover', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'ch12', 'ch13', 'ch14', 'ch15', 'ch16', 'ch17', 'ch18', 'ch19', 'closing'];
     const idx = chapters.indexOf(currentChapter);
     if (idx > 0) navigateToChapter(chapters[idx - 1]);
 }
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
+    if (activeMode === 'presentation') {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'Escape') toggleMode('presentation');
+        return;
+    }
     if (e.key === 'ArrowRight') nextChapter();
     if (e.key === 'ArrowLeft') prevChapter();
     if (e.key === 'Escape') {
@@ -1381,48 +1835,66 @@ function toggleLanguage() {
         document.getElementById('lang-en').classList.add('active');
         document.getElementById('lang-fr').classList.remove('active');
     }
+    updateSidebarLanguage(currentLang);
+}
+
+// ===== SIDEBAR BILINGUAL =====
+function updateSidebarLanguage(lang) {
+    document.querySelectorAll('[data-en][data-fr]').forEach(function(el) {
+        var txt = lang === 'fr' ? el.getAttribute('data-fr') : el.getAttribute('data-en');
+        if (txt) el.textContent = txt;
+    });
 }
 
 // ===== MODES =====
 function toggleMode(mode) {
-    const body = document.body;
+    var body = document.body;
     
-    // Clear all mode classes
-    body.classList.remove('presentation-mode', 'credit-mode', 'board-review-mode');
-    
+    // If clicking same mode, toggle OFF and return to normal
     if (activeMode === mode) {
         activeMode = null;
-        // Reset executive mode
-        document.querySelectorAll('.chapter').forEach(ch => {
-            if (ch.id !== 'cover') ch.style.display = '';
+        body.classList.remove('presentation-mode', 'credit-mode');
+        document.querySelectorAll('.chapter').forEach(function(ch) {
+            ch.style.display = '';
         });
-    } else {
-        activeMode = mode;
-        
-        if (mode === 'executive') {
-            document.querySelectorAll('.chapter').forEach(ch => {
-                if (ch.id === 'cover' || executiveChapters.includes(ch.id)) {
-                    ch.style.display = '';
-                } else {
-                    ch.style.display = 'none';
-                }
-            });
-        } else if (mode === 'presentation') {
-            body.classList.add('presentation-mode');
-        } else if (mode === 'credit') {
-            body.classList.add('credit-mode');
-        } else if (mode === 'board') {
-            body.classList.add('board-review-mode');
-        }
+        var pres = document.getElementById('presentationDeck');
+        if (pres) pres.style.display = 'none';
+        navigateToChapter('cover');
+        closeMobileNav();
+        return;
     }
     
-    // Update nav highlighting
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.style.fontWeight = 'normal';
-        if (link.textContent.includes(mode.charAt(0).toUpperCase() + mode.slice(1))) {
-            link.style.fontWeight = activeMode === mode ? '600' : 'normal';
-        }
+    // Clear previous mode
+    body.classList.remove('presentation-mode', 'credit-mode');
+    document.querySelectorAll('.chapter').forEach(function(ch) {
+        ch.style.display = '';
     });
+    var pres = document.getElementById('presentationDeck');
+    if (pres) pres.style.display = 'none';
+    
+    activeMode = mode;
+    
+    if (mode === 'presentation') {
+        body.classList.add('presentation-mode');
+        // Hide all chapters
+        document.querySelectorAll('.chapter').forEach(function(ch) {
+            ch.classList.remove('active');
+            ch.style.display = 'none';
+        });
+        if (pres) {
+            pres.style.display = 'block';
+            pres.classList.add('active');
+            currentChapter = 'presentation';
+            currentSlide = 1;
+            showSlide(1);
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    } else if (mode === 'credit') {
+        body.classList.add('credit-mode');
+        navigateToChapter('ch8');
+    }
+    
+    closeMobileNav();
 }
 
 function showCreditSnapshot() {
@@ -1431,6 +1903,91 @@ function showCreditSnapshot() {
 
 function hideCreditSnapshot() {
     document.getElementById('creditSnapshot').style.display = 'none';
+}
+
+// ===== SLIDE NAVIGATION =====
+function showSlide(n) {
+    var slides = document.querySelectorAll('#presentationDeck .slide');
+    slides.forEach(function(s, i) {
+        if ((i + 1) === n) {
+            s.classList.add('active');
+        } else {
+            s.classList.remove('active');
+        }
+    });
+    currentSlide = n;
+    var counter = document.getElementById('slideNum');
+    if (counter) counter.textContent = n;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function nextSlide() {
+    if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+    }
+}
+
+function prevSlide() {
+    if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+    }
+}
+
+// ===== PRINT FUNCTIONS =====
+function printCurrentSection() {
+    // Temporarily hide all chapters except the active one for printing
+    var activeCh = document.querySelector('.chapter.active');
+    if (!activeCh) {
+        window.print();
+        return;
+    }
+    var allChapters = document.querySelectorAll('.chapter');
+    var hidden = [];
+    allChapters.forEach(function(ch) {
+        if (ch !== activeCh && ch.style.display !== 'none') {
+            ch.style.display = 'none';
+            hidden.push(ch);
+        }
+    });
+    // Also hide presentation deck if visible
+    var pres = document.getElementById('presentationDeck');
+    var presWasVisible = pres && pres.style.display !== 'none';
+    if (pres && pres !== activeCh) pres.style.display = 'none';
+    
+    window.print();
+    
+    // Restore after print dialog
+    setTimeout(function() {
+        hidden.forEach(function(ch) { ch.style.display = ''; });
+        if (pres && presWasVisible) pres.style.display = 'block';
+    }, 500);
+}
+
+function printAll() {
+    // Show ALL chapters for printing
+    var allChapters = document.querySelectorAll('.chapter');
+    allChapters.forEach(function(ch) {
+        ch.style.display = '';
+        ch.classList.add('active');
+    });
+    // Hide presentation deck
+    var pres = document.getElementById('presentationDeck');
+    if (pres) pres.style.display = 'none';
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    
+    setTimeout(function() {
+        window.print();
+        // Restore: only show the chapter that was active before
+        setTimeout(function() {
+            allChapters.forEach(function(ch) {
+                ch.classList.remove('active');
+                ch.style.display = '';
+            });
+            var target = document.getElementById(currentChapter) || document.getElementById('cover');
+            if (target) target.classList.add('active');
+        }, 500);
+    }, 300);
 }
 
 // Sidebar navigation
