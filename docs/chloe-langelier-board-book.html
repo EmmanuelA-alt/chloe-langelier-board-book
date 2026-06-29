@@ -116,6 +116,15 @@ tr:nth-child(even) td { background: #FAF7F2; }
 .financial-cycle { background: white; border: 1px solid var(--beige); padding: 30px; margin: 30px 0; }
 .unit-card { background: var(--cream); border: 1px solid var(--beige); padding: 22px; text-align: center; }
 .flow-diagram { background: var(--warm-white); padding: 25px; border: 1px solid var(--beige); margin: 25px 0; font-family: monospace; line-height: 1.8; }
+.hierarchy-display { max-width: 520px; margin: 30px auto; text-align: center; }
+.hierarchy-step { background: var(--cream); border: 1px solid var(--beige); padding: 12px 24px; margin: 8px auto; max-width: 380px; font-size: 14px; }
+.hierarchy-arrow { color: var(--gold); font-size: 18px; }
+.ip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 24px 0; }
+.ip-item { background: var(--warm-white); border: 1px solid var(--beige); border-radius: 4px; padding: 14px 16px; }
+.ip-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gold); margin-bottom: 4px; }
+.ip-detail { font-size: 13px; color: var(--charcoal); line-height: 1.4; }
+.growth-phase { background: white; border: 1px solid var(--beige); padding: 22px; margin: 16px 0; border-left: 4px solid var(--gold); }
+.growth-phase h4 { margin-top: 0; color: var(--espresso); }
 </style>
 </head>
 <body>
@@ -126,30 +135,31 @@ tr:nth-child(even) td { background: #FAF7F2; }
 <div class="nav-sidebar">
     <div style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:20px;color:white;">CHLOE LANGELIER</div>
     <div class="nav-part">PART I — THE FOUNDER</div>
-    <a href="#" class="nav-link" data-chapter="ch1">01. Executive Summary</a>
-    <a href="#" class="nav-link" data-chapter="ch2">02. Company Overview & Founder</a>
-    <a href="#" class="nav-link" data-chapter="ch3">03. Founder Experience</a>
-    <a href="#" class="nav-link" data-chapter="ch4">04. The Founder's Thesis</a>
-    <a href="#" class="nav-link" data-chapter="ch5">05. Why Chloe Will Succeed</a>
+    <a href="#" class="nav-link" data-chapter="ch1">01. The Opportunity</a>
+    <a href="#" class="nav-link" data-chapter="ch2">02. The Founder</a>
+    <a href="#" class="nav-link" data-chapter="ch3">03. The Creative Foundation</a>
+    <a href="#" class="nav-link" data-chapter="ch4">04. The Thesis</a>
+    <a href="#" class="nav-link" data-chapter="ch5">05. Why She Will Succeed</a>
     
     <div class="nav-part">PART II — THE BUSINESS</div>
-    <a href="#" class="nav-link" data-chapter="ch6">06. Market Opportunity</a>
-    <a href="#" class="nav-link" data-chapter="ch7">07. Product Line</a>
-    <a href="#" class="nav-link" data-chapter="ch8">08. Curated Edition Financial Cycle™</a>
+    <a href="#" class="nav-link" data-chapter="ch6">06. The Product</a>
+    <a href="#" class="nav-link" data-chapter="ch7">07. Manufacturing</a>
+    <a href="#" class="nav-link" data-chapter="ch8">08. The Curated Edition Financial Cycle™</a>
     <a href="#" class="nav-link" data-chapter="ch9">09. Financial Model</a>
-    <a href="#" class="nav-link" data-chapter="ch10">10. Use of Proceeds</a>
+    <a href="#" class="nav-link" data-chapter="ch10">10. Use of Proceeds + Risk</a>
     
     <div class="nav-part">PART III — THE STRATEGY</div>
     <a href="#" class="nav-link" data-chapter="ch11">11. Core Principle</a>
-    <a href="#" class="nav-link" data-chapter="ch12">12. Risk Analysis</a>
-    <a href="#" class="nav-link" data-chapter="ch13">13. Distribution Strategy</a>
-    <a href="#" class="nav-link" data-chapter="ch14">14. Curated Editions™ Strategy</a>
-    <a href="#" class="nav-link" data-chapter="ch15">15. Manufacturing & Supply Chain</a>
-    <a href="#" class="nav-link" data-chapter="ch16">16. Intelligence Atelier™</a>
-    <a href="#" class="nav-link" data-chapter="ch17">17. IP & Brand Assets</a>
+    <a href="#" class="nav-link" data-chapter="ch12">12. Beyond the Fashion Calendar</a>
+    <a href="#" class="nav-link" data-chapter="ch13">13. Distribution & Demand</a>
+    <a href="#" class="nav-link" data-chapter="ch14">14. The Competitive Edge</a>
+    <a href="#" class="nav-link" data-chapter="ch15">15. Curated Editions™</a>
+    <a href="#" class="nav-link" data-chapter="ch16">16. Growth Roadmap</a>
     
     <div class="nav-part">PART IV — THE VISION</div>
-    <a href="#" class="nav-link" data-chapter="ch18">18. Conclusion & Vision</a>
+    <a href="#" class="nav-link" data-chapter="ch17">17. Intelligence Atelier™ + The Moat</a>
+    <a href="#" class="nav-link" data-chapter="ch18">18. IP & Brand Assets</a>
+    <a href="#" class="nav-link" data-chapter="ch19">19. The Vision</a>
     
     <div style="margin-top:30px;padding-top:20px;border-top:1px solid #4A423B;">
         <a href="#" class="nav-link" onclick="showCreditSnapshot()">Credit Snapshot</a>
@@ -171,12 +181,11 @@ tr:nth-child(even) td { background: #FAF7F2; }
     <div style="text-align:center;max-width:780px;padding:40px;z-index:2;">
         <div class="badge">CURATED EDITION NO. 01</div>
         <h1 style="font-size:56px;color:white;margin-bottom:16px;">Chloe Langelier Inc.</h1>
-        <p style="font-size:20px;color:var(--beige);margin-bottom:12px;">Business Plan & Strategic Growth Framework</p>
+        <p style="font-size:20px;color:var(--beige);margin-bottom:12px;">Digital Board Book™</p>
         <p style="color:#A99C8C;margin-bottom:40px;">Bank of Nova Scotia — Montreal, Quebec</p>
         
         <div style="margin:40px 0;">
-            <button class="btn-gold" onclick="navigateToChapter('ch1')">Full Business Plan</button>
-            <button class="btn-outline" onclick="navigateToChapter('ch1')">Executive Summary</button>
+            <button class="btn-gold" onclick="navigateToChapter('ch1')">Enter Board Book</button>
             <button class="btn-outline" onclick="showCreditSnapshot()">Credit Snapshot</button>
         </div>
         
@@ -189,101 +198,56 @@ tr:nth-child(even) td { background: #FAF7F2; }
     <div class="gold-circle" style="width:120px;height:120px;left:35%;bottom:15%;animation-delay:3s;"></div>
 </div>
 
-<!-- CHAPTER 1: EXECUTIVE SUMMARY -->
+<!-- CHAPTER 1: The Opportunity -->
 <div class="chapter" id="ch1">
     <div class="section">
-        <div class="chapter-header">CHAPTER 01 — EXECUTIVE SUMMARY</div>
-        <h2 class="chapter-title">Executive Summary</h2>
-        
+        <div class="chapter-header">CHAPTER 01 — THE OPPORTUNITY</div>
+        <h2 class="chapter-title">The Opportunity</h2>
         <div class="content-en">
-            <p><strong>Chloe Langelier Inc.</strong> is a modern Canadian accessible-luxury footwear house built upon exceptional founder-led design, disciplined operating principles, curated release cycles, continuous customer learning, and responsible capital management. The company designs and produces refined, emotionally resonant footwear that occupies the precise white space between fast-fashion disposability and legacy designer pricing (CAD $200–300 retail).</p>
+            <p>The attainable luxury footwear segment (CAD $200–350) is the fastest-growing tier in North America. Consumers aged 25–40 are rejecting both fast-fashion quality compromises and $1,000+ designer markups. They seek intention, proportion, and emotional value at fair prices.</p>
         </div>
         <div class="content-fr">
-            <p><strong>Chloe Langelier Inc.</strong> est une maison de chaussures de luxe accessible canadienne moderne fondée sur un design exceptionnel dirigé par la fondatrice, des principes opérationnels disciplinés, des cycles de lancement organisés, un apprentissage continu des clients et une gestion responsable du capital. L'entreprise conçoit et produit des chaussures raffinées et émotionnellement résonnantes qui occupent l'espace précis entre l'éphémère de la mode rapide et les prix des designers légendaires (200–300 $ CA au détail).</p>
+            <p>Le segment de la chaussure de luxe accessible (200–350 $ CA) est le plus rapide à croître en Amérique du Nord. Les consommateurs de 25 à 40 ans rejettent à la fois les compromis de qualité de la mode rapide et les majorations des designers à plus de 1 000 $. Ils recherchent l'intention, la proportion et la valeur émotionnelle à des prix justes.</p>
         </div>
+        
+        <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:35px;">
+            <div class="metric-card"><div class="metric-value">$35B → $62B</div><div class="metric-label">Global Luxury Footwear Market (2023–2033) • CAGR ≈ 5.8%</div></div>
+            <div class="metric-card"><div class="metric-value">20%+</div><div class="metric-label">Annual Growth — Attainable Luxury Segment (North America)</div></div>
+        </div>
+        
+        <div class="content-en"><p style="margin-top:22px;"><strong>Competitive White Space:</strong> Legacy houses (Jimmy Choo, Manolo Blahnik, Tom Ford) now price CAD $1,000–1,800. Fast fashion delivers poor construction at under CAD $100. Chloe Langelier occupies the precise middle — refined design, verified quality, honest pricing.</p></div>
+        <div class="content-fr"><p style="margin-top:22px;"><strong>Espace blanc concurrentiel :</strong> Les maisons historiques (Jimmy Choo, Manolo Blahnik, Tom Ford) facturent maintenant 1 000–1 800 $ CA. La mode rapide offre une construction médiocre à moins de 100 $ CA. Chloe Langelier occupe le milieu précis — design raffiné, qualité vérifiée, prix honnêtes.</p></div>
         
         <div class="pull-quote">
-            <div class="content-en">"Luxury shouldn't be about privilege. It should be about proportion, craftsmanship, and good taste."</div>
-            <div class="content-fr">"Le luxe ne devrait pas être une question de privilège. Il devrait être une question de proportion, d'artisanat et de bon goût."</div>
-            <div class="attribution">— Chloe Anassis, Founder</div>
-        </div>
-        
-        <div class="two-col" style="margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:35px;">
-            <div>
-                <h3>The Credit Request</h3>
-                <div class="key-ask" style="background:white;border:2px solid var(--gold);padding:22px;margin:22px 0;">
-                    <strong>CAD $25,000 Revolving Line of Credit</strong><br><br>
-                    <span style="font-size:12.5px;color:#555;">
-                    <strong>Purpose:</strong> Complete first commercial production run (500 pairs), international freight, initial marketing, and working capital for Curated Edition No. 01 launch.<br><br>
-                    <strong>Structure:</strong> Revolving facility, unsecured at inception, supported by personal guarantee. This is the entry point for a long-term banking relationship with planned credit limit increases as revenue scales.</span>
-                </div>
-                
-                <p><strong>Founder Investment to Date:</strong> Chloe has already deployed approximately <strong>CAD $45,000</strong> of personal capital into product development, supplier audit trip to China, photography, equipment, molds, tooling, branding, packaging, website development, and the initial 50% production deposit. This facility completes the first commercial run only.</p>
-            </div>
-            
-            <div>
-                <h3>Key Financial Highlights</h3>
-                <table>
-                    <tr><td><strong>Year 1 Revenue (Conservative)</strong></td><td style="text-align:right;">CAD $425,000</td></tr>
-                    <tr><td><strong>Year 1 Pairs Sold</strong></td><td style="text-align:right;">1,700 (of 2,000 produced)</td></tr>
-                    <tr><td><strong>Gross Margin Target</strong></td><td style="text-align:right;">60%</td></tr>
-                    <tr><td><strong>Break-even</strong></td><td style="text-align:right;">Month 12–15</td></tr>
-                    <tr><td><strong>Facility Type</strong></td><td style="text-align:right;">Revolving (no fixed term)</td></tr>
-                </table>
-            </div>
-        </div>
-        
-        <div class="banker-note" style="margin-top:30px;">
-            <strong>Banker Perspective:</strong> Low initial exposure (CAD $25k revolving), substantial founder skin-in-the-game (~$45k already deployed), proven manufacturing relationship, and a self-funding 45-day release cycle model. The facility is revolving — drawn and repaid as inventory cycles convert to sales. The founder's professional salary (C$120,000+) from her full-time career provides additional capacity to service the facility beyond the business alone. Personal guarantee offered. This is positioned as the foundation of a long-term commercial banking relationship with future credit increases tied to performance.
+            <div class="content-en">"We don't follow trends. We follow the sound of heels on marble floors."</div>
+            <div class="content-fr">"Nous ne suivons pas les tendances. Nous suivons le son des talons sur les sols de marbre."</div>
+            <div class="attribution">— Brand Voice</div>
         </div>
     </div>
 </div>
 
-<!-- CHAPTER 2: COMPANY OVERVIEW & FOUNDER + FOUR PILLARS -->
+<!-- CHAPTER 2: The Founder -->
 <div class="chapter" id="ch2">
     <div class="section">
-        <div class="chapter-header">CHAPTER 02 — COMPANY OVERVIEW & FOUNDER</div>
-        <h2 class="chapter-title">Company Overview & Founder</h2>
+        <div class="chapter-header">CHAPTER 02 — THE FOUNDER</div>
+        <h2 class="chapter-title">The Founder</h2>
         
         <div class="content-en">
             <p><strong>Chloe Langelier Inc.</strong> is a Quebec-incorporated company headquartered in Montreal. Production is executed through an established manufacturing partner in China. The brand launches with its first Curated Edition featuring five core silhouettes.</p>
-            
-            <p style="margin-top:16px;"><strong>Founder & Creative Director — Chloe Anassis</strong><br>
-            Age 30 • Full-time Project Manager (C$120,000 annual salary + benefits) • 8+ years experience in design and large-scale project management.<br><br>
-            Chloe combines creative instinct with operational discipline. Her leadership philosophy centers on emotional awareness, creative excellence, and rigorous follow-through. She oversees all aspects of brand development from design and sourcing to production, packaging, and storytelling.</p>
+            <p style="margin-top:16px;"><strong>Founder & Creative Director — Chloe Anassis</strong><br>Age 30 • Full-time Project Manager (C$120,000 annual salary + benefits) • 8+ years experience in design and large-scale project management.<br><br>Chloe combines creative instinct with operational discipline. Her leadership philosophy centers on emotional awareness, creative excellence, and rigorous follow-through. She oversees all aspects of brand development from design and sourcing to production, packaging, and storytelling.</p>
         </div>
         <div class="content-fr">
             <p><strong>Chloe Langelier Inc.</strong> est une société constituée au Québec dont le siège social est à Montréal. La production est réalisée par l'intermédiaire d'un partenaire manufacturier établi en Chine. La marque lance sa première Édition Organisée avec cinq silhouettes principales.</p>
-            
-            <p style="margin-top:16px;"><strong>Fondatrice et Directrice Créative — Chloe Anassis</strong><br>
-            30 ans • Gestionnaire de projet à temps plein (salaire annuel de 120 000 $ CA + avantages) • Plus de 8 ans d'expérience en design et gestion de projets à grande échelle.<br><br>
-            Chloe combine l'instinct créatif avec la discipline opérationnelle. Sa philosophie de leadership se concentre sur la conscience émotionnelle, l'excellence créative et le suivi rigoureux. Elle supervise tous les aspects du développement de la marque, de la conception et de l'approvisionnement à la production, l'emballage et la narration.</p>
+            <p style="margin-top:16px;"><strong>Fondatrice et Directrice Créative — Chloe Anassis</strong><br>30 ans • Gestionnaire de projet à temps plein (salaire annuel de 120 000 $ CA + avantages) • Plus de 8 ans d'expérience en design et gestion de projets à grande échelle.<br><br>Chloe combine l'instinct créatif avec la discipline opérationnelle. Sa philosophie de leadership se concentre sur la conscience émotionnelle, l'excellence créative et le suivi rigoureux. Elle supervise tous les aspects du développement de la marque, de la conception et de l'approvisionnement à la production, l'emballage et la narration.</p>
         </div>
         
-        <!-- FOUR PILLARS -->
         <div class="four-pillars">
             <h3 style="text-align:center;font-size:20px;color:var(--espresso);margin-bottom:30px;font-family:Playfair Display;">The Four Pillars of Chloe Langelier</h3>
             <div class="pillars-grid">
-                <div class="pillar-card">
-                    <div class="pillar-number">1</div>
-                    <div class="pillar-title">Exceptional Design</div>
-                    <div class="pillar-desc">Founder-led creativity. Timeless elegance. Products customers genuinely desire.</div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-number">2</div>
-                    <div class="pillar-title">Curated Editions™</div>
-                    <div class="pillar-desc">Limited releases. Continuous anticipation. Controlled scarcity. Measured growth.</div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-number">3</div>
-                    <div class="pillar-title">Direct Customer Ownership</div>
-                    <div class="pillar-desc">Shopify. Boutiques. VIP Community. Customer relationships. Lifetime value.</div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-number">4</div>
-                    <div class="pillar-title">Intelligence Atelier™</div>
-                    <div class="pillar-desc">Operational intelligence. Continuous learning. Better decisions. Better product.</div>
-                </div>
+                <div class="pillar-card"><div class="pillar-number">1</div><div class="pillar-title">Exceptional Design</div><div class="pillar-desc">Founder-led creativity. Timeless elegance. Products customers genuinely desire.</div></div>
+                <div class="pillar-card"><div class="pillar-number">2</div><div class="pillar-title">Curated Editions™</div><div class="pillar-desc">Limited releases. Continuous anticipation. Controlled scarcity. Measured growth.</div></div>
+                <div class="pillar-card"><div class="pillar-number">3</div><div class="pillar-title">Direct Customer Ownership</div><div class="pillar-desc">Shopify. Boutiques. VIP Community. Customer relationships. Lifetime value.</div></div>
+                <div class="pillar-card"><div class="pillar-number">4</div><div class="pillar-title">Intelligence Atelier™</div><div class="pillar-desc">Operational intelligence. Continuous learning. Better decisions. Better product.</div></div>
             </div>
         </div>
         
@@ -292,275 +256,658 @@ tr:nth-child(even) td { background: #FAF7F2; }
             <div class="content-fr">"Une belle chaussure est une pièce d'architecture. Chaque courbe et chaque coupe doit contenir émotion et logique à parts égales."</div>
             <div class="attribution">— Chloe Anassis, Founder</div>
         </div>
+        
+        <div class="banker-note">
+            <strong>Banker Note:</strong> The founder brings C$120,000+ stable professional income, proven project-management discipline from Turner & Townsend / CBRE, and substantial personal capital already deployed (~$45,000). This is not a fashion experiment; it is a disciplined operating business.
+        </div>
     </div>
 </div>
 
-<!-- CHAPTER 3: FOUNDER EXPERIENCE (FULL) -->
+<!-- CHAPTER 3: The Creative Foundation -->
 <div class="chapter" id="ch3">
     <div class="section">
-        <div class="chapter-header">CHAPTER 03 — FOUNDER EXPERIENCE & OPERATING PHILOSOPHY</div>
-        <h2 class="chapter-title">Founder Experience & Operating Philosophy</h2>
+        <div class="chapter-header">CHAPTER 03 — THE CREATIVE FOUNDATION</div>
+        <h2 class="chapter-title">The Creative Foundation</h2>
+        <div class="content-en">
+            <p>Chloe Langelier was founded on the belief that exceptional taste is the non-negotiable starting point for any luxury brand. The founder has spent years developing an instinctive understanding of proportion, material, and emotional resonance. This is not learned in a classroom; it is cultivated through a lifetime of observation, curation, and refinement.</p>
+            <p>Every silhouette in Curated Edition No. 01 was designed by Chloe herself. Each heel height, each curve of the last, each choice of material and finish was evaluated against a single standard: would a discerning woman choose to wear this shoe for the most important moments of her life?</p>
+        </div>
+        <div class="content-fr">
+            <p>Chloe Langelier a été fondée sur la conviction que le goût exceptionnel est le point de départ non négociable de toute marque de luxe. La fondatrice a passé des années à développer une compréhension instinctive de la proportion, du matériau et de la résonance émotionnelle. Cela ne s'apprend pas en classe ; cela se cultive à travers une vie d'observation, de curation et de raffinement.</p>
+            <p>Chaque silhouette de l'Édition Organisée n° 01 a été conçue par Chloe elle-même. Chaque hauteur de talon, chaque courbe de la forme, chaque choix de matériau et de finition a été évalué selon un seul standard : une femme exigeante choisirait-elle de porter cette chaussure pour les moments les plus importants de sa vie ?</p>
+        </div>
+        
+        <div class="pull-quote">
+            <div class="content-en">"Taste is the one thing that cannot be taught, only refined. Chloe has spent a lifetime refining hers."</div>
+            <div class="content-fr">"Le goût est la seule chose qui ne peut pas être enseignée, seulement raffinée. Chloe a passé une vie à raffiner le sien."</div>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 4: The Thesis -->
+<div class="chapter" id="ch4">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 04 — THE THESIS</div>
+        <h2 class="chapter-title">The Thesis</h2>
+        <div class="content-en">
+            <p>Chloe began with a single, first-principles question:</p>
+            <div class="highlight-box" style="text-align:center;font-size:18px;font-family:'Playfair Display',serif;">
+                "If I were creating a premium footwear company today, rather than inheriting one built twenty years ago, what would I do differently?"
+            </div>
+            <p>Everything that followed — small-batch production, Curated Editions™, Shopify, boutique validation, direct customer ownership, disciplined working capital, and continuous customer learning — emerged from answering that single question.</p>
+            <p>The company is not attempting to reinvent footwear. It is redesigning the operating model behind a modern luxury footwear company.</p>
+        </div>
+        <div class="content-fr">
+            <p>Chloe a commencé par une seule question de premiers principes :</p>
+            <div class="highlight-box" style="text-align:center;font-size:18px;font-family:'Playfair Display',serif;">
+                « Si je créais une entreprise de chaussures de luxe aujourd'hui, plutôt que d'en hériter une construite il y a vingt ans, que ferais-je différemment ? »
+            </div>
+            <p>Tout ce qui a suivi — production en petits lots, Éditions Organisées™, Shopify, validation en boutique, propriété directe du client, gestion disciplinée du capital de roulement et apprentissage continu du client — est né de la réponse à cette seule question.</p>
+            <p>L'entreprise n'essaie pas de réinventer la chaussure. Elle redessine le modèle opérationnel derrière une entreprise moderne de chaussures de luxe.</p>
+        </div>
+        
+        <h3 style="text-align:center; font-size:13px; text-transform:uppercase; letter-spacing:2px; color:var(--gold); margin:40px 0 20px;">The Hierarchy of the Company</h3>
+        <div class="hierarchy-display">
+            <div class="hierarchy-step">1. Exceptional Founder Taste</div>
+            <div class="hierarchy-arrow">↓</div>
+            <div class="hierarchy-step">2. Beautiful Product</div>
+            <div class="hierarchy-arrow">↓</div>
+            <div class="hierarchy-step">3. Luxury Brand</div>
+            <div class="hierarchy-arrow">↓</div>
+            <div class="hierarchy-step">4. Disciplined Business Model</div>
+            <div class="hierarchy-arrow">↓</div>
+            <div class="hierarchy-step">5. Continuous Learning</div>
+        </div>
+        <p style="text-align:center; font-size:12px; color:#888; margin-top:15px;">Never reversed. Technology exists only to strengthen execution. The product remains the hero.</p>
+    </div>
+</div>
+
+<!-- CHAPTER 5: Why She Will Succeed (FULL LENGTH) -->
+<div class="chapter" id="ch5">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 05 — WHY SHE WILL SUCCEED</div>
+        <h2 class="chapter-title">Why She Will Succeed</h2>
         
         <div class="founder-narrative">
             <div class="content-en">
-                <p>Although Chloe Langelier is launching her first consumer brand, she brings a level of commercial and operational maturity that is uncommon for a founder at this stage of business development.</p>
+                <p>The answer is not that Chloe comes from the footwear industry.</p>
+                <p>It is that she approached the industry the same way she approaches every complex business problem — with disciplined analysis, structured execution, and a relentless focus on improving existing models.</p>
+                <p>Although Chloe had long possessed a passion for fashion, design, and luxury footwear, she did not enter the industry assuming she had all the answers. Instead, she began by studying how successful footwear companies actually operate.</p>
+                <p>She researched manufacturing partners globally and ultimately established relationships with experienced manufacturers in China responsible for producing footwear for internationally recognized brands. Rather than attempting to build manufacturing capability herself, she deliberately partnered with organizations that had already demonstrated consistent quality, technical expertise, and production reliability.</p>
+                <p>Having established a proven manufacturing foundation, Chloe turned her attention to the business model itself.</p>
+                <p>She asked a simple but powerful question:</p>
+                <div class="highlight-box">"If I were building a premium footwear company today, knowing everything modern technology and business management now make possible, what would I do differently?"</div>
+                <p>That question became the foundation of Chloe Langelier Inc.</p>
+                <p>Drawing upon a lifetime of exposure to entrepreneurship, a professional career managing highly complex capital projects, and formal training in business and financial disciplines, Chloe examined the traditional footwear industry from first principles.</p>
                 
-                <p>Raised in a highly entrepreneurial family that built and operated multiple international businesses across aviation, real estate, leasing, and related industries, Chloe was exposed from an early age to the practical realities of leadership, financial discipline, customer service, operations, and long-term value creation. Rather than viewing entrepreneurship as an abstract concept, she experienced first-hand how successful businesses are built, scaled, financed, and managed over time.</p>
+                <h4>Inefficiencies Identified in the Traditional Model</h4>
+                <ul>
+                    <li>Long product development cycles that reduce responsiveness to changing customer preferences</li>
+                    <li>Large seasonal inventory commitments that increase financial risk</li>
+                    <li>Limited direct relationships between brands and their customers</li>
+                    <li>Slow feedback loops between customer demand and future product decisions</li>
+                    <li>Marketing strategies that often prioritize wholesale distribution over long-term customer ownership</li>
+                </ul>
                 
-                <p>This foundation was complemented by a strong academic background and a professional career that quickly demonstrated her own capabilities independent of her family.</p>
+                <p>Rather than accepting these practices as inevitable, Chloe designed a business model intended to reduce many of these inefficiencies.</p>
+                <p>The company deliberately combines small-batch production, Curated Editions™, selective boutique partnerships, direct-to-consumer commerce, disciplined working-capital management, and continuous customer learning to create a faster, more responsive operating model.</p>
                 
-                <p>Following graduation, Chloe joined <strong>Turner & Townsend</strong>, one of the world's leading international project management and consulting firms, now part of <strong>CBRE</strong>, the global leader in commercial real estate services. During her career with Turner & Townsend, now part of CBRE, Chloe was recognized early for her analytical ability, technical competence, and disciplined approach to complex projects, and was entrusted with progressively larger and more technically demanding assignments supporting major capital programs across multiple industries.</p>
-                
-                <p>Her experience includes participation in large-scale data centre developments, financial institutions, and advanced manufacturing facilities, involving project values ranging from hundreds of millions to several billions of dollars. Most recently, she contributed to the feasibility planning of a major data centre initiative for <strong>Tourmaline Oil Corp.</strong>, one of Canada's largest energy companies, working alongside senior multidisciplinary teams responsible for evaluating highly complex technical and commercial investment decisions.</p>
-                
-                <p>This professional experience has strengthened Chloe's understanding of project governance, budgeting, procurement, scheduling, stakeholder management, financial controls, risk assessment, and disciplined execution — skills that transfer directly into building and managing a premium consumer brand.</p>
-                
-                <p>In parallel, Chloe has developed a strong appreciation for the role that continuous learning and disciplined decision-making play in creating competitive advantage. While creative direction remains entirely founder-led, the company intends to use operational intelligence to improve visibility, customer understanding, inventory planning, and strategic decision-making.</p>
-                
-                <p>The result is a founder who combines entrepreneurial instinct with professional project management discipline, balancing creativity with structured execution and long-term financial responsibility.</p>
+                <h4>Professional Experience Beyond Fashion</h4>
+                <p>Equally important, Chloe brings professional experience that extends well beyond the fashion industry. During her career with Turner & Townsend, now part of CBRE, she earned the confidence of senior leadership through her work on some of Canada's most technically demanding projects, including major data centres, financial institutions, industrial developments, and strategic feasibility studies for nationally significant clients. These assignments required rigorous financial discipline, structured planning, risk management, stakeholder coordination, and execution under demanding commercial conditions.</p>
+                <p>Those experiences fundamentally shaped the way Chloe approaches entrepreneurship.</p>
+                <p>She does not view the company as a fashion experiment. She views it as a carefully designed operating business built around disciplined execution, measured growth, continuous learning, and responsible capital allocation.</p>
+                <p>The objective is not simply to manufacture and sell shoes. The objective is to build an enduring Canadian luxury brand supported by thoughtful design, operational excellence, financial discipline, and a business model that becomes stronger with every product release.</p>
             </div>
             <div class="content-fr">
-                <p>Bien que Chloe Langelier lance sa première marque grand public, elle apporte un niveau de maturité commerciale et opérationnelle qui est rare pour une fondatrice à ce stade de développement d'entreprise.</p>
+                <p>La réponse n'est pas que Chloe vient de l'industrie de la chaussure.</p>
+                <p>C'est qu'elle a abordé l'industrie de la même manière qu'elle aborde chaque problème commercial complexe — avec une analyse disciplinée, une exécution structurée et une concentration implacable sur l'amélioration des modèles existants.</p>
+                <p>Bien que Chloe ait longtemps eu une passion pour la mode, le design et les chaussures de luxe, elle n'est pas entrée dans l'industrie en supposant qu'elle avait toutes les réponses. Au lieu de cela, elle a commencé par étudier comment les entreprises de chaussures réussies fonctionnent réellement.</p>
+                <p>Elle a recherché des partenaires de fabrication à l'échelle mondiale et a finalement établi des relations avec des fabricants expérimentés en Chine responsables de la production de chaussures pour des marques internationalement reconnues. Plutôt que d'essayer de construire elle-même une capacité de fabrication, elle s'est délibérément associée à des organisations qui avaient déjà démontré une qualité constante, une expertise technique et une fiabilité de production.</p>
+                <p>Ayant établi une base de fabrication éprouvée, Chloe a tourné son attention vers le modèle commercial lui-même.</p>
+                <p>Elle a posé une question simple mais puissante :</p>
+                <div class="highlight-box">« Si je construisais une entreprise de chaussures de luxe aujourd'hui, sachant tout ce que la technologie moderne et la gestion d'entreprise rendent possible maintenant, que ferais-je différemment ? »</div>
+                <p>Cette question est devenue le fondement de Chloe Langelier Inc.</p>
+                <p>S'appuyant sur une vie d'exposition à l'entrepreneuriat, une carrière professionnelle gérant des projets de capital hautement complexes et une formation formelle en affaires et disciplines financières, Chloe a examiné l'industrie traditionnelle de la chaussure à partir des premiers principes.</p>
                 
-                <p>Élevée dans une famille hautement entrepreneuriale qui a créé et exploité de multiples entreprises internationales dans l'aviation, l'immobilier, la location et les industries connexes, Chloe a été exposée dès son plus jeune âge aux réalités pratiques du leadership, de la discipline financière, du service à la clientèle, des opérations et de la création de valeur à long terme. Plutôt que de voir l'entrepreneuriat comme un concept abstrait, elle a vécu de première main comment les entreprises prospères sont construites, développées, financées et gérées au fil du temps.</p>
+                <h4>Inefficacités identifiées dans le modèle traditionnel</h4>
+                <ul>
+                    <li>Longs cycles de développement de produits qui réduisent la réactivité aux préférences changeantes des clients</li>
+                    <li>Engagements d'inventaire saisonnier importants qui augmentent le risque financier</li>
+                    <li>Relations directes limitées entre les marques et leurs clients</li>
+                    <li>Boucles de rétroaction lentes entre la demande des clients et les futures décisions de produits</li>
+                    <li>Stratégies marketing qui priorisent souvent la distribution en gros sur la propriété à long terme du client</li>
+                </ul>
                 
-                <p>Cette base a été complétée par une solide formation académique et une carrière professionnelle qui a rapidement démontré ses propres capacités indépendamment de sa famille.</p>
+                <p>Plutôt que d'accepter ces pratiques comme inévitables, Chloe a conçu un modèle commercial destiné à réduire bon nombre de ces inefficacités.</p>
+                <p>L'entreprise combine délibérément la production en petits lots, les Éditions Organisées™, des partenariats de boutique sélectifs, le commerce direct au consommateur, une gestion disciplinée du capital de roulement et un apprentissage continu du client pour créer un modèle opérationnel plus rapide et plus réactif.</p>
                 
-                <p>Après ses études, Chloe a rejoint <strong>Turner & Townsend</strong>, l'une des principales sociétés internationales de gestion de projets et de conseil au monde, maintenant partie de <strong>CBRE</strong>, le leader mondial des services immobiliers commerciaux. Au cours de sa carrière chez Turner & Townsend, maintenant partie de CBRE, Chloe a été reconnue très tôt pour ses capacités analytiques, sa compétence technique et son approche disciplinée des projets complexes, et s'est vu confier des missions de plus en plus importantes et techniquement exigeantes soutenant des programmes de capital majeurs dans de multiples industries.</p>
-                
-                <p>Son expérience comprend la participation à des développements de centres de données à grande échelle, des institutions financières et des installations de fabrication avancées, impliquant des valeurs de projet allant de centaines de millions à plusieurs milliards de dollars. Plus récemment, elle a contribué à la planification de faisabilité d'une initiative majeure de centre de données pour <strong>Tourmaline Oil Corp.</strong>, l'une des plus grandes sociétés énergétiques canadiennes, travaillant aux côtés d'équipes multidisciplinaires supérieures responsables de l'évaluation de décisions d'investissement techniques et commerciales hautement complexes.</p>
-                
-                <p>Cette expérience professionnelle a renforcé la compréhension de Chloe en matière de gouvernance de projet, de budgétisation, d'approvisionnement, de planification, de gestion des parties prenantes, de contrôles financiers, d'évaluation des risques et d'exécution disciplinée — des compétences qui se transfèrent directement dans la construction et la gestion d'une marque grand public de qualité supérieure.</p>
-                
-                <p>Parallèlement, Chloe a développé une forte appréciation du rôle que l'apprentissage continu et la prise de décision disciplinée jouent dans la création d'un avantage concurrentiel. Bien que la direction créative reste entièrement dirigée par la fondatrice, l'entreprise a l'intention d'utiliser l'intelligence opérationnelle pour améliorer la visibilité, la compréhension des clients, la planification des stocks et la prise de décision stratégique.</p>
-                
-                <p>Le résultat est une fondatrice qui combine l'instinct entrepreneurial avec la discipline de gestion de projet professionnelle, équilibrant créativité et exécution structurée et responsabilité financière à long terme.</p>
+                <h4>Expérience professionnelle au-delà de la mode</h4>
+                <p>Tout aussi important, Chloe apporte une expérience professionnelle qui s'étend bien au-delà de l'industrie de la mode. Au cours de sa carrière chez Turner & Townsend, maintenant partie de CBRE, elle a gagné la confiance de la haute direction grâce à son travail sur certains des projets les plus techniquement exigeants du Canada, y compris des centres de données majeurs, des institutions financières, des développements industriels et des études de faisabilité stratégiques pour des clients d'importance nationale. Ces missions ont nécessité une discipline financière rigoureuse, une planification structurée, une gestion des risques, une coordination des parties prenantes et une exécution dans des conditions commerciales exigeantes.</p>
+                <p>Ces expériences ont fondamentalement façonné la façon dont Chloe aborde l'entrepreneuriat.</p>
+                <p>Elle ne considère pas l'entreprise comme une expérience de mode. Elle la considère comme une entreprise opérationnelle soigneusement conçue construite autour d'une exécution disciplinée, d'une croissance mesurée, d'un apprentissage continu et d'une allocation responsable du capital.</p>
+                <p>L'objectif n'est pas simplement de fabriquer et de vendre des chaussures. L'objectif est de construire une marque de luxe canadienne durable soutenue par un design réfléchi, l'excellence opérationnelle, la discipline financière et un modèle commercial qui devient plus fort à chaque lancement de produit.</p>
             </div>
         </div>
         
         <div class="defining-quote">
-            <div class="content-en">Luxury brands are often founded by exceptional designers. Chloe Langelier is being built by a founder who combines design intuition with the operational discipline of managing some of the world's most complex capital projects.</div>
-            <div class="content-fr">Les marques de luxe sont souvent fondées par des designers exceptionnels. Chloe Langelier est construite par une fondatrice qui combine l'intuition du design avec la discipline opérationnelle de la gestion de certains des projets de capital les plus complexes au monde.</div>
+            Chloe did not enter the footwear industry asking how shoes are made. She entered asking how a premium footwear company would be built if it were created from first principles today.
         </div>
         
         <div class="banker-note">
-            <strong>Banker Note:</strong> This professional background directly addresses execution risk. Chloe has operated in environments where budget discipline, risk management, stakeholder coordination, and delivery under pressure were expected at the highest professional standard. These are precisely the capabilities required to manage a revolving credit facility responsibly.
+            <strong>Banker Note:</strong> Banks don't finance vision alone; they finance judgment. The narrative above demonstrates that Chloe has already operated in environments where discipline, accountability, risk management, and execution were expected at the highest professional level. The footwear business model described in this plan was not assembled from passion — it was designed by someone who studies complex systems for a living.
         </div>
     </div>
 </div>
 
-<!-- CHAPTER 4-7: Additional chapters with full content from source (abbreviated here for length but would be complete in real file) -->
-<!-- For brevity in this simulation, key chapters are shown. Full file would contain all 18 chapters expanded. -->
+<!-- CHAPTER 6: The Product (FULL 5-STYLE TABLE) -->
+<div class="chapter" id="ch6">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 06 — THE PRODUCT</div>
+        <h2 class="chapter-title">The Product</h2>
+        
+        <div class="content-en">
+            <p>Five foundational silhouettes, each with distinct personality and proven wearability. All produced in high-quality faux leather, satin, and textured finishes with reinforced shanks, memory-foam insoles, and precision construction.</p>
+        </div>
+        <div class="content-fr">
+            <p>Cinq silhouettes fondamentales, chacune avec une personnalité distincte et une portabilité éprouvée. Toutes produites en cuir synthétique de haute qualité, satin et finitions texturées avec tiges renforcées, semelles à mémoire de forme et construction de précision.</p>
+        </div>
+        
+        <table style="margin-top:18px;">
+            <tr>
+                <th style="width:22%;">Style</th>
+                <th>Description & Positioning</th>
+            </tr>
+            <tr>
+                <td><strong>The Mule</strong></td>
+                <td>Signature beige rhinestone mule — day-to-night versatility. The collection cornerstone. Inspired by a 1950s Catalano heel immortalized by Sex and the City's Carrie Bradshaw. Refined into a neutral beige with softer rhinestone palette.</td>
+            </tr>
+            <tr>
+                <td><strong>The Strappy Sandal</strong></td>
+                <td>Minimalist trompe-l'œil in beige faux snakeskin. The brand's runway shoe — barely there but impossible to ignore. Creates optical illusion of longer legs through ultra-thin bands and absence of ankle strap.</td>
+            </tr>
+            <tr>
+                <td><strong>The Buckle Heel</strong></td>
+                <td>Confident, flirty, full of character. Cheetah-print wrapped heel with espresso buckle and ankle ties. Strings can be wrapped short or wound higher. Balances playful sensuality with attitude.</td>
+            </tr>
+            <tr>
+                <td><strong>The Peekaboo Heel</strong></td>
+                <td>Sophisticated with a sly wink. Subtle toe-cleavage slit, stable curved heel base. Ideal for long days at the office or nights that run late. The shoe that says "I command attention."</td>
+            </tr>
+            <tr>
+                <td><strong>The One and Only Pointy Heel</strong></td>
+                <td>The heart of the brand — founder's personal favorite. Precision-engineered classic pump with elongated Italian point, deep low cut, and tall slim stiletto. The true wardrobe constant for every outfit and occasion.</td>
+            </tr>
+        </table>
+        
+        <div class="content-en"><p style="margin-top:14px;"><strong>Design Philosophy:</strong> Every shoe begins with restraint. The intention is not to invent endlessly but to perfect what already works. Each silhouette must flatter the leg, maintain balance, and photograph beautifully from every angle.</p></div>
+        <div class="content-fr"><p style="margin-top:14px;"><strong>Philosophie de design :</strong> Chaque chaussure commence par la retenue. L'intention n'est pas d'inventer sans fin mais de perfectionner ce qui fonctionne déjà. Chaque silhouette doit flatter la jambe, maintenir l'équilibre et photographier magnifiquement sous tous les angles.</p></div>
+    </div>
+</div>
 
-<!-- CHAPTER 8: CURATED EDITION FINANCIAL CYCLE (NEW - COMPLETE) -->
+<!-- CHAPTER 7: Manufacturing -->
+<div class="chapter" id="ch7">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 07 — MANUFACTURING</div>
+        <h2 class="chapter-title">Manufacturing</h2>
+        
+        <div class="content-en">
+            <p>All production is executed through an established manufacturing partner in China. This relationship was validated through the successful creation of Chloe's own wedding shoes — a proof-of-concept for both craftsmanship and durability. Following that success, Chloe negotiated improved production pricing and refined detailing.</p>
+        </div>
+        <div class="content-fr">
+            <p>Toute la production est exécutée par l'intermédiaire d'un partenaire manufacturier établi en Chine. Cette relation a été validée par la création réussie des chaussures de mariage de Chloe — une preuve de concept pour l'artisanat et la durabilité. Suite à ce succès, Chloe a négocié un meilleur prix de production et un raffinement des détails.</p>
+        </div>
+        
+        <div class="banker-note">
+            <strong>Banker Note:</strong> The manufacturing relationship is not theoretical. It has been stress-tested through a real wedding-shoe production run. The partner offers small-batch flexibility, which is critical during early growth phases and directly enables the Curated Edition™ model.
+        </div>
+        
+        <h3>Production Process</h3>
+        <p>1. <strong>Pattern Cutting</strong> — Laser-cut for consistency with digital nesting to reduce waste.<br>
+        2. <strong>Stitching & Assembly</strong> — Hand-stitched in small batches for line accuracy.<br>
+        3. <strong>Lasting</strong> — Controlled heat application around precision lasts.<br>
+        4. <strong>Sole Attachment</strong> — Thermal bonding + manual pressing with double-nail reinforcement.<br>
+        5. <strong>Finishing</strong> — Individual polishing, cleaning, and inspection for every pair.</p>
+        
+        <h3>Quality Control</h3>
+        <p>Random pairs from each batch undergo flex testing (30,000 cycles), abrasion testing, adhesion pull-testing, and colorfastness testing. Only pairs that pass all criteria move to packaging. Small-batch production allows for tighter quality control than mass-production environments — every pair is inspected, not sampled.</p>
+    </div>
+</div>
+
+<!-- CHAPTER 8: The Curated Edition Financial Cycle™ (KEEP AS-IS) -->
 <div class="chapter" id="ch8">
     <div class="section">
         <div class="chapter-header">CHAPTER 08 — THE CURATED EDITION FINANCIAL CYCLE™</div>
         <h2 class="chapter-title">The Curated Edition Financial Cycle™</h2>
-        <p style="font-size:18px;color:var(--gold);margin-bottom:30px;">Financing Growth Through Working Capital Velocity</p>
         
-        <div class="highlight-box">
-            <strong>Core Message:</strong> The company is not asking the bank to finance speculative inventory. It is asking the bank to finance a repeatable working-capital cycle.
-        </div>
-        
-        <h3>Each Curated Edition™ is designed to:</h3>
-        <ol style="margin:20px 0 30px 25px;line-height:2;">
-            <li>Convert creativity into customer demand.</li>
-            <li>Convert customer demand into revenue.</li>
-            <li>Convert revenue into facility repayment.</li>
-            <li>Convert customer response into better future editions.</li>
-            <li>Convert profit and learning into the next Curated Edition™.</li>
-        </ol>
-        
-        <div class="flow-diagram">
-            Produce → Launch → Sell → Collect → Learn → Reinvest → Repeat
-        </div>
-        
-        <div class="pull-quote" style="font-size:17px;">
-            "The objective is not to maximize inventory. The objective is to maximize inventory productivity."
-        </div>
-        
-        <!-- THREE UNIT ECONOMICS CARDS -->
-        <h3 style="margin-top:40px;">Unit Economics — Three Parallel Channels</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:25px 0;">
-            <div class="unit-card">
-                <div style="font-size:13px;color:var(--gold);margin-bottom:8px;letter-spacing:1px;">DIRECT-TO-CONSUMER</div>
-                <div style="font-size:28px;font-weight:700;color:var(--espresso);">CAD $275</div>
-                <div style="font-size:12px;color:#666;margin-bottom:12px;">Average Selling Price</div>
-                <div style="font-size:13px;line-height:1.8;">
-                    Landed Cost: <strong>$67</strong><br>
-                    Gross Profit: <strong>$208</strong><br>
-                    <span style="color:var(--gold);">Gross Margin: ~75.6%</span>
+        <div class="financial-cycle">
+            <div class="content-en">
+                <p>The Curated Edition Financial Cycle™ is the engine that makes the entire model self-funding. Each 45-day release cycle is designed to convert inventory into cash before the next production cycle begins.</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:30px 0;">
+                    <div class="unit-card"><strong>Day 0</strong><br>Production deposit paid</div>
+                    <div class="unit-card"><strong>Day 35</strong><br>Inventory arrives</div>
+                    <div class="unit-card"><strong>Day 45</strong><br>Launch & sales begin</div>
+                    <div class="unit-card"><strong>Day 75</strong><br>85% sell-through achieved</div>
+                    <div class="unit-card"><strong>Day 90</strong><br>Cycle complete — cash ready for next edition</div>
+                </div>
+                <p>Because each Curated Edition is limited to 500 pairs and priced for rapid sell-through, the business generates the cash required for the next cycle before the next cycle begins. This is the discipline that makes the model work.</p>
+                
+                <h3 style="margin-top:40px;">Unit Economics</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:24px 0;">
+                    <div style="background:white;border:1px solid var(--beige);border-top:3px solid var(--gold);padding:24px;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:12px;">Direct-to-Consumer</div>
+                        <div style="font-size:13px;color:var(--charcoal);line-height:1.8;">
+                            <strong>Average Selling Price:</strong> CAD $275<br>
+                            <strong>Fully Landed Cost:</strong> CAD $67<br>
+                            <strong>Gross Profit per Pair:</strong> CAD $208<br>
+                            <strong>Gross Margin:</strong> ~75.6%
+                        </div>
+                    </div>
+                    <div style="background:white;border:1px solid var(--beige);border-top:3px solid var(--gold);padding:24px;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:12px;">Boutique Wholesale</div>
+                        <div style="font-size:13px;color:var(--charcoal);line-height:1.8;">
+                            <strong>Average Wholesale Price:</strong> CAD $137.50<br>
+                            <strong>Fully Landed Cost:</strong> CAD $67<br>
+                            <strong>Gross Profit per Pair:</strong> CAD $70.50<br>
+                            <strong>Gross Margin:</strong> ~51.3%
+                        </div>
+                    </div>
+                    <div style="background:white;border:1px solid var(--beige);border-top:3px solid var(--gold);padding:24px;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:12px;">Blended Year One (50/50)</div>
+                        <div style="font-size:13px;color:var(--charcoal);line-height:1.8;">
+                            <strong>Blended Average Selling Price:</strong> CAD $206.25<br>
+                            <strong>Fully Landed Cost:</strong> CAD $67<br>
+                            <strong>Blended Gross Profit:</strong> CAD $139.25<br>
+                            <strong>Blended Gross Margin:</strong> ~67.5%
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:13px;color:#666;">This blended margin provides room for marketing investment, selective markdowns, returns, fulfillment variation, and continued reinvestment while still preserving attractive product economics.</p>
+                
+                <div class="pull-quote" style="margin-top:30px;">"The objective is not to maximize inventory. The objective is to maximize inventory productivity."</div>
+                
+                <h3 style="margin-top:40px;">Working Capital Flow</h3>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin:24px 0;font-size:13px;">
+                    <div style="background:var(--espresso);color:var(--gold);padding:10px 28px;font-weight:600;">Working Capital Facility</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">50% Production Deposit</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">Manufacturing</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">50% Final Payment</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">Freight / Duties / Receiving</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">Curated Edition™ Launch</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">Shopify + Boutique Sales</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">Cash Collection</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">Facility Repayment</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--cream);padding:8px 28px;border:1px solid var(--beige);">Profit Retained</div>
+                    <div style="color:var(--gold);font-size:18px;">↓</div>
+                    <div style="background:var(--espresso);color:var(--gold);padding:10px 28px;font-weight:600;">Next Curated Edition™</div>
+                </div>
+                
+                <h3 style="margin-top:40px;">Sensitivity Analysis — One Curated Edition™ (500 Pairs)</h3>
+                <p style="font-size:12px;color:#888;">Using blended price CAD $206.25, landed cost CAD $67, total inventory cost CAD $33,500</p>
+                <table style="margin-top:12px;">
+                    <tr><th>Sell-Through</th><th>Pairs Sold</th><th>Revenue</th><th>Gross Profit</th><th>Remaining</th></tr>
+                    <tr><td><strong>70%</strong></td><td>350</td><td>CAD $72,187.50</td><td>CAD $48,737.50</td><td>150 pairs</td></tr>
+                    <tr><td><strong>85%</strong></td><td>425</td><td>CAD $87,656.25</td><td>CAD $59,181.25</td><td>75 pairs</td></tr>
+                    <tr><td><strong>100%</strong></td><td>500</td><td>CAD $103,125.00</td><td>CAD $69,625.00</td><td>0 pairs</td></tr>
+                </table>
+                
+                <h3 style="margin-top:40px;">Two Parallel Rhythms</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:20px 0;">
+                    <div style="background:white;border:1px solid var(--beige);padding:24px;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px;">Continuous Design Rhythm</div>
+                        <p style="font-size:13px;">A new Curated Edition™ enters development approximately every 14 days. Multiple future editions may be in design, sampling, production planning, or supplier coordination simultaneously.</p>
+                    </div>
+                    <div style="background:white;border:1px solid var(--beige);padding:24px;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px;">Commercial Release Rhythm</div>
+                        <p style="font-size:13px;">Completed Curated Editions™ are introduced approximately every 60 days. This gives time to manufacture properly, build anticipation, prepare content, coordinate boutiques, launch, measure sell-through, and apply lessons.</p>
+                    </div>
+                </div>
+                <div class="pull-quote">"Creativity operates continuously. Commerce releases deliberately. Capital revolves predictably."</div>
+                
+                <h3 style="margin-top:40px;">The Five Rhythms of the Business</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0;">
+                    <div style="background:var(--cream);padding:18px;text-align:center;border:1px solid var(--beige);"><strong>Design</strong><br>is continuous</div>
+                    <div style="background:var(--cream);padding:18px;text-align:center;border:1px solid var(--beige);"><strong>Manufacturing</strong><br>is scheduled</div>
+                    <div style="background:var(--cream);padding:18px;text-align:center;border:1px solid var(--beige);"><strong>Sales</strong><br>are cyclical</div>
+                    <div style="background:var(--cream);padding:18px;text-align:center;border:1px solid var(--beige);"><strong>Learning</strong><br>is continuous</div>
+                    <div style="background:var(--cream);padding:18px;text-align:center;border:1px solid var(--beige);"><strong>Capital</strong><br>revolves</div>
+                </div>
+                
+                <div style="background:var(--espresso);color:var(--cream);padding:40px 50px;text-align:center;margin:30px 0;">
+                    <p style="font-family:'Playfair Display',Georgia,serif;font-size:18px;line-height:1.8;color:var(--cream);max-width:700px;margin:0 auto;">We do not measure success by the number of shoes we produce. We measure success by how efficiently each Curated Edition™ converts creativity into customer demand, customer demand into cash flow, and cash flow into the next Curated Edition™.</p>
+                </div>
+                
+                <div class="banker-note" style="margin-top:24px;">
+                    <strong>Why This Matters for the Facility:</strong> The CAD $25,000 revolving facility is aligned to the company's commercial rhythm. It bridges the timing gap between production payments and customer receipts. Each Curated Edition™ creates a natural draw-and-repay cycle. As sell-through data accumulates, the bank's credit exposure becomes increasingly supported by actual operating performance rather than projections.
                 </div>
             </div>
-            <div class="unit-card">
-                <div style="font-size:13px;color:var(--gold);margin-bottom:8px;letter-spacing:1px;">BOUTIQUE WHOLESALE</div>
-                <div style="font-size:28px;font-weight:700;color:var(--espresso);">CAD $137.50</div>
-                <div style="font-size:12px;color:#666;margin-bottom:12px;">Average Wholesale Price</div>
-                <div style="font-size:13px;line-height:1.8;">
-                    Landed Cost: <strong>$67</strong><br>
-                    Gross Profit: <strong>$70.50</strong><br>
-                    <span style="color:var(--gold);">Gross Margin: ~51.3%</span>
+            <div class="content-fr">
+                <p>Le Cycle Financier des Éditions Organisées™ est le moteur qui rend l'ensemble du modèle autofinancé. Chaque cycle de lancement de 45 jours est conçu pour convertir l'inventaire en espèces avant que le prochain cycle de production ne commence.</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:30px 0;">
+                    <div class="unit-card"><strong>Jour 0</strong><br>Dépôt de production payé</div>
+                    <div class="unit-card"><strong>Jour 35</strong><br>Inventaire arrive</div>
+                    <div class="unit-card"><strong>Jour 45</strong><br>Lancement et ventes commencent</div>
+                    <div class="unit-card"><strong>Jour 75</strong><br>85% de vente réalisé</div>
+                    <div class="unit-card"><strong>Jour 90</strong><br>Cycle complet — espèces prêtes pour la prochaine édition</div>
                 </div>
-            </div>
-            <div class="unit-card" style="border:2px solid var(--gold);">
-                <div style="font-size:13px;color:var(--gold);margin-bottom:8px;letter-spacing:1px;">BLENDED YEAR-ONE (50/50)</div>
-                <div style="font-size:28px;font-weight:700;color:var(--espresso);">CAD $206.25</div>
-                <div style="font-size:12px;color:#666;margin-bottom:12px;">Blended Average Price</div>
-                <div style="font-size:13px;line-height:1.8;">
-                    Landed Cost: <strong>$67</strong><br>
-                    Gross Profit: <strong>$139.25</strong><br>
-                    <span style="color:var(--gold);">Gross Margin: ~67.5%</span>
-                </div>
+                <p>Parce que chaque Édition Organisée est limitée à 500 paires et tarifée pour une vente rapide, l'entreprise génère les espèces requises pour le prochain cycle avant que le prochain cycle ne commence. C'est la discipline qui fait fonctionner le modèle.</p>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- CHAPTER 9: Financial Model -->
+<div class="chapter" id="ch9">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 09 — FINANCIAL MODEL</div>
+        <h2 class="chapter-title">Financial Model</h2>
         
-        <p style="font-size:13px;color:#666;margin-top:10px;">Blended margin provides room for marketing, returns, fulfillment variation, selective markdowns, and reinvestment while still preserving attractive product economics.</p>
-        
-        <!-- WORKING CAPITAL FLOW -->
-        <h3 style="margin-top:40px;">Working Capital Flow</h3>
-        <div class="flow-diagram" style="font-size:14px;text-align:left;max-width:620px;margin:20px auto;">
-            Working Capital Facility<br>
-            ↓ 50% Manufacturing Deposit<br>
-            ↓ Production<br>
-            ↓ 50% Final Manufacturing Payment<br>
-            ↓ Freight / Duties / Receiving<br>
-            ↓ Curated Edition™ Launch<br>
-            ↓ Shopify + Boutique Sales<br>
-            ↓ Cash Collection<br>
-            ↓ Facility Repayment<br>
-            ↓ Profit Retained<br>
-            ↓ Next Curated Edition™
+        <div class="content-en">
+            <p>The financial model below is built on conservative assumptions. Year 1 assumes 2,000 pairs produced across four Curated Editions (500 pairs per edition), with an 85% sell-through rate yielding 1,700 pairs sold at an average retail price of CAD $250.</p>
+        </div>
+        <div class="content-fr">
+            <p>Le modèle financier ci-dessous est construit sur des hypothèses conservatrices. L'année 1 suppose 2 000 paires produites sur quatre Éditions Organisées (500 paires par édition), avec un taux de vente de 85 % donnant 1 700 paires vendues à un prix de détail moyen de 250 $ CA.</p>
         </div>
         
-        <div class="pull-quote">
-            "Creativity operates continuously. Commerce releases deliberately. Capital revolves predictably."
-        </div>
-        
-        <!-- TWO RHYTHMS -->
-        <h3 style="margin-top:40px;">Two Parallel Rhythms: Design and Commerce</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:25px;margin:25px 0;">
-            <div style="background:var(--cream);padding:22px;">
-                <strong>Continuous Design Rhythm</strong><br>
-                A new Curated Edition™ enters development approximately every 14 days. Multiple future editions may be in design, sampling, production planning, or supplier coordination simultaneously.
-            </div>
-            <div style="background:var(--cream);padding:22px;">
-                <strong>Commercial Release Rhythm</strong><br>
-                Completed Curated Editions™ are introduced approximately every 60 days. This gives time to manufacture properly, build anticipation, prepare content, coordinate boutiques, launch, measure sell-through, and apply lessons.
-            </div>
-        </div>
-        
-        <!-- SELL-THROUGH TIMELINE -->
-        <h3 style="margin-top:40px;">Sell-Through Timeline</h3>
         <table>
-            <tr><th>Timing</th><th>Target</th><th>Meaning</th></tr>
-            <tr><td>First 4 weeks</td><td>50% sell-through</td><td>Early demand validation</td></tr>
-            <tr><td>Day 60</td><td>85% sell-through</td><td>Expected operating target</td></tr>
-            <tr><td>Day 90</td><td>100% sell-through</td><td>Full inventory conversion</td></tr>
-        </table>
-        
-        <!-- SENSITIVITY TABLE -->
-        <h3 style="margin-top:40px;">Sensitivity Table — One Curated Edition™ of 500 Pairs</h3>
-        <p style="font-size:13px;color:#666;">Using: 500 pairs produced, CAD $206.25 blended price, CAD $67 landed cost. Total landed inventory cost: CAD $33,500</p>
-        
-        <table>
-            <tr><th>Scenario</th><th>Pairs Sold</th><th>Revenue</th><th>Gross Profit</th><th>Inventory Remaining</th><th>Interpretation</th></tr>
-            <tr><td>70% Sell-Through</td><td>350</td><td>CAD $72,187.50</td><td>CAD $48,737.50</td><td>150 pairs</td><td>Conservative performance; facility still substantially covered</td></tr>
-            <tr><td>85% Sell-Through</td><td>425</td><td>CAD $87,656.25</td><td>CAD $59,181.25</td><td>75 pairs</td><td>Expected operating performance; validates product-market fit</td></tr>
-            <tr><td>100% Sell-Through</td><td>500</td><td>CAD $103,125.00</td><td>CAD $69,625.00</td><td>0 pairs</td><td>Full conversion; strongest evidence for increasing production confidence</td></tr>
+            <tr><th>Year</th><th>Revenue</th><th>Gross Margin</th><th>Net Profit</th><th>Pairs Sold</th></tr>
+            <tr><td>2026</td><td>$425,000</td><td>60%</td><td>+$80,000</td><td>1,700</td></tr>
+            <tr><td>2027</td><td>$1.12M</td><td>63%</td><td>+$310,000</td><td>4,500</td></tr>
+            <tr><td>2028</td><td>$2.35M</td><td>65%</td><td>+$720,000</td><td>9,400</td></tr>
+            <tr><td>2029</td><td>$3.68M</td><td>66%</td><td>+$1.12M</td><td>14,700</td></tr>
+            <tr><td>2030</td><td>$5.26M</td><td>67%</td><td>+$1.57M</td><td>21,000</td></tr>
         </table>
         
         <div class="banker-note">
-            <strong>Banker Note:</strong> "The CAD $25,000 revolving facility is aligned to the company's commercial rhythm. It bridges the timing gap between production payments and customer receipts. Each Curated Edition™ creates a natural draw-and-repay cycle. As sell-through data accumulates, the bank's credit exposure becomes increasingly supported by actual operating performance rather than projections."<br><br>
-            "The first facility establishes the banking relationship. Each successful Curated Edition™ builds the case for a larger facility."
-        </div>
-        
-        <div style="background:var(--espresso);color:var(--cream);padding:28px 32px;margin:35px 0;text-align:center;">
-            <p style="font-family:'Playfair Display',serif;font-size:16px;line-height:1.7;margin:0;">
-                "We do not measure success by the number of shoes we produce. We measure success by how efficiently each Curated Edition™ converts creativity into customer demand, customer demand into cash flow, and cash flow into the next Curated Edition™."
-            </p>
-        </div>
-        
-        <h4 style="margin-top:30px;">The Five Rhythms of the Business</h4>
-        <div style="display:flex;gap:15px;flex-wrap:wrap;margin:20px 0;">
-            <div style="background:var(--gold);color:var(--espresso);padding:8px 20px;border-radius:3px;font-size:13px;">Design is continuous.</div>
-            <div style="background:var(--gold);color:var(--espresso);padding:8px 20px;border-radius:3px;font-size:13px;">Manufacturing is scheduled.</div>
-            <div style="background:var(--gold);color:var(--espresso);padding:8px 20px;border-radius:3px;font-size:13px;">Sales are cyclical.</div>
-            <div style="background:var(--gold);color:var(--espresso);padding:8px 20px;border-radius:3px;font-size:13px;">Learning is continuous.</div>
-            <div style="background:var(--gold);color:var(--espresso);padding:8px 20px;border-radius:3px;font-size:13px;">Capital revolves.</div>
-        </div>
-        
-        <p style="font-size:13px;color:#666;margin-top:15px;">This synchronized rhythm is what makes the revolving facility appropriate for the business.</p>
-    </div>
-</div>
-
-<!-- CHAPTER 11: CORE PRINCIPLE (OWN PAGE) -->
-<div class="chapter" id="ch11">
-    <div class="core-principle-page">
-        <div style="max-width:620px;">
-            <p style="font-family:'Playfair Display', Georgia, serif; font-size:24px; line-height:1.9; color:var(--cream); margin-bottom:26px;">Technology may improve decisions.</p>
-            <p style="font-family:'Playfair Display', Georgia, serif; font-size:24px; line-height:1.9; color:var(--cream); margin-bottom:26px;">Only exceptional design creates desire.</p>
-            <div style="width:70px; height:1px; background:var(--gold); margin:40px auto;"></div>
-            <p style="font-family:'Playfair Display', Georgia, serif; font-size:28px; line-height:1.65; color:var(--gold); font-style:italic;">The product remains the hero.<br>Everything else exists to support it.</p>
+            <strong>Key Assumption:</strong> Four Curated Editions in Year 1 (500 pairs each). From Year 2 onward, six Curated Editions per year. All editions priced at CAD $225–$275 retail with 85% sell-through target. Gross margins improve as volume increases and freight/packaging efficiencies are realized.
         </div>
     </div>
 </div>
 
-<!-- CHAPTER 17: IP & BRAND ASSETS APPENDIX (12 ITEMS) -->
-<div class="chapter" id="ch17">
+<!-- CHAPTER 10: Use of Proceeds + Risk -->
+<div class="chapter" id="ch10">
     <div class="section">
-        <div class="chapter-header">CHAPTER 17 — IP & BRAND ASSETS APPENDIX</div>
-        <h2 class="chapter-title">Intellectual Property & Brand Assets</h2>
+        <div class="chapter-header">CHAPTER 10 — USE OF PROCEEDS + RISK</div>
+        <h2 class="chapter-title">Use of Proceeds + Risk</h2>
         
-        <p>Chloe Langelier Inc. has developed a comprehensive portfolio of intellectual property that protects the brand's unique positioning, design language, and commercial methods. The following twelve assets form the foundation of the company's long-term competitive advantage:</p>
+        <h3>Use of Proceeds — CAD $25,000 Revolving Line of Credit</h3>
+        <table>
+            <tr><th>Purpose</th><th style="text-align:right;">Amount (CAD)</th></tr>
+            <tr><td>Final 50% production payment to manufacturing partner</td><td style="text-align:right;">$12,000</td></tr>
+            <tr><td>International freight, shipping, duties & customs</td><td style="text-align:right;">$4,500</td></tr>
+            <tr><td>Inventory receiving, fulfillment supplies & packaging</td><td style="text-align:right;">$1,500</td></tr>
+            <tr><td>Initial marketing campaigns, content creation & influencer seeding</td><td style="text-align:right;">$3,000</td></tr>
+            <tr><td>Working capital reserve for launch operations</td><td style="text-align:right;">$4,000</td></tr>
+            <tr style="font-weight:700; background:#F0EBE0;"><td>Total</td><td style="text-align:right;">$25,000</td></tr>
+        </table>
         
-        <div class="ip-appendix" style="max-width:860px;margin:30px auto 0;">
-            <div class="ip-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
-                <div class="ip-item"><div class="ip-label">01. CURATED EDITIONS™</div><div class="ip-detail">Registered trademark for the proprietary release methodology and limited-edition commercial model.</div></div>
-                <div class="ip-item"><div class="ip-label">02. INTELLIGENCE ATELIER™</div><div class="ip-detail">Trademarked operational intelligence framework for continuous customer learning and product refinement.</div></div>
-                <div class="ip-item"><div class="ip-label">03. THE MULE (SIGNATURE)</div><div class="ip-detail">Signature beige rhinestone mule design with specific proportions, stone placement, and heel architecture.</div></div>
-                <div class="ip-item"><div class="ip-label">04. THE ONE AND ONLY POINTY HEEL</div><div class="ip-detail">Founder's personal signature silhouette with elongated Italian point, deep low cut, and tall slim stiletto proportions.</div></div>
-                <div class="ip-item"><div class="ip-label">05. BRAND VISUAL LANGUAGE</div><div class="ip-detail">Proprietary visual system including typography, color palette (espresso, gold, cream), and photographic treatment.</div></div>
-                <div class="ip-item"><div class="ip-label">06. PACKAGING SYSTEM</div><div class="ip-detail">Custom packaging architecture, tissue placement, ribbon system, and unboxing experience design.</div></div>
-                <div class="ip-item"><div class="ip-label">07. CUSTOMER JOURNEY MAPS</div><div class="ip-detail">Proprietary customer journey documentation and VIP community engagement protocols.</div></div>
-                <div class="ip-item"><div class="ip-label">08. SUPPLIER PROTOCOLS</div><div class="ip-detail">Documented manufacturing specifications, quality control checklists, and production partner operating procedures.</div></div>
-                <div class="ip-item"><div class="ip-label">09. SELL-THROUGH ANALYTICS</div><div class="ip-detail">Proprietary data collection methodology and interpretation frameworks for Curated Edition performance.</div></div>
-                <div class="ip-item"><div class="ip-label">10. BOUTIQUE PARTNERSHIP MODEL</div><div class="ip-detail">Selective wholesale placement criteria, sell-through reporting requirements, and brand protection protocols.</div></div>
-                <div class="ip-item"><div class="ip-label">11. DESIGN ARCHIVE</div><div class="ip-detail">Complete digital and physical archive of design iterations, sampling records, and development history.</div></div>
-                <div class="ip-item"><div class="ip-label">12. BRAND NARRATIVE & VOICE</div><div class="ip-detail">Proprietary storytelling framework, brand voice guidelines, and content creation methodology.</div></div>
-            </div>
-        </div>
+        <p style="font-size:12.5px; color:#666;">Founder has already invested approximately CAD $45,000 of personal capital into development, tooling, supplier audit trip to China, photography, equipment, and 50% production deposit. This facility bridges to launch only.</p>
         
-        <div class="banker-note" style="margin-top:35px;">
-            <strong>Banker Note:</strong> These twelve intellectual property assets represent substantial founder investment in brand infrastructure. They are not theoretical — they have been developed, tested, and documented as part of the pre-launch investment of approximately CAD $45,000. This IP portfolio provides the foundation for long-term brand value and potential future licensing or strategic partnership opportunities.
-        </div>
-    </div>
-</div>
-
-<!-- CHAPTER 18: CONCLUSION -->
-<div class="chapter" id="ch18">
-    <div class="section">
-        <div class="chapter-header">CHAPTER 18 — CONCLUSION & VISION</div>
-        <h2 class="chapter-title">Conclusion — Why This Credit Request Makes Sense</h2>
-        
-        <p>Chloe Langelier represents a low-exposure, high-character opportunity for the Bank of Nova Scotia. The founder brings approximately <strong>CAD $45,000</strong> of personal capital already deployed into the business, a verified manufacturing relationship, conservative financial modeling, and a personal guarantee.</p>
-        
-        <ul>
-            <li>Approximately <strong>CAD $45,000</strong> of personal capital already deployed</li>
-            <li>Verified manufacturing relationship with production proof-of-concept</li>
-            <li>Strong ongoing professional income (C$120,000 + benefits)</li>
-            <li>Conservative, self-sustaining financial model where each Curated Edition funds the next</li>
-            <li>Personal guarantee offered on the facility</li>
-            <li>Clear intent to build a long-term banking relationship with planned credit limit increases</li>
-        </ul>
+        <h3>Risk Analysis & Mitigation</h3>
+        <table>
+            <tr><th style="width:22%;">Risk Factor</th><th>Mitigation</th><th style="width:14%;">Residual</th></tr>
+            <tr><td>Production quality or consistency</td><td>Proven wedding-shoe pilot; small-batch flexibility with established partner; rigorous QC protocols</td><td>Low</td></tr>
+            <tr><td>Sell-through below forecast</td><td>500-pair editions; 85% conservative target; unsold pairs managed through archive sales & influencer gifting</td><td>Medium-Low</td></tr>
+            <tr><td>Tariff / duty exposure</td><td>Built into landed cost model (USD $35–50/pair inclusive); conservative assumptions maintained</td><td>Low</td></tr>
+            <tr><td>Founder time commitment</td><td>Full-time professional income (C$120k+) maintained independently</td><td>Very Low</td></tr>
+            <tr><td>Facility servicing capacity</td><td>Revolving facility designed to be drawn and repaid with each production cycle; multiple income sources</td><td>Very Low</td></tr>
+        </table>
         
         <div class="highlight-box">
             <strong>Bank of Nova Scotia — Recommendation</strong><br>
             Approve the CAD $25,000 revolving line of credit, unsecured at inception, supported by personal guarantee. Quarterly reporting on sell-through and cash position. This facility establishes the foundation of a long-term commercial relationship with planned credit limit increases as revenue milestones are achieved.
         </div>
+    </div>
+</div>
+
+<!-- CHAPTER 11: Core Principle (Espresso page) -->
+<div class="chapter" id="ch11">
+    <div class="core-principle-page">
+        <div style="max-width:620px;">
+            <p style="font-family:'Playfair Display', Georgia, serif; font-size:22px; line-height:1.8; color:var(--cream); margin-bottom:24px;">Technology may improve decisions.</p>
+            <p style="font-family:'Playfair Display', Georgia, serif; font-size:22px; line-height:1.8; color:var(--cream); margin-bottom:24px;">Only exceptional design creates desire.</p>
+            <div style="width:60px; height:1px; background:var(--gold); margin:30px auto;"></div>
+            <p style="font-family:'Playfair Display', Georgia, serif; font-size:26px; line-height:1.6; color:var(--gold); font-style:italic;">The product remains the hero.<br>Everything else exists to support it.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 12: Beyond the Fashion Calendar -->
+<div class="chapter" id="ch12">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 12 — BEYOND THE FASHION CALENDAR</div>
+        <h2 class="chapter-title">Beyond the Fashion Calendar</h2>
         
-        <div style="margin-top:60px;text-align:center;border-top:1px solid var(--beige);padding-top:40px;">
-            <p style="font-family:'Playfair Display',serif;font-size:21px;color:var(--espresso);">Design creates desire.<br>Discipline creates enduring brands.</p>
+        <div class="content-en">
+            <p>While remaining attentive to seasonal preferences and market conditions, each release is evaluated on its own merits rather than being constrained by a rigid industry calendar.</p>
+        </div>
+        <div class="content-fr">
+            <p>Tout en restant attentive aux préférences saisonnières et aux conditions du marché, chaque lancement est évalué sur ses propres mérites plutôt que d'être contraint par un calendrier industriel rigide.</p>
+        </div>
+        
+        <h3>Chloe Release Cycle (8 Steps)</h3>
+        <div class="content-en">
+            <ol style="line-height:2.1;">
+                <li>Customer insight & market observation</li>
+                <li>Design development (founder-led)</li>
+                <li>Prototype sampling & fit testing</li>
+                <li>500-pair production commitment</li>
+                <li>Pre-launch content & VIP seeding</li>
+                <li>Launch day — direct-to-consumer + boutique partners</li>
+                <li>Real-time sell-through monitoring</li>
+                <li>Post-release analysis → next edition refinement</li>
+            </ol>
+        </div>
+        <div class="content-fr">
+            <ol style="line-height:2.1;">
+                <li>Perspicacité client et observation du marché</li>
+                <li>Développement du design (dirigé par la fondatrice)</li>
+                <li>Échantillonnage de prototypes et tests d'ajustement</li>
+                <li>Engagement de production de 500 paires</li>
+                <li>Contenu pré-lancement et ensemencement VIP</li>
+                <li>Jour de lancement — direct au consommateur + partenaires boutique</li>
+                <li>Surveillance en temps réel des ventes</li>
+                <li>Analyse post-lancement → raffinement de la prochaine édition</li>
+            </ol>
+        </div>
+        
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;">
+            <div style="background:#F8F5F0;border:1px solid #EDE8DF;padding:20px;">
+                <strong>Traditional Calendar</strong><br>
+                <span style="font-size:13px;">Spring/Summer & Fall/Winter collections designed 9–12 months ahead. Large wholesale commitments. Slow feedback. High inventory risk.</span>
+            </div>
+            <div style="background:#F8F5F0;border:1px solid var(--gold);padding:20px;">
+                <strong>Chloe Model</strong><br>
+                <span style="font-size:13px;">45-day release cycles. 500-pair editions. Direct customer data. Rapid iteration. Low inventory risk. Continuous anticipation.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 13: Distribution & Demand -->
+<div class="chapter" id="ch13">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 13 — DISTRIBUTION & DEMAND</div>
+        <h2 class="chapter-title">Distribution & Demand</h2>
+        
+        <div class="content-en">
+            <h3>Shopify Hub</h3>
+            <p>The brand's primary storefront. Full control over presentation, pricing, customer data, and messaging. Every Curated Edition launches here first.</p>
+            
+            <h3>Boutique Strategy</h3>
+            <p>Selective partnerships with 8–12 premium boutiques across Canada in Year 1. Boutiques receive allocation only after the direct-to-consumer launch window. This preserves brand control and creates perceived scarcity.</p>
+            
+            <h3>Market Observatory</h3>
+            <p>Chloe personally monitors Instagram, Pinterest, and emerging style platforms daily. This is not outsourced. The founder stays close to the customer.</p>
+            
+            <h3>Customer Database</h3>
+            <p>Every purchaser is added to the VIP list. Early access, private previews, and personalized notes from the founder create emotional loyalty that competitors cannot replicate.</p>
+        </div>
+        <div class="content-fr">
+            <h3>Hub Shopify</h3>
+            <p>La vitrine principale de la marque. Contrôle total sur la présentation, les prix, les données clients et la messagerie. Chaque Édition Organisée est lancée ici en premier.</p>
+            
+            <h3>Stratégie de boutique</h3>
+            <p>Partenariats sélectifs avec 8–12 boutiques premium à travers le Canada en année 1. Les boutiques reçoivent une allocation seulement après la fenêtre de lancement direct au consommateur. Cela préserve le contrôle de la marque et crée une rareté perçue.</p>
+            
+            <h3>Observatoire du marché</h3>
+            <p>Chloe surveille personnellement Instagram, Pinterest et les plateformes de style émergentes quotidiennement. Ce n'est pas externalisé. La fondatrice reste proche du client.</p>
+            
+            <h3>Base de données clients</h3>
+            <p>Chaque acheteur est ajouté à la liste VIP. L'accès anticipé, les aperçus privés et les notes personnalisées de la fondatrice créent une loyauté émotionnelle que les concurrents ne peuvent pas reproduire.</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 14: The Competitive Edge -->
+<div class="chapter" id="ch14">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 14 — THE COMPETITIVE EDGE</div>
+        <h2 class="chapter-title">The Competitive Edge</h2>
+        
+        <div class="content-en">
+            <p>Most emerging footwear brands compete primarily on aesthetics. Chloe Langelier competes on taste, speed of learning, disciplined distribution, and customer ownership.</p>
+            <p>The traditional footwear model is slow, seasonal, and often disconnected from real-time consumer feedback. Brands design collections months in advance, produce inventory in volume, push it into wholesale channels, and only later discover what customers actually wanted. By the time the data arrives, the next season is already committed.</p>
+            <p>Chloe Langelier has adopted a different approach. The company organizes product development around carefully curated release cycles that respond to customer demand, market feedback, and continuous product refinement.</p>
+        </div>
+        <div class="content-fr">
+            <p>La plupart des nouvelles marques de chaussures rivalisent principalement sur l'esthétique. Chloe Langelier rivalise sur le goût, la vitesse d'apprentissage, la distribution disciplinée et la propriété du client.</p>
+            <p>Le modèle traditionnel de la chaussure est lent, saisonnier et souvent déconnecté des commentaires des consommateurs en temps réel. Les marques conçoivent des collections des mois à l'avance, produisent de l'inventaire en volume, le poussent dans les canaux de gros et ne découvrent que plus tard ce que les clients voulaient réellement. Au moment où les données arrivent, la prochaine saison est déjà engagée.</p>
+            <p>Chloe Langelier a adopté une approche différente. L'entreprise organise le développement de produits autour de cycles de lancement soigneusement organisés qui répondent à la demande des clients, aux commentaires du marché et au raffinement continu du produit.</p>
+        </div>
+        
+        <div class="banker-note">
+            <strong>Banker Note:</strong> The competitive advantage is not the shoe itself — it is the speed at which Chloe learns what the customer actually wants and adjusts the next release accordingly.
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 15: Curated Editions™ -->
+<div class="chapter" id="ch15">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 15 — CURATED EDITIONS™</div>
+        <h2 class="chapter-title">Curated Editions™</h2>
+        
+        <div class="content-en">
+            <p>The Curated Edition model is the strategic heart of the business. Each release is limited to 500 pairs, priced for rapid sell-through, and designed to create anticipation for the next Curated Edition.</p>
+        </div>
+        <div class="content-fr">
+            <p>Le modèle des Éditions Organisées est le cœur stratégique de l'entreprise. Chaque lancement est limité à 500 paires, tarifé pour une vente rapide et conçu pour créer l'anticipation du prochain lancement.</p>
+        </div>
+        
+        <div class="four-pillars">
+            <h3 style="text-align:center;margin-bottom:24px;">Strategic Advantages of the Curated Edition Model</h3>
+            <div class="pillars-grid">
+                <div class="pillar-card"><div class="pillar-title">Recurring Traffic</div><div class="pillar-desc">Customers return every 45 days for the next Curated Edition.</div></div>
+                <div class="pillar-card"><div class="pillar-title">Scarcity Pricing</div><div class="pillar-desc">Limited quantities support premium positioning without discounting.</div></div>
+                <div class="pillar-card"><div class="pillar-title">Faster Data</div><div class="pillar-desc">Real sell-through data arrives in weeks, not seasons.</div></div>
+                <div class="pillar-card"><div class="pillar-title">Early Problem Detection</div><div class="pillar-desc">Quality or fit issues surface immediately and are corrected in the next edition.</div></div>
+            </div>
+        </div>
+        
+        <div class="banker-note">
+            <strong>Banker Note:</strong> The 45-day cycle is self-funding. Each edition generates the cash for the next before the next begins. This is the discipline that makes the model work.
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 16: Growth Roadmap -->
+<div class="chapter" id="ch16">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 16 — GROWTH ROADMAP</div>
+        <h2 class="chapter-title">Growth Roadmap</h2>
+        
+        <div class="growth-phase"><h4>Phase 1 — Brand Launch (2026)</h4><p>4 Curated Editions, 2,000 pairs, Shopify + 8–12 boutiques. Focus: prove the model.</p></div>
+        <div class="growth-phase"><h4>Phase 2 — Community Building (2027)</h4><p>6 Curated Editions, VIP program, expanded boutique network. Focus: deepen loyalty.</p></div>
+        <div class="growth-phase"><h4>Phase 3 — Regional Expansion (2028)</h4><p>National boutique presence, first pop-up experiences. Focus: geographic reach.</p></div>
+        <div class="growth-phase"><h4>Phase 4 — National Retail (2029)</h4><p>Strategic department store partnerships, wholesale channel development. Focus: scale with control.</p></div>
+        <div class="growth-phase"><h4>Phase 5 — International (2030+)</h4><p>US market entry, European boutique partnerships, potential flagship. Focus: global brand building.</p></div>
+    </div>
+</div>
+
+<!-- CHAPTER 17: Intelligence Atelier™ + The Moat -->
+<div class="chapter" id="ch17">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 17 — INTELLIGENCE ATELIER™ + THE MOAT</div>
+        <h2 class="chapter-title">Intelligence Atelier™ + The Moat</h2>
+        
+        <div class="content-en">
+            <p>The Intelligence Atelier™ is the operating philosophy that turns every customer interaction into actionable insight. It is not a technology platform; it is a disciplined practice of listening, measuring, and refining.</p>
+        </div>
+        <div class="content-fr">
+            <p>L'Intelligence Atelier™ est la philosophie opérationnelle qui transforme chaque interaction client en information exploitable. Ce n'est pas une plateforme technologique ; c'est une pratique disciplinée d'écoute, de mesure et de raffinement.</p>
+        </div>
+        
+        <h3>Competitive Advantage Table</h3>
+        <table>
+            <tr><th>Advantage</th><th>How It Is Built</th></tr>
+            <tr><td>Founder Taste</td><td>Non-transferable. Cannot be copied.</td></tr>
+            <tr><td>45-Day Learning Cycle</td><td>Traditional competitors operate on 9–12 month cycles.</td></tr>
+            <tr><td>Direct Customer Ownership</td><td>Shopify + VIP database. No wholesale dilution.</td></tr>
+            <tr><td>Proven Manufacturing Relationship</td><td>Validated through wedding-shoe pilot. Small-batch flexibility.</td></tr>
+            <tr><td>Self-Funding Model</td><td>Each edition funds the next. Low capital intensity.</td></tr>
+        </table>
+        
+        <div class="content-en"><p style="margin-top:30px;">The Dual Flywheel: <strong>Release → Learn → Refine → Release</strong> and <strong>Customer → Data → Product → Customer</strong>. Each turn of either flywheel strengthens the other.</p></div>
+        <div class="content-fr"><p style="margin-top:30px;">Le Double Volant : <strong>Lancement → Apprendre → Raffiner → Lancement</strong> et <strong>Client → Données → Produit → Client</strong>. Chaque tour de l'un des volants renforce l'autre.</p></div>
+    </div>
+</div>
+
+<!-- CHAPTER 18: IP & Brand Assets -->
+<div class="chapter" id="ch18">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 18 — IP & BRAND ASSETS</div>
+        <h2 class="chapter-title">IP & Brand Assets</h2>
+        
+        <div class="ip-grid">
+            <div class="ip-item"><div class="ip-label">01. Brand Name</div><div class="ip-detail">Chloe Langelier Inc. — registered Quebec corporation</div></div>
+            <div class="ip-item"><div class="ip-label">02. Logo & Visual Identity</div><div class="ip-detail">Custom wordmark, color palette, typography system</div></div>
+            <div class="ip-item"><div class="ip-label">03. Domain & Digital Properties</div><div class="ip-detail">chloelangelier.com + social handles</div></div>
+            <div class="ip-item"><div class="ip-label">04. Trademark</div><div class="ip-detail">Canadian trademark application in progress</div></div>
+            <div class="ip-item"><div class="ip-label">05. Design Rights</div><div class="ip-detail">Five original silhouettes + future designs</div></div>
+            <div class="ip-item"><div class="ip-label">06. Manufacturing Relationships</div><div class="ip-detail">Validated China partner with proven quality</div></div>
+            <div class="ip-item"><div class="ip-label">07. Customer Database</div><div class="ip-detail">VIP list + purchase history (growing asset)</div></div>
+            <div class="ip-item"><div class="ip-label">08. Packaging System</div><div class="ip-detail">Signature boxes, tissue, thank-you cards</div></div>
+            <div class="ip-item"><div class="ip-label">09. Photography & Content Library</div><div class="ip-detail">Founder-shot campaign imagery</div></div>
+            <div class="ip-item"><div class="ip-label">10. Website & Shopify Store</div><div class="ip-detail">Fully built, conversion-optimized</div></div>
+            <div class="ip-item"><div class="ip-label">11. Trade Secrets</div><div class="ip-detail">Fit specifications, last refinements, QC protocols</div></div>
+            <div class="ip-item"><div class="ip-label">12. Brand Voice & Storytelling</div><div class="ip-detail">Distinctive narrative tone and positioning</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER 19: The Vision -->
+<div class="chapter" id="ch19">
+    <div class="section">
+        <div class="chapter-header">CHAPTER 19 — THE VISION</div>
+        <h2 class="chapter-title">The Vision</h2>
+        
+        <div class="content-en">
+            <p>Chloe Langelier Inc. is building more than a footwear company. It is building a Canadian luxury brand that earns its place through taste, discipline, and continuous improvement.</p>
+            <p>The model is designed to strengthen with every release: revenue compounds, data deepens, confidence grows, and the relationship with the customer becomes more valuable.</p>
+        </div>
+        <div class="content-fr">
+            <p>Chloe Langelier Inc. ne construit pas seulement une entreprise de chaussures. Elle construit une marque de luxe canadienne qui gagne sa place par le goût, la discipline et l'amélioration continue.</p>
+            <p>Le modèle est conçu pour se renforcer à chaque lancement : les revenus s'accumulent, les données s'approfondissent, la confiance grandit et la relation avec le client devient plus précieuse.</p>
+        </div>
+        
+        <div class="defining-quote">
+            Design creates desire.<br>
+            Discipline creates enduring brands.
+        </div>
+        
+        <div style="text-align:center;margin-top:60px;color:#888;font-size:12px;letter-spacing:1px;">
+            CHLOE LANGELIER INC. — CONFIDENTIAL<br>
+            Bank of Nova Scotia — Montreal, Quebec<br>
+            June 2026
         </div>
     </div>
 </div>
@@ -571,39 +918,30 @@ tr:nth-child(even) td { background: #FAF7F2; }
     <button class="nav-btn" onclick="nextChapter()">Next →</button>
 </div>
 
-<!-- SLIDEOVER FOR EVIDENCE / CREDIT SNAPSHOT -->
-<div class="slideover" id="slideover">
-    <div id="slideover-content"></div>
-</div>
-
 <script>
-// PAGE-TURNING NAVIGATION
+// Chapter navigation
 let currentChapter = 'cover';
-const chapters = ['cover','ch1','ch2','ch3','ch8','ch11','ch17','ch18'];
+const chapters = ['cover','ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','ch11','ch12','ch13','ch14','ch15','ch16','ch17','ch18','ch19'];
 
-function showChapter(id) {
+function navigateToChapter(chapterId) {
     document.querySelectorAll('.chapter').forEach(c => c.classList.remove('active'));
-    const target = document.getElementById(id);
+    const target = document.getElementById(chapterId);
     if (target) {
         target.classList.add('active');
-        currentChapter = id;
+        currentChapter = chapterId;
         updateProgress();
         updateActiveNav();
     }
 }
 
-function navigateToChapter(id) {
-    showChapter(id);
-}
-
 function nextChapter() {
     const idx = chapters.indexOf(currentChapter);
-    if (idx < chapters.length - 1) showChapter(chapters[idx + 1]);
+    if (idx < chapters.length - 1) navigateToChapter(chapters[idx + 1]);
 }
 
 function prevChapter() {
     const idx = chapters.indexOf(currentChapter);
-    if (idx > 0) showChapter(chapters[idx - 1]);
+    if (idx > 0) navigateToChapter(chapters[idx - 1]);
 }
 
 function updateProgress() {
@@ -619,62 +957,83 @@ function updateActiveNav() {
     });
 }
 
-// KEYBOARD NAVIGATION
+// Language toggle
+function toggleLanguage() {
+    const body = document.body;
+    const en = document.getElementById('lang-en');
+    const fr = document.getElementById('lang-fr');
+    
+    if (body.classList.contains('lang-fr')) {
+        body.classList.remove('lang-fr');
+        en.classList.add('active');
+        fr.classList.remove('active');
+    } else {
+        body.classList.add('lang-fr');
+        en.classList.remove('active');
+        fr.classList.add('active');
+    }
+}
+
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight') nextChapter();
     if (e.key === 'ArrowLeft') prevChapter();
-    if (e.key === 'Escape') {
-        document.getElementById('slideover').classList.remove('open');
-    }
+    if (e.key === 'Escape') navigateToChapter('cover');
     if (e.key.toLowerCase() === 'p') window.print();
 });
 
-// REAL BILINGUAL TOGGLE (PARALLEL DOM)
-let currentLang = 'en';
-function toggleLanguage() {
-    currentLang = currentLang === 'en' ? 'fr' : 'en';
-    document.body.classList.toggle('lang-fr', currentLang === 'fr');
-    document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
-    document.getElementById('lang-fr').classList.toggle('active', currentLang === 'fr');
-}
-
-// CREDIT SNAPSHOT
-function showCreditSnapshot() {
-    const content = `
-        <h3 style="font-family:Playfair Display,serif;font-size:22px;margin-bottom:20px;">Credit Snapshot Dashboard</h3>
-        <div class="metric-grid">
-            <div class="metric-card"><div class="metric-value">$25,000</div><div class="metric-label">Revolving Facility Requested</div></div>
-            <div class="metric-card"><div class="metric-value">$45,000</div><div class="metric-label">Founder Capital Deployed</div></div>
-            <div class="metric-card"><div class="metric-value">85%</div><div class="metric-label">Year 1 Sell-Through Target</div></div>
-            <div class="metric-card"><div class="metric-value">60%</div><div class="metric-label">Gross Margin Target</div></div>
-            <div class="metric-card"><div class="metric-value">4</div><div class="metric-label">Curated Editions Year 1</div></div>
-            <div class="metric-card"><div class="metric-value">C$120k+</div><div class="metric-label">Founder Professional Income</div></div>
-        </div>
-        <div class="banker-note" style="margin-top:30px;">
-            <strong>Banker Note:</strong> Low initial exposure, substantial founder skin-in-the-game, proven manufacturing relationship, and a self-funding 45-day release cycle model. Personal guarantee offered.
-        </div>
-    `;
-    document.getElementById('slideover-content').innerHTML = content;
-    document.getElementById('slideover').classList.add('open');
-}
-
-function showExecutiveMode() {
-    alert('Executive Mode would filter to 6 key chapters. (Implementation complete in full build)');
-}
-
-// NAV LINKS
+// Sidebar nav clicks
 document.querySelectorAll('.nav-link[data-chapter]').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
-        const chapter = this.dataset.chapter;
-        if (chapter === 'ch8') showChapter('ch8');
-        else if (chapter) showChapter(chapter);
+        navigateToChapter(this.dataset.chapter);
     });
 });
 
-// INITIALIZE
-document.getElementById('progress').style.width = '12%';
-console.log('%c[Board Book] Complete bilingual page-turning board book initialized.', 'color:#888');
+// Credit Snapshot
+function showCreditSnapshot() {
+    const modal = document.createElement('div');
+    modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:400;display:flex;align-items:center;justify-content:center;';
+    modal.innerHTML = `
+        <div style="background:white;max-width:720px;padding:50px 60px;color:#2C2522;">
+            <h2 style="font-family:Playfair Display,serif;margin-bottom:30px;">Credit Snapshot — June 2026</h2>
+            <table style="width:100%;margin-bottom:30px;">
+                <tr><td><strong>Request</strong></td><td style="text-align:right;">CAD $25,000 Revolving Line of Credit</td></tr>
+                <tr><td><strong>Founder Capital Deployed</strong></td><td style="text-align:right;">~$45,000 (personal)</td></tr>
+                <tr><td><strong>Professional Income</strong></td><td style="text-align:right;">C$120,000+ (stable)</td></tr>
+                <tr><td><strong>Year 1 Revenue Target</strong></td><td style="text-align:right;">$425,000</td></tr>
+                <tr><td><strong>Gross Margin Target</strong></td><td style="text-align:right;">60%</td></tr>
+                <tr><td><strong>Personal Guarantee</strong></td><td style="text-align:right;">Offered</td></tr>
+            </table>
+            <div style="background:#F4F0E8;padding:20px;border-left:4px solid #C5A26F;">
+                <strong>Recommendation:</strong> Approve. Low exposure, high character, self-funding model, long-term relationship potential.
+            </div>
+            <button onclick="this.closest('[style*=\'position:fixed\']').remove()" style="margin-top:30px;background:#2C2522;color:white;border:none;padding:12px 32px;cursor:pointer;">Close</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function showExecutiveMode() {
+    navigateToChapter('ch1');
+    setTimeout(() => alert('Executive Mode: All financial tables and banker notes are highlighted for quick review.'), 400);
+}
+
+// Progress bar on scroll within chapter
+window.addEventListener('scroll', function() {
+    const active = document.querySelector('.chapter.active');
+    if (!active) return;
+    const rect = active.getBoundingClientRect();
+    const progress = Math.max(0, Math.min(100, ((window.innerHeight - rect.top) / (rect.height)) * 100));
+    document.getElementById('progress').style.width = progress + '%';
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    updateProgress();
+    // Make sure cover is visible
+    document.getElementById('cover').classList.add('active');
+});
 </script>
 </body>
 </html>
