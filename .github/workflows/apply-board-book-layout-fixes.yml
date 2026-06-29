@@ -1,0 +1,247 @@
+name: Apply Board Book Layout Fixes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/apply-board-book-layout-fixes.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch-layout:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Patch Digital Board Book layout foundation
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          path = Path('docs/index.html')
+          text = path.read_text(encoding='utf-8')
+
+          audit = []
+          audit.append('Pre-patch file length: %d characters' % len(text))
+          audit.append('Chapter div count: %d' % text.count('class="chapter'))
+          audit.append('Curated Editions refs: %d' % text.count('Curated Edition'))
+
+          if '--sidebar-width:' not in text:
+              text = text.replace('    --sage: #8B9A7A;\n}', '    --sage: #8B9A7A;\n    --sidebar-width: 280px;\n    --page-max-width: 1040px;\n}')
+
+          patch_css = r'''
+
+/* === UX FOUNDATION PATCH v1: readable board-book layout, adjustable navigation, responsive print === */
+html { scroll-behavior: smooth; }
+body { min-height: 100vh; }
+.chapter {
+    margin-left: var(--sidebar-width);
+    width: calc(100vw - var(--sidebar-width));
+    transition: margin-left .25s ease, width .25s ease;
+}
+.chapter#cover {
+    margin-left: var(--sidebar-width);
+    width: calc(100vw - var(--sidebar-width));
+}
+.section {
+    max-width: var(--page-max-width);
+    padding: clamp(34px, 5vw, 72px) clamp(28px, 5vw, 76px);
+}
+.nav-sidebar {
+    width: var(--sidebar-width) !important;
+    box-shadow: 14px 0 40px rgba(44,37,34,.16);
+    transition: transform .25s ease;
+}
+.nav-sidebar::-webkit-scrollbar { width: 6px; }
+.nav-sidebar::-webkit-scrollbar-thumb { background: rgba(197,162,111,.45); border-radius: 999px; }
+.nav-collapsed .nav-sidebar { transform: translateX(calc(-1 * var(--sidebar-width))); }
+.nav-collapsed .chapter,
+.nav-collapsed .chapter#cover { margin-left: 0; width: 100vw; }
+.nav-toggle {
+    position: fixed;
+    top: 18px;
+    left: calc(var(--sidebar-width) + 18px);
+    z-index: 260;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(197,162,111,.55);
+    border-radius: 999px;
+    background: rgba(44,37,34,.92);
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    transition: left .25s ease, background .2s ease, color .2s ease, transform .2s ease;
+}
+.nav-toggle:hover { background: var(--gold); color: var(--espresso); transform: translateY(-1px); }
+.nav-collapsed .nav-toggle { left: 18px; }
+.top-bar {
+    right: clamp(18px, 3vw, 40px);
+    background: rgba(250,247,242,.82);
+    backdrop-filter: blur(8px);
+    padding: 7px 10px;
+    border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(44,37,34,.06);
+}
+.nav-actions { right: clamp(18px, 3vw, 42px); }
+.chapter table { display: block; max-width: 100%; overflow-x: auto; white-space: normal; }
+.chapter table tbody { display: table; width: 100%; }
+.metric-card, .unit-card, .banker-note, .highlight-box, .founder-narrative, .financial-cycle, .growth-phase { overflow-wrap: anywhere; }
+.flow-diagram { white-space: pre-wrap; overflow-x: auto; }
+
+@media (max-width: 1180px) {
+    :root { --sidebar-width: 250px; }
+    .section { max-width: 960px; }
+}
+
+@media (max-width: 1024px) {
+    .nav-sidebar {
+        width: min(84vw, 330px) !important;
+        transform: translateX(-105%);
+    }
+    body.nav-open .nav-sidebar { transform: translateX(0); }
+    .chapter,
+    .chapter#cover,
+    .nav-collapsed .chapter,
+    .nav-collapsed .chapter#cover { margin-left: 0; width: 100vw; }
+    .nav-toggle,
+    .nav-collapsed .nav-toggle { left: 16px; top: 16px; }
+    .top-bar { left: 70px; right: 14px; justify-content: flex-end; }
+    .section { padding: 82px 22px 46px; }
+    .cover h1, #cover h1 { font-size: clamp(38px, 11vw, 58px) !important; }
+    .metric-grid,
+    .pillars-grid,
+    .ip-grid,
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns:1fr 1fr 1fr"],
+    [style*="grid-template-columns:repeat(3"],
+    [style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr !important; }
+    .nav-actions { left: 16px; right: 16px; bottom: 16px; justify-content: space-between; }
+    .nav-btn { flex: 1; }
+    .slideover { width: min(92vw, 420px); }
+}
+
+@media print {
+    @page { size: letter; margin: 0.55in; }
+    body { background: #fff !important; font-size: 11pt; overflow: visible !important; }
+    .nav-sidebar, .top-bar, .nav-actions, .slideover, .progress-bar, .nav-toggle { display: none !important; }
+    .chapter, .chapter#cover {
+        display: block !important;
+        margin-left: 0 !important;
+        width: auto !important;
+        min-height: auto !important;
+        page-break-after: always;
+        animation: none !important;
+    }
+    .section { max-width: none !important; min-height: auto !important; padding: 0 !important; }
+    table { break-inside: avoid; }
+    .banker-note, .highlight-box, .metric-card, .unit-card, .founder-narrative, .financial-cycle, .growth-phase { break-inside: avoid; }
+}
+/* === END UX FOUNDATION PATCH v1 === */
+'''
+          if 'UX FOUNDATION PATCH v1' not in text:
+              text = text.replace('</style>', patch_css + '\n</style>', 1)
+
+          toggle_button = '<button class="nav-toggle" type="button" onclick="toggleSidebar()" aria-label="Toggle navigation" title="Toggle navigation">☰</button>\n'
+          if 'class="nav-toggle"' not in text:
+              text = text.replace('<div class="progress-bar" id="progress"></div>\n', '<div class="progress-bar" id="progress"></div>\n' + toggle_button, 1)
+
+          old_nav = """function navigateToChapter(chapterId) {
+    document.querySelectorAll('.chapter').forEach(c => c.classList.remove('active'));
+    const target = document.getElementById(chapterId);
+    if (target) {
+        target.classList.add('active');
+        currentChapter = chapterId;
+        updateProgress();
+        updateActiveNav();
+    }
+}"""
+          new_nav = """function navigateToChapter(chapterId) {
+    document.querySelectorAll('.chapter').forEach(c => c.classList.remove('active'));
+    const target = document.getElementById(chapterId);
+    if (target) {
+        target.classList.add('active');
+        currentChapter = chapterId;
+        updateProgress();
+        updateActiveNav();
+        closeMobileNav();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}"""
+          if old_nav in text:
+              text = text.replace(old_nav, new_nav, 1)
+
+          helpers = r'''
+function toggleSidebar() {
+    if (window.innerWidth <= 1024) {
+        document.body.classList.toggle('nav-open');
+    } else {
+        document.body.classList.toggle('nav-collapsed');
+    }
+}
+
+function closeMobileNav() {
+    if (window.innerWidth <= 1024) document.body.classList.remove('nav-open');
+}
+
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 1024) document.body.classList.remove('nav-open');
+});
+
+'''
+          if 'function toggleSidebar()' not in text:
+              text = text.replace('// Keyboard navigation\n', helpers + '// Keyboard navigation\n', 1)
+
+          old_init = """document.addEventListener('DOMContentLoaded', function() {
+    updateProgress();
+    // Make sure cover is visible
+    document.getElementById('cover').classList.add('active');
+});"""
+          new_init = """document.addEventListener('DOMContentLoaded', function() {
+    updateProgress();
+    // Make sure cover is visible
+    document.getElementById('cover').classList.add('active');
+    if (window.innerWidth <= 1024) document.body.classList.add('nav-collapsed');
+});"""
+          if old_init in text:
+              text = text.replace(old_init, new_init, 1)
+
+          # Keep terminology aligned with the approved brand language.
+          replacements = {
+              'drop cycle model': 'Curated Edition cycle model',
+              'drop cycle': 'Curated Edition cycle',
+              'drops': 'Curated Editions™',
+              'drop': 'Curated Edition™'
+          }
+          for old, new in replacements.items():
+              text = text.replace(old, new)
+              text = text.replace(old.capitalize(), new)
+
+          audit.append('Post-patch file length: %d characters' % len(text))
+          audit.append('Remaining lowercase drop refs: %d' % text.lower().count('drop'))
+          path.write_text(text, encoding='utf-8')
+          Path('docs/layout-audit.md').write_text('\n'.join(audit) + '\n', encoding='utf-8')
+          PY
+
+      - name: Commit patched layout
+        run: |
+          if git diff --quiet; then
+            echo "No layout changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html docs/layout-audit.md
+          git commit -m "fix: stabilize board book layout foundation"
+          git push
