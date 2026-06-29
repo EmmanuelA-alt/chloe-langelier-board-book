@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Chloe Langelier">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#2C2522">
 <title>Chloe Langelier Inc. — Digital Board Book™ | Bank of Nova Scotia</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -152,6 +157,39 @@ tr:nth-child(even) td { background: #FAF7F2; }
 @media (max-width: 1024px) {
     .section { padding: 50px 24px; }
     .nav-sidebar { width: 100%; max-width: 320px; }
+}
+@media (max-width: 768px) {
+    body { font-size: 14px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 22px; margin: 24px 0 14px; }
+    h3 { font-size: 17px; }
+    .chapter-title { font-size: 24px; margin-bottom: 20px; }
+    .section { padding: 40px 18px; }
+    .pull-quote { font-size: 17px; padding: 14px 0 14px 18px; }
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { font-size: 12px; min-width: 500px; }
+    th, td { padding: 10px 12px; }
+    .metric-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .four-pillars { padding: 20px; }
+    .ip-grid { grid-template-columns: 1fr; }
+    .unit-economics-grid { grid-template-columns: 1fr; }
+    .nav-actions { bottom: 20px; right: 20px; }
+    .nav-btn { padding: 12px 16px; min-height: 44px; }
+    .cover h1 { font-size: 36px; }
+    .cover .subtitle { font-size: 14px; }
+    .btn-gold, .btn-outline { padding: 12px 20px; font-size: 13px; min-height: 44px; }
+}
+@media (max-width: 480px) {
+    body { font-size: 13px; }
+    h1 { font-size: 26px; }
+    h2 { font-size: 19px; }
+    .chapter-title { font-size: 20px; }
+    .section { padding: 30px 14px; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .pull-quote { font-size: 15px; }
+    .nav-actions { bottom: 16px; right: 16px; gap: 8px; }
+    .nav-btn { padding: 10px 14px; font-size: 12px; }
 }
 </style>
 </head>
@@ -730,14 +768,14 @@ tr:nth-child(even) td { background: #FAF7F2; }
             <p>Le modèle financier ci-dessous est construit sur des hypothèses conservatrices. L'année 1 suppose 2 000 paires produites sur quatre Éditions Organisées (500 paires par édition), avec un taux de vente de 85 % donnant 1 700 paires vendues à un prix de détail moyen de 250 $ CA.</p>
         </div>
         
-        <table>
+        <div class="table-wrapper"><table>
             <tr><th>Year</th><th>Revenue</th><th>Gross Margin</th><th>Net Profit</th><th>Pairs Sold</th></tr>
             <tr><td>2026</td><td>$425,000</td><td>60%</td><td>+$80,000</td><td>1,700</td></tr>
             <tr><td>2027</td><td>$1.12M</td><td>63%</td><td>+$310,000</td><td>4,500</td></tr>
             <tr><td>2028</td><td>$2.35M</td><td>65%</td><td>+$720,000</td><td>9,400</td></tr>
             <tr><td>2029</td><td>$3.68M</td><td>66%</td><td>+$1.12M</td><td>14,700</td></tr>
             <tr><td>2030</td><td>$5.26M</td><td>67%</td><td>+$1.57M</td><td>21,000</td></tr>
-        </table>
+        </table></div>
         
                     <div class="content-en">
 <div class="banker-note">
@@ -754,7 +792,7 @@ tr:nth-child(even) td { background: #FAF7F2; }
         <h2 class="chapter-title">Use of Proceeds + Risk</h2>
         
         <h3>Use of Proceeds — CAD $25,000 Revolving Line of Credit</h3>
-        <table>
+        <div class="table-wrapper"><table>
             <tr><th>Purpose</th><th style="text-align:right;">Amount (CAD)</th></tr>
             <tr><td>Final 50% production payment to manufacturing partner</td><td style="text-align:right;">$12,000</td></tr>
             <tr><td>International freight, shipping, duties & customs</td><td style="text-align:right;">$4,500</td></tr>
@@ -762,21 +800,21 @@ tr:nth-child(even) td { background: #FAF7F2; }
             <tr><td>Initial marketing campaigns, content creation & influencer seeding</td><td style="text-align:right;">$3,000</td></tr>
             <tr><td>Working capital reserve for launch operations</td><td style="text-align:right;">$4,000</td></tr>
             <tr style="font-weight:700; background:#F0EBE0;"><td>Total</td><td style="text-align:right;">$25,000</td></tr>
-        </table>
+        </table></div>
         
                     <div class="content-en">
 <p style="font-size:12.5px; color:#666;">Founder has already invested approximately CAD $45,000 of personal capital into development, tooling, supplier audit trip to China, photography, equipment, and 50% production deposit. This facility bridges to launch only.</p>
             </div>
         
         <h3>Risk Analysis & Mitigation</h3>
-        <table>
+        <div class="table-wrapper"><table>
             <tr><th style="width:22%;">Risk Factor</th><th>Mitigation</th><th style="width:14%;">Residual</th></tr>
             <tr><td>Production quality or consistency</td><td>Proven wedding-shoe pilot; small-batch flexibility with established partner; rigorous QC protocols</td><td>Low</td></tr>
             <tr><td>Sell-through below forecast</td><td>500-pair editions; 85% conservative target; unsold pairs managed through archive sales & influencer gifting</td><td>Medium-Low</td></tr>
             <tr><td>Tariff / duty exposure</td><td>Built into landed cost model (USD $35–50/pair inclusive); conservative assumptions maintained</td><td>Low</td></tr>
             <tr><td>Founder time commitment</td><td>Full-time professional income (C$120k+) maintained independently</td><td>Very Low</td></tr>
             <tr><td>Facility servicing capacity</td><td>Revolving facility designed to be drawn and repaid with each production cycle; multiple income sources</td><td>Very Low</td></tr>
-        </table>
+        </table></div>
         
         <div class="highlight-box">
             <strong>Bank of Nova Scotia — Recommendation</strong><br>
@@ -982,14 +1020,14 @@ tr:nth-child(even) td { background: #FAF7F2; }
         </div>
         
         <h3>Competitive Advantage Table</h3>
-        <table>
+        <div class="table-wrapper"><table>
             <tr><th>Advantage</th><th>How It Is Built</th></tr>
             <tr><td>Founder Taste</td><td>Non-transferable. Cannot be copied.</td></tr>
             <tr><td>45-Day Learning Cycle</td><td>Traditional competitors operate on 9–12 month cycles.</td></tr>
             <tr><td>Direct Customer Ownership</td><td>Shopify + VIP database. No wholesale dilution.</td></tr>
             <tr><td>Proven Manufacturing Relationship</td><td>Validated through wedding-shoe pilot. Small-batch flexibility.</td></tr>
             <tr><td>Self-Funding Model</td><td>Each edition funds the next. Low capital intensity.</td></tr>
-        </table>
+        </table></div>
         
         <div class="content-en"><p style="margin-top:30px;">The Dual Flywheel: <strong>Release → Learn → Refine → Release</strong> and <strong>Customer → Data → Product → Customer</strong>. Each turn of either flywheel strengthens the other.</p></div>
         <div class="content-fr"><p style="margin-top:30px;">Le Double Volant : <strong>Lancement → Apprendre → Raffiner → Lancement</strong> et <strong>Client → Données → Produit → Client</strong>. Chaque tour de l'un des volants renforce l'autre.</p></div>
